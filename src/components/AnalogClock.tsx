@@ -5,7 +5,8 @@ import { useClock } from "@/hooks/useClock";
 const DOTS = Array.from({ length: 12 }, (_, i) => {
   const ang = (i / 12) * Math.PI * 2 - Math.PI / 2;
   const r = 43;
-  return { cx: 50 + r * Math.cos(ang), cy: 50 + r * Math.sin(ang), r: i === 0 ? 2 : 1 };
+  const round = (n: number) => Math.round(n * 1e6) / 1e6;
+  return { cx: round(50 + r * Math.cos(ang)), cy: round(50 + r * Math.sin(ang)), r: i === 0 ? 2 : 1 };
 });
 
 const NEUTRAL = {

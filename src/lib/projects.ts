@@ -1,13 +1,4 @@
-export type ProjectStatus = 'in progress' | 'shipped'
-
-export interface Project {
-  name: string
-  description: string
-  tags: string[]
-  year: number
-  status: ProjectStatus
-  href: string
-}
+import type { Project } from '@/types'
 
 export const projects: Project[] = [
   {
@@ -46,4 +37,4 @@ export const projects: Project[] = [
     status: 'in progress',
     href: '#',
   },
-] as const
+]

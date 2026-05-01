@@ -2,30 +2,22 @@
 
 import { useEffect, useState } from "react";
 
-const PHRASES = [
-  "Frontend & AI Engineer",
-  "React · TypeScript · Claude API",
-  "Building interfaces with intent",
-  "Design-conscious developer",
-  "Based in Brescia, Italy",
-];
-
-const TYPE_MS   = 52;
+const TYPE_MS = 52;
 const DELETE_MS = 28;
 const PAUSE_AFTER = 2200;
 const PAUSE_BEFORE = 320;
 
-export function useTypewriter() {
+export function useTypewriter(phrases: string[]) {
   const [text, setText] = useState("");
 
   useEffect(() => {
     let phraseIdx = 0;
-    let charIdx   = 0;
-    let deleting  = false;
+    let charIdx = 0;
+    let deleting = false;
     let timer: ReturnType<typeof setTimeout>;
 
     function step() {
-      const phrase = PHRASES[phraseIdx];
+      const phrase = phrases[phraseIdx];
 
       if (!deleting) {
         charIdx++;
@@ -41,7 +33,7 @@ export function useTypewriter() {
         setText(phrase.slice(0, charIdx));
         if (charIdx === 0) {
           deleting = false;
-          phraseIdx = (phraseIdx + 1) % PHRASES.length;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
           timer = setTimeout(step, PAUSE_BEFORE);
           return;
         }
@@ -51,6 +43,8 @@ export function useTypewriter() {
 
     timer = setTimeout(step, 900);
     return () => clearTimeout(timer);
+  // phrases array identity is stable (defined at module level in data/content.ts)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return text;

@@ -1,41 +1,33 @@
 "use client";
 
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useIntersectionReveal } from "@/hooks/useIntersectionReveal";
 import { projects } from "@/lib/projects";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 export function Work() {
-  const ref = useScrollReveal<HTMLElement>();
+  const ref = useIntersectionReveal<HTMLElement>();
 
   return (
-    <section
-      ref={ref}
-      id="s-work"
-      className="reveal"
-      style={{ marginBottom: 56 }}
-    >
+    <section ref={ref} id="s-work" className="reveal" style={{ marginBottom: 56 }}>
+      <SectionLabel>work</SectionLabel>
+
       <div
-        className="section-label"
+        className="project-list"
         style={{
-          fontSize: 10,
-          color: "var(--tx3)",
-          letterSpacing: ".14em",
-          textTransform: "uppercase",
-          marginBottom: 22,
           display: "flex",
-          alignItems: "center",
-          gap: 10,
+          flexDirection: "column",
+          border: ".5px solid var(--bd)",
+          borderRadius: 8,
+          overflow: "hidden",
         }}
       >
-        work
-      </div>
-
-      <div className="project-list" style={{ display: "flex", flexDirection: "column", border: ".5px solid var(--bd)", borderRadius: 8, overflow: "hidden" }}>
         {projects.map((p, i) => (
           <a
             key={p.name}
             href={p.href}
             target="_blank"
             rel="noopener noreferrer"
+            className="project-row"
             style={{
               display: "grid",
               gridTemplateColumns: "1fr auto",
@@ -51,8 +43,6 @@ export function Work() {
               cursor: "pointer",
               transition: "background .18s ease",
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--bg2)"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "var(--card)"; }}
           >
             <div>
               <div
@@ -89,7 +79,7 @@ export function Work() {
                 {p.description}
               </p>
               <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
-                {p.tags.map(tag => (
+                {p.tags.map((tag) => (
                   <span
                     key={tag}
                     style={{

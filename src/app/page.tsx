@@ -1,13 +1,13 @@
 import { Topbar }     from "@/components/Topbar";
-import { Hero }       from "@/components/Hero";
-import { Work }       from "@/components/Work";
-import { Stack }      from "@/components/Stack";
-import { About }      from "@/components/About";
-import { Log }        from "@/components/Log";
-import { Contact }    from "@/components/Contact";
+import { Hero }       from "@/components/sections/Hero";
+import { Work }       from "@/components/sections/Work";
+import { Stack }      from "@/components/sections/Stack";
+import { About }      from "@/components/sections/About";
+import { Log }        from "@/components/sections/Log";
+import { Contact }    from "@/components/sections/Contact";
+import { Footer }     from "@/components/sections/Footer";
 import { SidebarNav } from "@/components/SidebarNav";
 import { ScrollToTop } from "@/components/ScrollToTop";
-import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (

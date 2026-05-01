@@ -1,27 +1,27 @@
 # zubo.dev
 
-Personal portfolio — built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, and Framer Motion.
+Personal portfolio — built with Next.js 16, React 19, TypeScript, and Framer Motion.
 
 ## Stack
 
-- **Next.js 16** (App Router)
+- **Next.js 16** (App Router, static export)
 - **React 19**
-- **TypeScript**
-- **Tailwind CSS v4**
-- **Framer Motion** — scroll reveals, parallax, ticker
+- **TypeScript** (strict)
+- **Framer Motion** — parallax h1 on mouse move
+- **next-themes** — light / dark / panda theme switching
+- **CSS custom properties** — design token system
 
 ## Features
 
-- Typewriter intro, parallax h1 on mouse move
-- Analog clock (live)
-- Scrolling ticker with current status
-- Project showcase with tech tags
+- Typewriter intro, parallax h1
+- Analog clock (live, rAF-driven)
+- Scrolling ticker
+- Project showcase
 - Tech stack grid
 - Activity log
 - Contact section
-- Dark/light theme via `next-themes`
-- Dynamic favicon + tab title when window loses focus
-- Sidebar navigation, scroll-to-top
+- Dynamic favicon + tab title on visibility change
+- Sidebar scroll-spy nav, scroll-to-top
 
 ## Dev
 
@@ -34,10 +34,15 @@ npm run dev
 
 ```
 src/
-  app/          # layout, page, globals
-  components/   # Hero, Work, Stack, About, Log, Contact, …
-  hooks/        # useTypewriter, useScrollReveal, useClock, …
-  lib/          # projects data
+  app/               # layout, page, globals.css
+  components/
+    sections/        # Hero, Work, Stack, About, Log, Contact, Footer
+    ui/              # SectionLabel, Card, TagPill
+    Topbar, SidebarNav, ScrollToTop, AnalogClock, DynamicFavicon
+  data/              # content, social, stack, log — single source of truth
+  hooks/             # useTypewriter, useIntersectionReveal, useClock, useFavicon
+  lib/               # projects, date
+  types/             # shared TypeScript interfaces
 ```
 
 ## License

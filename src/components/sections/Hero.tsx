@@ -3,21 +3,22 @@
 import { useEffect } from "react";
 import { useMotionValue, useTransform, motion } from "framer-motion";
 import { useTypewriter } from "@/hooks/useTypewriter";
-import { AnalogClock } from "./AnalogClock";
+import { AnalogClock } from "@/components/AnalogClock";
+import { SOCIAL_LINKS } from "@/data/social";
+import { PHRASES, TICKER_TEXT, AWAY_TITLES, HERO_BIO } from "@/data/content";
 
-const TICKER_TEXT =
-  "currently working on Prism · integrating Claude API into real products · open to freelance & full-time · writing about AI engineering · Brescia → remote · ";
+const NAV_LINKS = SOCIAL_LINKS.filter((s) => s.showInNav);
 
 export function Hero() {
-  const typed = useTypewriter();
+  const typed = useTypewriter(PHRASES);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const tx = useTransform(mx, v => `${v * 4}px`);
-  const ty = useTransform(my, v => `${v * 2}px`);
+  const tx = useTransform(mx, (v) => `${v * 4}px`);
+  const ty = useTransform(my, (v) => `${v * 2}px`);
 
   useEffect(() => {
     function onMove(e: MouseEvent) {
-      mx.set((e.clientX - window.innerWidth  / 2) / (window.innerWidth  / 2));
+      mx.set((e.clientX - window.innerWidth / 2) / (window.innerWidth / 2));
       my.set((e.clientY - window.innerHeight / 2) / (window.innerHeight / 2));
     }
     document.addEventListener("mousemove", onMove, { passive: true });
@@ -25,7 +26,6 @@ export function Hero() {
   }, [mx, my]);
 
   useEffect(() => {
-    const AWAY  = ["← zubo.dev", "· · ·", "← zubo.dev", "· · ·"];
     let timer: ReturnType<typeof setInterval> | null = null;
     let idx = 0;
 
@@ -33,13 +33,15 @@ export function Hero() {
       if (document.hidden) {
         idx = 0;
         timer = setInterval(() => {
-          document.title = AWAY[idx % AWAY.length];
+          document.title = AWAY_TITLES[idx % AWAY_TITLES.length];
           idx++;
         }, 900);
       } else {
         if (timer) clearInterval(timer);
         document.title = "welcome back!";
-        setTimeout(() => { document.title = "zubo.dev"; }, 2000);
+        setTimeout(() => {
+          document.title = "zubo.dev";
+        }, 2000);
       }
     }
 
@@ -91,40 +93,16 @@ export function Hero() {
             marginBottom: 30,
           }}
         >
-          Building interfaces and AI-powered tools with React, TypeScript, and the Claude API.
-          Based in Brescia, Italy.
+          {HERO_BIO}
         </p>
         <nav style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-          {[
-            { label: "github",   href: "https://github.com/zuboh" },
-            { label: "linkedin", href: "https://www.linkedin.com/in/lorenzo-zubani/" },
-            { label: "email",    href: "mailto:lorenzozubani1999@gmail.com" },
-            { label: "résumé",   href: "/resume.pdf" },
-          ].map(({ label, href }) => (
+          {NAV_LINKS.map(({ key, label, href }) => (
             <a
-              key={label}
+              key={key}
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
               rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-              style={{
-                fontSize: 12,
-                color: "var(--tx3)",
-                textDecoration: "none",
-                letterSpacing: ".05em",
-                borderBottom: ".5px solid var(--bd)",
-                paddingBottom: 2,
-                transition: "color .2s ease, border-color .2s ease",
-              }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.color = "var(--acc)";
-                el.style.borderColor = "var(--acc)";
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.color = "var(--tx3)";
-                el.style.borderColor = "var(--bd)";
-              }}
+              className="nav-link-acc"
             >
               {label}
             </a>
@@ -135,8 +113,10 @@ export function Hero() {
             marginTop: 28,
             overflow: "hidden",
             maxWidth: 420,
-            maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-            WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            maskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
           }}
         >
           <div className="ticker-track">

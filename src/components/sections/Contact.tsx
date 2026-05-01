@@ -1,37 +1,21 @@
 'use client'
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useIntersectionReveal } from '@/hooks/useIntersectionReveal'
 import Link from 'next/link'
-import { useState } from 'react'
+import { SOCIAL_LINKS } from '@/data/social'
+import { SectionLabel } from '@/components/ui/SectionLabel'
+import { Card } from '@/components/ui/Card'
+import type { InfoRow } from '@/types'
+import {
+  AVAILABILITY_HEADLINE,
+  AVAILABILITY_BODY,
+} from '@/data/content'
 
-interface InfoRow {
-  key: string
-  value: string
-  href?: string
-}
-
-const REACH: InfoRow[] = [
-  {
-    key: 'email',
-    value: 'lorenzozubani1999@gmail.com',
-    href: 'mailto:[lorenzozubani1999@gmail.com]',
-  },
-  {
-    key: 'github',
-    value: 'github.com/zuboh',
-    href: 'https://github.com/zuboh',
-  },
-  {
-    key: 'linkedin',
-    value: '/in/lorenzo-zubani',
-    href: 'https://linkedin.com/in/lorenzo-zubani',
-  },
-  {
-    key: 'twitter',
-    value: '@zuboh_',
-    href: 'https://twitter.com/zuboh_',
-  },
-]
+const REACH: InfoRow[] = SOCIAL_LINKS.map((s) => ({
+  key: s.key,
+  value: s.value,
+  href: s.href,
+}))
 
 const DETAILS: InfoRow[] = [
   { key: 'location', value: 'Brescia, Italy' },
@@ -45,7 +29,6 @@ function InfoList({ rows }: { rows: InfoRow[] }) {
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       {rows.map((r, i) => {
         const isLink = !!r.href
-
         const content = (
           <div
             style={{
@@ -54,18 +37,14 @@ function InfoList({ rows }: { rows: InfoRow[] }) {
               alignItems: 'center',
               fontSize: 11,
               padding: '8px 0',
-              borderBottom:
-                i < rows.length - 1 ? '.5px solid var(--bd)' : 'none',
+              borderBottom: i < rows.length - 1 ? '.5px solid var(--bd)' : 'none',
             }}
           >
             <span style={{ color: 'var(--tx2)' }}>{r.key}</span>
-
             {isLink ? (
               <Link
                 className="value-link"
-                style={{
-                  color: 'var(--tx3)',
-                }}
+                style={{ color: 'var(--tx3)' }}
                 href={r.href ?? '#'}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -77,7 +56,6 @@ function InfoList({ rows }: { rows: InfoRow[] }) {
             )}
           </div>
         )
-
         return <div key={r.key}>{content}</div>
       })}
     </div>
@@ -85,49 +63,17 @@ function InfoList({ rows }: { rows: InfoRow[] }) {
 }
 
 export function Contact() {
-  const ref = useScrollReveal<HTMLElement>()
+  const ref = useIntersectionReveal<HTMLElement>()
 
   return (
-    <section
-      ref={ref}
-      id="s-contact"
-      className="reveal"
-      style={{ marginBottom: 56 }}
-    >
-      <div
-        className="section-label"
-        style={{
-          fontSize: 10,
-          color: 'var(--tx3)',
-          letterSpacing: '.14em',
-          textTransform: 'uppercase',
-          marginBottom: 22,
-          display: 'flex',
-          alignItems: 'center',
-          gap: 10,
-        }}
-      >
-        contact
-      </div>
+    <section ref={ref} id="s-contact" className="reveal" style={{ marginBottom: 56 }}>
+      <SectionLabel>contact</SectionLabel>
 
       <div
         className="contact-grid-inner"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 10,
-        }}
+        style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}
       >
-        {/* availability — full width */}
-        <div
-          style={{
-            gridColumn: '1 / -1',
-            background: 'var(--card)',
-            border: '.5px solid var(--bd)',
-            borderRadius: 8,
-            padding: 20,
-          }}
-        >
+        <Card style={{ gridColumn: '1 / -1' }}>
           <div
             style={{
               fontSize: 9,
@@ -147,12 +93,10 @@ export function Contact() {
               marginBottom: 6,
             }}
           >
-            Open to opportunities
+            {AVAILABILITY_HEADLINE}
           </div>
-          <p style={{ fontSize: 12, color: 'var(--tx2)', lineHeight: 1.75 }}>
-            Freelance, full-time, or interesting collaborations.
-            <br />
-            Especially interested in AI-powered products and design systems.
+          <p style={{ fontSize: 12, color: 'var(--tx2)', lineHeight: 1.75, whiteSpace: 'pre-line' }}>
+            {AVAILABILITY_BODY}
           </p>
           <span
             style={{
@@ -183,16 +127,9 @@ export function Contact() {
             />
             available now
           </span>
-        </div>
+        </Card>
 
-        <div
-          style={{
-            background: 'var(--card)',
-            border: '.5px solid var(--bd)',
-            borderRadius: 8,
-            padding: 20,
-          }}
-        >
+        <Card>
           <div
             style={{
               fontSize: 9,
@@ -205,16 +142,9 @@ export function Contact() {
             reach me
           </div>
           <InfoList rows={REACH} />
-        </div>
+        </Card>
 
-        <div
-          style={{
-            background: 'var(--card)',
-            border: '.5px solid var(--bd)',
-            borderRadius: 8,
-            padding: 20,
-          }}
-        >
+        <Card>
           <div
             style={{
               fontSize: 9,
@@ -227,7 +157,7 @@ export function Contact() {
             details
           </div>
           <InfoList rows={DETAILS} />
-        </div>
+        </Card>
       </div>
     </section>
   )

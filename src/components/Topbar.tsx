@@ -2,10 +2,9 @@
 
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
+import type { Theme, HiddenTheme } from '@/types'
 
 const THEMES = ['light', 'dark'] as const
-type Theme = (typeof THEMES)[number]
-type HiddenTheme = 'panda'
 
 function SunIcon() {
   return (
@@ -67,7 +66,7 @@ export function Topbar() {
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), [])
 
-  function cycle() {
+  function cycleTheme() {
     const current = (theme as Theme | HiddenTheme) ?? 'light'
 
     if (current === 'panda') {
@@ -90,9 +89,7 @@ export function Topbar() {
     setClicks(newClicks)
   }
 
-  const current = mounted
-    ? ((theme as Theme | HiddenTheme) ?? 'light')
-    : 'light'
+  const current = mounted ? ((theme as Theme | HiddenTheme) ?? 'light') : 'light'
 
   return (
     <div
@@ -104,32 +101,9 @@ export function Topbar() {
       }}
     >
       <button
-        onClick={cycle}
+        onClick={cycleTheme}
         aria-label="toggle theme"
-        style={{
-          background: 'transparent',
-          border: '.5px solid var(--bd)',
-          borderRadius: 4,
-          cursor: 'pointer',
-          fontFamily: 'var(--font-dm-mono), monospace',
-          fontSize: 11,
-          letterSpacing: '.1em',
-          color: 'var(--tx3)',
-          padding: '6px 12px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 8,
-          transition: 'border-color .2s, color .2s',
-          outline: 'none',
-        }}
-        onMouseEnter={(e) => {
-          ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--acc)'
-          ;(e.currentTarget as HTMLElement).style.color = 'var(--acc)'
-        }}
-        onMouseLeave={(e) => {
-          ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--bd)'
-          ;(e.currentTarget as HTMLElement).style.color = 'var(--tx3)'
-        }}
+        className="theme-toggle"
       >
         <span
           style={{

@@ -29,13 +29,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
     showInNav: true,
   },
   {
-    key: 'resume',
-    label: 'résumé',
-    value: 'resume.pdf',
-    href: '/resume.pdf',
-    showInNav: true,
-  },
-  {
     key: 'twitter',
     label: 'twitter',
     value: '@zuboh_',

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useMotionValue, useTransform, motion } from "framer-motion";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { AnalogClock } from "@/components/AnalogClock";
+import Link from "next/link";
 import { SOCIAL_LINKS } from "@/data/social";
 import { PHRASES, TICKER_TEXT, AWAY_TITLES, HERO_BIO } from "@/data/content";
 
@@ -55,13 +56,10 @@ export function Hero() {
   return (
     <section
       id="s-hero"
+      className="flex flex-col gap-6 md:grid md:grid-cols-[1fr_auto] md:items-start md:gap-8"
       style={{
         padding: "64px 0 56px",
         animation: "fadeUp .5s ease both",
-        display: "grid",
-        gridTemplateColumns: "1fr auto",
-        gap: 32,
-        alignItems: "start",
       }}
     >
       <div>
@@ -144,7 +142,9 @@ export function Hero() {
           </div>
         </div>
       </div>
-      <AnalogClock />
+      <div className="hidden md:block">
+        <AnalogClock />
+      </div>
     </section>
   );
 }

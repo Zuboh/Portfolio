@@ -11,11 +11,13 @@ import {
   AVAILABILITY_BODY,
 } from '@/data/content'
 
-const REACH: InfoRow[] = SOCIAL_LINKS.map((s) => ({
-  key: s.key,
-  value: s.value,
-  href: s.href,
-}))
+const REACH: InfoRow[] = SOCIAL_LINKS
+  .filter((s) => s.key !== 'resume')
+  .map((s) => ({
+    key: s.key,
+    value: s.value,
+    href: s.href,
+  }))
 
 const DETAILS: InfoRow[] = [
   { key: 'location', value: 'Brescia, Italy' },
@@ -70,8 +72,7 @@ export function Contact() {
       <SectionLabel>contact</SectionLabel>
 
       <div
-        className="contact-grid-inner"
-        style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}
+        className="contact-grid-inner grid grid-cols-1 md:grid-cols-2 gap-2.5"
       >
         <Card style={{ gridColumn: '1 / -1' }}>
           <div

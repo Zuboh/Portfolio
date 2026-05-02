@@ -1,3 +1,4 @@
+import Link           from "next/link";
 import { Topbar }     from "@/components/Topbar";
 import { Hero }       from "@/components/sections/Hero";
 import { Work }       from "@/components/sections/Work";
@@ -17,6 +18,11 @@ export default function Home() {
         <main>
           <Hero />
           <Work />
+          <div className="mb-14 -mt-12 text-center">
+            <Link href="/works" className="nav-link-acc" style={{ fontSize: 12 }}>
+              View all projects ↗
+            </Link>
+          </div>
           <Stack />
           <About />
           <Log />

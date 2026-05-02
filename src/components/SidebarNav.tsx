@@ -49,7 +49,7 @@ export function SidebarNav() {
   }, []);
 
   return (
-    <nav className="sidebar-nav" aria-label="Page sections">
+    <nav className="sidebar-nav hidden md:flex" aria-label="Page sections">
       <div style={{ display: "flex", flexDirection: "column" }}>
         {SECTIONS.map(({ id, label }, i) => (
           <button

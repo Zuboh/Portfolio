@@ -26,10 +26,9 @@ export function Stack() {
       <SectionLabel>stack</SectionLabel>
 
       <div
+        className="grid grid-cols-4 md:grid-cols-8"
         style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: 2,
+          gap: 10,
           padding: '2px 0 20px',
         }}
       >
@@ -38,7 +37,6 @@ export function Stack() {
             key={icon.label}
             style={{
               position: 'relative',
-              width: 52,
               height: 52,
               display: 'flex',
               alignItems: 'center',

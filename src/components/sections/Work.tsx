@@ -3,6 +3,8 @@
 import { useIntersectionReveal } from "@/hooks/useIntersectionReveal";
 import { projects } from "@/lib/projects";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import Link from "next/link";
+import { ButtonAllProjects } from "../ButtonAllProjects";
 
 export function Work() {
   const ref = useIntersectionReveal<HTMLElement>();
@@ -14,8 +16,6 @@ export function Work() {
       <div
         className="project-list"
         style={{
-          display: "flex",
-          flexDirection: "column",
           border: ".5px solid var(--bd)",
           borderRadius: 8,
           overflow: "hidden",
@@ -25,8 +25,6 @@ export function Work() {
           <a
             key={p.name}
             href={p.href}
-            target="_blank"
-            rel="noopener noreferrer"
             className="project-row"
             style={{
               display: "grid",
@@ -108,6 +106,7 @@ export function Work() {
           </a>
         ))}
       </div>
+      <ButtonAllProjects />
     </section>
   );
 }

@@ -1,12 +1,21 @@
-export type ProjectStatus = 'in progress' | 'shipped'
+export type ProjectStatus = 'in progress' | 'shipped' | 'planning'
 
 export interface Project {
   name: string
+  slug: string
   description: string
+  longDescription?: string
   tags: string[]
   year: number
   status: ProjectStatus
   href: string
+  github?: string
+  demo?: string
+  docs?: string
+  whatsnext?: string[]
+  progress?: number
+  lastUpdated?: string
+  estimatedCompletion?: string
 }
 
 export interface StackItem {

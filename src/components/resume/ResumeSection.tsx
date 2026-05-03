@@ -15,8 +15,8 @@ export function ResumeSection({ label, children, delay = 0 }: ResumeSectionProps
   return (
     <section
       ref={ref}
-      className="reveal"
-      style={{ marginBottom: 48, animationDelay: `${delay}ms` }}
+      className="reveal mb-12"
+      style={{ animationDelay: `${delay}ms` }}
     >
       <SectionLabel>{label}</SectionLabel>
       {children}

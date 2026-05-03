@@ -3,67 +3,29 @@ import Link from 'next/link'
 export function ResumeHeader() {
   return (
     <div
-      style={{
-        display: 'flex',
-        gap: 24,
-        alignItems: 'flex-start',
-        marginBottom: 48,
-        flexWrap: 'wrap',
-        animation: 'fadeUp .5s ease both',
-      }}
+      className="flex gap-6 items-start mb-12 flex-wrap"
+      style={{ animation: 'fadeUp .5s ease both' }}
     >
       {/* Photo placeholder */}
-      <div
-        style={{
-          width: 96,
-          height: 96,
-          borderRadius: '50%',
-          background: 'var(--bg3)',
-          border: '.5px solid var(--bd)',
-          flexShrink: 0,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: 28,
-          color: 'var(--tx3)',
-          letterSpacing: '-.02em',
-          fontWeight: 500,
-        }}
-      >
+      <div className="w-24 h-24 rounded-full bg-bg3 border-[0.5px] border-bd shrink-0 flex items-center justify-center text-[28px] text-tx3 tracking-[-0.02em] font-medium">
         LZ
       </div>
 
-      <div style={{ flex: 1 }}>
-        <h1
-          style={{
-            fontSize: 'clamp(22px, 4vw, 32px)',
-            fontWeight: 500,
-            letterSpacing: '-.02em',
-            color: 'var(--tx)',
-            marginBottom: 4,
-          }}
-        >
+      <div className="flex-1">
+        <h1 className="text-[clamp(22px,4vw,32px)] font-medium tracking-[-0.02em] text-tx mb-1">
           Lorenzo Zubani
         </h1>
 
-        <p style={{ fontSize: 12, color: 'var(--acc)', letterSpacing: '.06em', marginBottom: 10 }}>
+        <p className="text-xs text-acc tracking-[.06em] mb-2.5">
           Frontend &amp; AI Engineer
         </p>
 
-        <p
-          style={{
-            fontSize: 11,
-            color: 'var(--tx2)',
-            lineHeight: 1.8,
-            maxWidth: 440,
-            marginBottom: 14,
-          }}
-        >
+        <p className="text-[11px] text-tx2 leading-[1.8] max-w-[440px] mb-3.5">
           Frontend engineer focused on architecture and design systems. Growing into AI engineering
           — integrating LLMs as core product experience, not just features. Based in Brescia, Italy.
         </p>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 20px' }}>
+        <div className="flex flex-wrap gap-x-5 gap-y-1.5">
           {[
             { label: 'lorenzozubani1999@gmail.com', href: 'mailto:lorenzozubani1999@gmail.com' },
             { label: 'Brescia, Italy', href: null },
@@ -76,25 +38,23 @@ export function ResumeHeader() {
                 href={href}
                 target={href.startsWith('http') ? '_blank' : undefined}
                 rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="nav-link-acc"
-                style={{ fontSize: 10 }}
+                className="text-[10px] text-tx3 no-underline border-b-[0.5px] border-bd pb-0.5 tracking-[.04em] transition-colors duration-200 hover:text-acc hover:border-acc"
               >
                 {label}
               </a>
             ) : (
-              <span key={label} style={{ fontSize: 10, color: 'var(--tx3)', letterSpacing: '.04em' }}>
+              <span key={label} className="text-[10px] text-tx3 tracking-[.04em]">
                 {label}
               </span>
             )
           )}
         </div>
 
-        <div style={{ marginTop: 14 }}>
+        <div className="mt-3.5">
           <Link
             href="/resume.pdf"
             target="_blank"
-            className="nav-link-acc"
-            style={{ fontSize: 10, letterSpacing: '.06em' }}
+            className="text-[10px] text-tx3 no-underline border-b-[0.5px] border-bd pb-0.5 tracking-[.06em] transition-colors duration-200 hover:text-acc hover:border-acc"
           >
             ↓ download pdf
           </Link>

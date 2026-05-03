@@ -26,41 +26,17 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
 
   return (
     <div
-      style={{
-        animation: `fadeUp .45s ease both`,
-        animationDelay: `${index * 80}ms`,
-        border: '.5px solid var(--bd)',
-        borderRadius: 8,
-        background: 'var(--card)',
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
+      style={{ animation: `fadeUp .45s ease both`, animationDelay: `${index * 80}ms` }}
+      className="border-[0.5px] border-bd rounded-lg bg-card overflow-hidden flex flex-col"
     >
-      <div style={{ height: 2, background: 'var(--acc)', flexShrink: 0 }} />
+      <div className="h-0.5 bg-acc shrink-0" />
 
-      <div style={{ padding: '20px 20px 20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'flex-start',
-            justifyContent: 'space-between',
-            gap: 12,
-            marginBottom: 10,
-          }}
-        >
-          <h2
-            style={{
-              fontSize: 14,
-              fontWeight: 500,
-              color: 'var(--tx)',
-              letterSpacing: '-.01em',
-              lineHeight: 1.2,
-            }}
-          >
+      <div className="p-5 flex-1 flex flex-col">
+        <div className="flex items-start justify-between gap-3 mb-2.5">
+          <h2 className="text-sm font-medium text-tx tracking-[-0.01em] leading-[1.2]">
             {project.name}
           </h2>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+          <div className="flex items-center gap-2 shrink-0">
             <span
               style={{
                 fontSize: 9,
@@ -76,47 +52,28 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
             >
               {status.label}
             </span>
-            <span style={{ fontSize: 10, color: 'var(--tx3)', letterSpacing: '.06em' }}>
+            <span className="text-[10px] text-tx3 tracking-[.06em]">
               {project.year}
             </span>
           </div>
         </div>
 
-        <p
-          style={{
-            fontSize: 12,
-            color: 'var(--tx2)',
-            lineHeight: 1.75,
-            marginBottom: 14,
-          }}
-        >
+        <p className="text-xs text-tx2 leading-[1.75] mb-3.5">
           {project.longDescription ?? project.description}
         </p>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginTop: 'auto' }}>
+        <div className="flex flex-wrap gap-[5px] mt-auto">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              style={{
-                fontSize: 10,
-                color: 'var(--tx3)',
-                background: 'var(--bg3)',
-                padding: '2px 7px',
-                borderRadius: 3,
-              }}
+              className="text-[10px] text-tx3 bg-bg3 px-[7px] py-0.5 rounded-[3px]"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <div
-          style={{
-            borderTop: '.5px solid var(--bd)',
-            marginTop: 16,
-            paddingTop: 14,
-          }}
-        >
+        <div className="border-t-[0.5px] border-bd mt-4 pt-3.5">
           <ProjectLinks
             href={project.href}
             github={project.github}

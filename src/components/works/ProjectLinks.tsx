@@ -22,8 +22,7 @@ function LinkItem({
       href={href}
       target={href.startsWith('http') ? '_blank' : undefined}
       rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-      className="nav-link-acc"
-      style={{ fontSize: 11, letterSpacing: '.05em' }}
+      className="text-[11px] tracking-[.05em] text-tx3 border-b-[0.5px] border-bd pb-0.5 no-underline transition-colors duration-200 hover:text-acc hover:border-acc"
     >
       {symbol} {label}
     </a>
@@ -41,7 +40,7 @@ export function ProjectLinks({ github, demo, docs, detailHref }: ProjectLinksPro
   if (links.length === 0) return null
 
   return (
-    <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 16 }}>
+    <div className="flex gap-4 flex-wrap mt-4">
       {links.map((l) => (
         <LinkItem key={l.label} {...l} />
       ))}

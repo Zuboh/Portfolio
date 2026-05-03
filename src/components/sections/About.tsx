@@ -9,25 +9,18 @@ export function About() {
   const age = getAge();
 
   return (
-    <section ref={ref} id="s-about" className="reveal" style={{ marginBottom: 56 }}>
+    <section ref={ref} id="s-about" className="reveal mb-14">
       <SectionLabel>about</SectionLabel>
 
-      <p
-        style={{
-          fontSize: 12,
-          color: "var(--tx2)",
-          lineHeight: 1.95,
-          fontWeight: 300,
-        }}
-      >
+      <p className="text-[12px] text-tx2 leading-[1.95] font-light">
         {age}&thinsp;y/o frontend engineer from
-        <strong style={{ color: "var(--tx)", fontWeight: 500 }}> Brescia, Italy</strong>.
+        <strong className="text-tx font-medium"> Brescia, Italy</strong>.
         Building React interfaces with deep attention to architecture and design systems.
         Growing into
-        <strong style={{ color: "var(--tx)", fontWeight: 500 }}> Frontend + AI engineering</strong>
+        <strong className="text-tx font-medium"> Frontend + AI engineering</strong>
         {" "}integrating LLMs not as features, but as the core of the product experience.
         Currently building tools that bridge
-        <strong style={{ color: "var(--tx)", fontWeight: 500 }}> Figma, Claude Code, and real codebases</strong>.
+        <strong className="text-tx font-medium"> Figma, Claude Code, and real codebases</strong>.
       </p>
     </section>
   );

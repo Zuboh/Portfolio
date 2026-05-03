@@ -1,17 +1,6 @@
 export function Footer() {
   return (
-    <footer
-      style={{
-        marginTop: 60,
-        paddingTop: 20,
-        borderTop: '.5px solid var(--bd)',
-        fontSize: 10,
-        color: 'var(--tx3)',
-        letterSpacing: '.06em',
-        display: 'flex',
-        justifyContent: 'space-between',
-      }}
-    >
+    <footer className="mt-[60px] pt-5 border-t-[0.5px] border-bd text-[10px] text-tx3 tracking-[.06em] flex justify-between">
       <span>zubo.dev · Brescia, Italy</span>
       <span>last updated April 2026</span>
     </footer>

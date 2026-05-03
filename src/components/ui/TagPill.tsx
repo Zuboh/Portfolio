@@ -9,18 +9,11 @@ export function TagPill({ label, variant }: TagPillProps) {
   const isShip = variant === 'ship'
   return (
     <span
-      style={{
-        display: 'inline-block',
-        fontSize: 9,
-        letterSpacing: '.08em',
-        textTransform: 'uppercase',
-        color: isShip ? 'var(--acc)' : 'var(--tx3)',
-        background: isShip ? 'oklch(from var(--acc) l c h / .1)' : 'var(--bg3)',
-        padding: '1px 6px',
-        borderRadius: 2,
-        marginLeft: 6,
-        verticalAlign: 'middle',
-      }}
+      className={`inline-block text-[9px] tracking-[.08em] uppercase px-[6px] py-[1px] rounded-[2px] ml-[6px] align-middle ${
+        isShip
+          ? 'text-acc bg-[oklch(from_var(--acc)_l_c_h_/_0.1)]'
+          : 'text-tx3 bg-bg3'
+      }`}
     >
       {label}
     </span>

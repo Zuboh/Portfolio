@@ -56,86 +56,46 @@ export function Hero() {
   return (
     <section
       id="s-hero"
-      className="flex flex-col gap-6 md:grid md:grid-cols-[1fr_auto] md:items-start md:gap-8"
-      style={{
-        padding: "64px 0 56px",
-        animation: "fadeUp .5s ease both",
-      }}
+      className="flex flex-col gap-6 md:grid md:grid-cols-[1fr_auto] md:items-start md:gap-8 pt-16 pb-14 [animation:fadeUp_0.5s_ease_both]"
     >
       <div>
         <motion.h1
-          style={{
-            translateX: tx,
-            translateY: ty,
-            fontSize: "clamp(40px, 6vw, 52px)",
-            fontWeight: 500,
-            lineHeight: 1,
-            marginBottom: 10,
-            letterSpacing: "-.03em",
-            willChange: "transform",
-            transition: "transform .12s ease-out",
-          }}
+          className="text-[clamp(40px,6vw,52px)] font-medium leading-none mb-2.5 tracking-[-0.03em] will-change-transform transition-transform duration-[120ms] ease-out"
+          style={{ translateX: tx, translateY: ty }}
         >
-          zubo<span style={{ color: "var(--acc)" }}>.dev</span>
+          zubo<span className="text-acc">.dev</span>
         </motion.h1>
-        <p style={{ fontSize: 14, color: "var(--tx2)", marginBottom: 6 }}>
+        <p className="text-sm text-tx2 mb-1.5">
           <span>{typed}</span>
           <span className="cursor" />
         </p>
-        <p
-          style={{
-            fontSize: 12,
-            color: "var(--tx3)",
-            lineHeight: 1.85,
-            maxWidth: 420,
-            marginBottom: 30,
-          }}
-        >
+        <p className="text-xs text-tx3 leading-[1.85] max-w-[420px] mb-[30px]">
           {HERO_BIO}
         </p>
-        <nav style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+        <nav className="flex gap-5 flex-wrap">
+          <Link href="/works" className="text-xs text-tx3 no-underline tracking-[.05em] border-b-[0.5px] border-bd pb-0.5 transition-colors duration-200 hover:text-acc hover:border-acc">
+            works
+          </Link>
           {NAV_LINKS.map(({ key, label, href }) => (
             <a
               key={key}
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
               rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="nav-link-acc"
+              className="text-xs text-tx3 no-underline tracking-[.05em] border-b-[0.5px] border-bd pb-0.5 transition-colors duration-200 hover:text-acc hover:border-acc"
             >
               {label}
             </a>
           ))}
         </nav>
-        <div
-          style={{
-            marginTop: 28,
-            overflow: "hidden",
-            maxWidth: 420,
-            maskImage:
-              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-          }}
-        >
+        <div className="mt-7 overflow-hidden w-full max-w-[420px] [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           <div className="ticker-track">
-            <span
-              style={{
-                fontSize: 10,
-                color: "var(--tx3)",
-                letterSpacing: ".06em",
-                flexShrink: 0,
-              }}
-            >
+            <span className="text-[10px] text-tx3 tracking-[.06em] shrink-0">
               {TICKER_TEXT}
             </span>
             <span
               aria-hidden="true"
-              style={{
-                fontSize: 10,
-                color: "var(--tx3)",
-                letterSpacing: ".06em",
-                flexShrink: 0,
-              }}
+              className="text-[10px] text-tx3 tracking-[.06em] shrink-0"
             >
               {TICKER_TEXT}
             </span>

@@ -9,54 +9,25 @@ export function Log() {
   const ref = useIntersectionReveal<HTMLElement>()
 
   return (
-    <section ref={ref} id="s-log" className="reveal" style={{ marginBottom: 56 }}>
+    <section ref={ref} id="s-log" className="reveal mb-14">
       <SectionLabel>log</SectionLabel>
 
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          borderTop: '.5px solid var(--bd)',
-        }}
-      >
+      <div className="flex flex-col border-t-[0.5px] border-bd">
         {ENTRIES.map((e, i) => (
           <div
             key={e.date + e.repo + e.message}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '96px 120px 1fr',
-              gap: 16,
-              padding: '14px 0',
-              borderBottom: '.5px solid var(--bd)',
-              borderTop: i === 0 ? 'none' : '.5px solid var(--bd)',
-              alignItems: 'baseline',
-            }}
+            className={`log-row grid grid-cols-[72px_1fr] gap-3 py-3.5 border-b-[0.5px] border-bd items-baseline${i === 0 ? '' : ' border-t-[0.5px] border-t-bd'}`}
           >
-            <span style={{ fontSize: 10, color: 'var(--tx3)' }}>{e.date}</span>
-            <span
-              style={{ position: 'relative', overflow: 'visible', display: 'block' }}
-              data-full={e.repo}
-            >
-              <span
-                style={{
-                  fontSize: 10,
-                  color: 'var(--tx3)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '.08em',
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  maxWidth: 150,
-                  display: 'block',
-                }}
-              >
+            <span className="text-[10px] text-tx3">{e.date}</span>
+            <div className="min-w-0">
+              <span className="text-[10px] text-tx3 uppercase tracking-[.08em] block mb-0.5 overflow-hidden text-ellipsis whitespace-nowrap">
                 {e.repo}
               </span>
-            </span>
-            <span style={{ fontSize: 12, color: 'var(--tx2)' }}>
-              {e.message}
-              {e.tag && <TagPill label={e.tag.label} variant={e.tag.variant} />}
-            </span>
+              <span className="text-xs text-tx2">
+                {e.message}
+                {e.tag && <TagPill label={e.tag.label} variant={e.tag.variant} />}
+              </span>
+            </div>
           </div>
         ))}
       </div>

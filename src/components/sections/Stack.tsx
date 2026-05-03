@@ -20,31 +20,15 @@ export function Stack() {
     <section
       ref={ref}
       id="s-stack"
-      className="reveal"
-      style={{ marginBottom: 56, paddingBottom: 24 }}
+      className="reveal mb-14 pb-6"
     >
       <SectionLabel>stack</SectionLabel>
 
-      <div
-        className="grid grid-cols-4 md:grid-cols-8"
-        style={{
-          gap: 10,
-          padding: '2px 0 20px',
-        }}
-      >
+      <div className="grid grid-cols-4 md:grid-cols-8 gap-2.5 pt-0.5 pb-5">
         {ICONS.map((icon) => (
           <div
             key={icon.label}
-            style={{
-              position: 'relative',
-              height: 52,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: 10,
-              transition: 'background .2s ease',
-              cursor: 'default',
-            }}
+            className="relative h-[52px] flex items-center justify-center rounded-[10px] transition-colors duration-200 cursor-default"
             onMouseEnter={() => setHovered(icon.label)}
             onMouseLeave={() => setHovered(null)}
           >
@@ -55,27 +39,18 @@ export function Stack() {
                 alt={icon.label}
                 width={30}
                 height={30}
+                className="object-contain transition-transform duration-200"
                 style={{
-                  objectFit: 'contain',
-                  transition: 'transform .2s ease',
                   transform: hovered === icon.label ? 'scale(1.08)' : 'scale(1)',
                   filter: icon.isDark && isDark ? 'invert(1)' : undefined,
                 }}
               />
             ) : (
               <div
+                className="w-7 h-7 rounded-md flex items-center justify-center text-[11px] font-medium transition-transform duration-200"
                 style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: 6,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: 11,
-                  fontWeight: 500,
                   background: icon.fallback!.bg,
                   color: icon.fallback!.color,
-                  transition: 'transform .2s ease',
                   transform: hovered === icon.label ? 'scale(1.08)' : 'scale(1)',
                 }}
               >
@@ -84,21 +59,7 @@ export function Stack() {
             )}
 
             {hovered === icon.label && (
-              <span
-                style={{
-                  position: 'absolute',
-                  bottom: -10,
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  fontSize: 10,
-                  color: 'var(--acc)',
-                  whiteSpace: 'nowrap',
-                  pointerEvents: 'none',
-                  zIndex: 10,
-                  letterSpacing: '.04em',
-                  fontFamily: 'var(--font-dm-mono), monospace',
-                }}
-              >
+              <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 text-[10px] text-acc whitespace-nowrap pointer-events-none z-10 tracking-[.04em] font-mono">
                 {icon.label}
               </span>
             )}

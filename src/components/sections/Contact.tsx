@@ -28,25 +28,17 @@ const DETAILS: InfoRow[] = [
 
 function InfoList({ rows }: { rows: InfoRow[] }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div className="flex flex-col">
       {rows.map((r, i) => {
         const isLink = !!r.href
         const content = (
           <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              fontSize: 11,
-              padding: '8px 0',
-              borderBottom: i < rows.length - 1 ? '.5px solid var(--bd)' : 'none',
-            }}
+            className={`flex justify-between items-center text-[11px] py-2${i < rows.length - 1 ? ' border-b-[0.5px] border-bd' : ''}`}
           >
-            <span style={{ color: 'var(--tx2)' }}>{r.key}</span>
+            <span className="text-tx2">{r.key}</span>
             {isLink ? (
               <Link
-                className="value-link"
-                style={{ color: 'var(--tx3)' }}
+                className="text-tx3 no-underline transition-[text-decoration,color] duration-150 hover:underline hover:underline-offset-[3px] hover:text-acc cursor-pointer"
                 href={r.href ?? '#'}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -54,7 +46,7 @@ function InfoList({ rows }: { rows: InfoRow[] }) {
                 {r.value}
               </Link>
             ) : (
-              <span style={{ color: 'var(--tx3)' }}>{r.value}</span>
+              <span className="text-tx3">{r.value}</span>
             )}
           </div>
         )
@@ -68,93 +60,35 @@ export function Contact() {
   const ref = useIntersectionReveal<HTMLElement>()
 
   return (
-    <section ref={ref} id="s-contact" className="reveal" style={{ marginBottom: 56 }}>
+    <section ref={ref} id="s-contact" className="reveal mb-14">
       <SectionLabel>contact</SectionLabel>
 
-      <div
-        className="contact-grid-inner grid grid-cols-1 md:grid-cols-2 gap-2.5"
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
         <Card style={{ gridColumn: '1 / -1' }}>
-          <div
-            style={{
-              fontSize: 9,
-              color: 'var(--tx3)',
-              letterSpacing: '.12em',
-              textTransform: 'uppercase',
-              marginBottom: 10,
-            }}
-          >
+          <div className="text-[9px] text-tx3 tracking-[.12em] uppercase mb-2.5">
             availability
           </div>
-          <div
-            style={{
-              fontSize: 14,
-              color: 'var(--tx)',
-              fontWeight: 500,
-              marginBottom: 6,
-            }}
-          >
+          <div className="text-sm text-tx font-medium mb-1.5">
             {AVAILABILITY_HEADLINE}
           </div>
-          <p style={{ fontSize: 12, color: 'var(--tx2)', lineHeight: 1.75, whiteSpace: 'pre-line' }}>
+          <p className="text-xs text-tx2 leading-[1.75] whitespace-pre-line">
             {AVAILABILITY_BODY}
           </p>
-          <span
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 8,
-              marginTop: 16,
-              background: 'oklch(from var(--acc) l c h / .1)',
-              border: '.5px solid oklch(from var(--acc) l c h / .35)',
-              color: 'var(--acc)',
-              fontSize: 11,
-              fontWeight: 500,
-              padding: '6px 14px',
-              borderRadius: 20,
-              letterSpacing: '.06em',
-            }}
-          >
-            <span
-              className="breathe"
-              style={{
-                width: 6,
-                height: 6,
-                borderRadius: '50%',
-                background: 'var(--acc)',
-                flexShrink: 0,
-                display: 'inline-block',
-              }}
-            />
+          <span className="inline-flex items-center gap-2 mt-4 bg-[oklch(from_var(--acc)_l_c_h_/_0.1)] border-[0.5px] border-[oklch(from_var(--acc)_l_c_h_/_0.35)] text-acc text-[11px] font-medium px-3.5 py-1.5 rounded-[20px] tracking-[.06em]">
+            <span className="breathe w-1.5 h-1.5 rounded-full bg-acc shrink-0 inline-block" />
             available now
           </span>
         </Card>
 
         <Card>
-          <div
-            style={{
-              fontSize: 9,
-              color: 'var(--tx3)',
-              letterSpacing: '.12em',
-              textTransform: 'uppercase',
-              marginBottom: 10,
-            }}
-          >
+          <div className="text-[9px] text-tx3 tracking-[.12em] uppercase mb-2.5">
             reach me
           </div>
           <InfoList rows={REACH} />
         </Card>
 
         <Card>
-          <div
-            style={{
-              fontSize: 9,
-              color: 'var(--tx3)',
-              letterSpacing: '.12em',
-              textTransform: 'uppercase',
-              marginBottom: 10,
-            }}
-          >
+          <div className="text-[9px] text-tx3 tracking-[.12em] uppercase mb-2.5">
             details
           </div>
           <InfoList rows={DETAILS} />

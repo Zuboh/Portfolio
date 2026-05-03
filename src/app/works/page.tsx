@@ -4,46 +4,24 @@ import { Footer } from '@/components/sections/Footer'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { ProjectGrid } from '@/components/works/ProjectGrid'
 
+const PAGE = 'grid grid-cols-1 md:grid-cols-[1fr_68px] max-w-[800px] mx-auto pl-6 pr-4 md:pl-14 md:pr-3 pb-[140px] overflow-x-hidden'
+
 export default function WorksPage() {
   return (
-    <div className="page">
+    <div className={PAGE}>
       <Topbar />
-      <main>
-        <section
-          style={{
-            padding: '64px 0 48px',
-            animation: 'fadeUp .5s ease both',
-          }}
-        >
+      <main className="min-w-0">
+        <section className="pt-16 pb-12 [animation:fadeUp_0.5s_ease_both]">
           <Link
             href="/"
-            style={{
-              fontSize: 11,
-              color: 'var(--tx3)',
-              textDecoration: 'none',
-              letterSpacing: '.06em',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 6,
-              marginBottom: 32,
-              borderBottom: '.5px solid transparent',
-              transition: 'color .2s, border-color .2s',
-            }}
-            className="nav-link-acc"
+            className="text-[11px] text-tx3 no-underline tracking-[.06em] inline-block mb-8 border-b-[0.5px] border-bd pb-0.5 transition-colors duration-200 hover:text-acc hover:border-acc"
           >
             ← back
           </Link>
 
           <SectionLabel>works</SectionLabel>
 
-          <p
-            style={{
-              fontSize: 12,
-              color: 'var(--tx2)',
-              lineHeight: 1.85,
-              maxWidth: 480,
-            }}
-          >
+          <p className="text-xs text-tx2 leading-[1.85] max-w-[480px]">
             A selection of projects built with React, TypeScript, and AI.
             Most are tools I wanted but couldn&apos;t find — so I built them.
           </p>

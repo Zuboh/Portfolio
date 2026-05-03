@@ -5,6 +5,8 @@ import { ResumeHeader } from '@/components/resume/ResumeHeader'
 import { ResumeSection } from '@/components/resume/ResumeSection'
 import { ExperienceCard } from '@/components/resume/ExperienceCard'
 
+const PAGE = 'grid grid-cols-1 md:grid-cols-[1fr_68px] max-w-[800px] mx-auto pl-6 pr-4 md:pl-14 md:pr-3 pb-[140px] overflow-x-hidden'
+
 const EXPERIENCE = [
   {
     role: 'Frontend & AI Engineer',
@@ -86,30 +88,12 @@ const PROJECTS = [
 ]
 
 const SKILLS: { category: string; items: string[] }[] = [
-  {
-    category: 'frontend',
-    items: ['HTML', 'CSS/Sass', 'JavaScript', 'TypeScript', 'React', 'React Native', 'Next.js', 'TailwindCSS', 'Angular', 'Framer Motion', 'MUI'],
-  },
-  {
-    category: 'backend',
-    items: ['Node.js', 'Python', 'Supabase', 'Drizzle ORM'],
-  },
-  {
-    category: 'state & data',
-    items: ['Recoil', 'Zustand', 'Redux', 'MongoDB'],
-  },
-  {
-    category: 'AI / LLM',
-    items: ['Claude API', 'OpenAI', 'prompt engineering'],
-  },
-  {
-    category: 'tools',
-    items: ['Figma', 'Git', 'Vercel', 'VS Code'],
-  },
-  {
-    category: 'UI / UX',
-    items: ['Design Systems', 'Component Architecture'],
-  },
+  { category: 'frontend', items: ['HTML', 'CSS/Sass', 'JavaScript', 'TypeScript', 'React', 'React Native', 'Next.js', 'TailwindCSS', 'Angular', 'Framer Motion', 'MUI'] },
+  { category: 'backend', items: ['Node.js', 'Python', 'Supabase', 'Drizzle ORM'] },
+  { category: 'state & data', items: ['Recoil', 'Zustand', 'Redux', 'MongoDB'] },
+  { category: 'AI / LLM', items: ['Claude API', 'OpenAI', 'prompt engineering'] },
+  { category: 'tools', items: ['Figma', 'Git', 'Vercel', 'VS Code'] },
+  { category: 'UI / UX', items: ['Design Systems', 'Component Architecture'] },
 ]
 
 const EXPERTISE: { category: string; items: string[] }[] = [
@@ -122,30 +106,30 @@ const EXPERTISE: { category: string; items: string[] }[] = [
 
 function Tag({ label }: { label: string }) {
   return (
-    <span
-      style={{
-        fontSize: 10,
-        color: 'var(--tx3)',
-        background: 'var(--bg3)',
-        padding: '2px 7px',
-        borderRadius: 3,
-      }}
-    >
+    <span className="text-[10px] text-tx3 bg-bg3 px-[7px] py-0.5 rounded-[3px]">
       {label}
     </span>
   )
 }
 
+function CategoryCard({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="border-[0.5px] border-bd rounded-lg py-3 px-4 bg-card">
+      <div className="text-[9px] text-tx3 tracking-[.12em] uppercase mb-2">{label}</div>
+      {children}
+    </div>
+  )
+}
+
 export default function ResumePage() {
   return (
-    <div className="page">
+    <div className={PAGE}>
       <Topbar />
-      <main>
-        <div style={{ paddingTop: 40, animation: 'fadeUp .4s ease both' }}>
+      <main className="min-w-0">
+        <div className="pt-10 [animation:fadeUp_0.4s_ease_both]">
           <Link
             href="/"
-            className="nav-link-acc"
-            style={{ fontSize: 11, display: 'inline-block', marginBottom: 32 }}
+            className="text-[11px] text-tx3 no-underline tracking-[.06em] inline-block mb-8 border-b-[0.5px] border-bd pb-0.5 transition-colors duration-200 hover:text-acc hover:border-acc"
           >
             ← back
           </Link>
@@ -153,153 +137,64 @@ export default function ResumePage() {
 
         <ResumeHeader />
 
-        {/* Experience */}
         <ResumeSection label="experience">
           {EXPERIENCE.map((e) => (
             <ExperienceCard key={e.company} {...e} />
           ))}
         </ResumeSection>
 
-        {/* Side Projects */}
         <ResumeSection label="side projects" delay={60}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div className="flex flex-col gap-3.5">
             {PROJECTS.map((p) => (
-              <div
-                key={p.name}
-                style={{
-                  border: '.5px solid var(--bd)',
-                  borderRadius: 8,
-                  padding: '14px 18px',
-                  background: 'var(--card)',
-                }}
-              >
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'baseline',
-                    gap: 8,
-                    marginBottom: 4,
-                  }}
-                >
-                  <span style={{ fontSize: 12, fontWeight: 500, color: 'var(--tx)' }}>{p.name}</span>
-                  <span style={{ fontSize: 10, color: 'var(--tx3)', letterSpacing: '.04em' }}>{p.year}</span>
+              <div key={p.name} className="border-[0.5px] border-bd rounded-lg py-3.5 px-[18px] bg-card">
+                <div className="flex items-baseline gap-2 mb-1">
+                  <span className="text-xs font-medium text-tx">{p.name}</span>
+                  <span className="text-[10px] text-tx3 tracking-[.04em]">{p.year}</span>
                 </div>
-                <p style={{ fontSize: 11, color: 'var(--tx2)', lineHeight: 1.65, marginBottom: 8 }}>
-                  {p.description}
-                </p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-                  {p.tags.map((t) => <Tag key={t} label={t} />)}
-                </div>
+                <p className="text-[11px] text-tx2 leading-[1.65] mb-2">{p.description}</p>
+                <div className="flex flex-wrap gap-1">{p.tags.map((t) => <Tag key={t} label={t} />)}</div>
               </div>
             ))}
           </div>
         </ResumeSection>
 
-        {/* Expertise */}
         <ResumeSection label="expertise" delay={80}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {EXPERTISE.map((e) => (
-              <div
-                key={e.category}
-                style={{
-                  border: '.5px solid var(--bd)',
-                  borderRadius: 8,
-                  padding: '12px 16px',
-                  background: 'var(--card)',
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: 9,
-                    color: 'var(--tx3)',
-                    letterSpacing: '.12em',
-                    textTransform: 'uppercase',
-                    marginBottom: 8,
-                  }}
-                >
-                  {e.category}
-                </div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-                  {e.items.map((item) => <Tag key={item} label={item} />)}
-                </div>
-              </div>
+              <CategoryCard key={e.category} label={e.category}>
+                <div className="flex flex-wrap gap-1">{e.items.map((i) => <Tag key={i} label={i} />)}</div>
+              </CategoryCard>
             ))}
           </div>
         </ResumeSection>
 
-        {/* Skills */}
         <ResumeSection label="skills" delay={100}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div className="flex flex-col gap-4">
             {SKILLS.map((s) => (
               <div key={s.category}>
-                <div
-                  style={{
-                    fontSize: 9,
-                    color: 'var(--tx3)',
-                    letterSpacing: '.12em',
-                    textTransform: 'uppercase',
-                    marginBottom: 6,
-                  }}
-                >
-                  {s.category}
-                </div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-                  {s.items.map((item) => <Tag key={item} label={item} />)}
-                </div>
+                <div className="text-[9px] text-tx3 tracking-[.12em] uppercase mb-1.5">{s.category}</div>
+                <div className="flex flex-wrap gap-1">{s.items.map((i) => <Tag key={i} label={i} />)}</div>
               </div>
             ))}
           </div>
         </ResumeSection>
 
-        {/* Education */}
         <ResumeSection label="education" delay={120}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <div className="flex flex-col gap-2.5">
             {EDUCATION.map((e) => (
-              <div
-                key={e.degree}
-                style={{
-                  border: '.5px solid var(--bd)',
-                  borderRadius: 8,
-                  padding: '14px 18px',
-                  background: 'var(--card)',
-                }}
-              >
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
-                    gap: 12,
-                    flexWrap: 'wrap',
-                  }}
-                >
+              <div key={e.degree} className="border-[0.5px] border-bd rounded-lg py-3.5 px-[18px] bg-card">
+                <div className="flex justify-between items-start gap-3 flex-wrap">
                   <div>
-                    <div style={{ fontSize: 12, fontWeight: 500, color: 'var(--tx)', marginBottom: 2 }}>
-                      {e.degree}
-                    </div>
-                    <div style={{ fontSize: 10, color: 'var(--tx2)', letterSpacing: '.03em' }}>
-                      {e.institution}
-                    </div>
+                    <div className="text-xs font-medium text-tx mb-0.5">{e.degree}</div>
+                    <div className="text-[10px] text-tx2 tracking-[.03em]">{e.institution}</div>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+                  <div className="flex items-center gap-2 shrink-0">
                     {e.status && (
-                      <span
-                        style={{
-                          fontSize: 9,
-                          letterSpacing: '.1em',
-                          textTransform: 'uppercase',
-                          padding: '2px 8px',
-                          borderRadius: 20,
-                          background: 'rgba(192, 91, 0, .1)',
-                          color: '#C05B00',
-                        }}
-                      >
+                      <span className="text-[9px] tracking-[.1em] uppercase px-2 py-[3px] rounded-[20px] bg-[rgba(192,91,0,0.1)] text-[#C05B00]">
                         {e.status}
                       </span>
                     )}
-                    <span style={{ fontSize: 10, color: 'var(--tx3)', letterSpacing: '.04em' }}>
-                      {e.period}
-                    </span>
+                    <span className="text-[10px] text-tx3 tracking-[.04em]">{e.period}</span>
                   </div>
                 </div>
               </div>
@@ -307,56 +202,14 @@ export default function ResumePage() {
           </div>
         </ResumeSection>
 
-        {/* Languages & Certs */}
         <ResumeSection label="languages & certificates" delay={140}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div
-              style={{
-                border: '.5px solid var(--bd)',
-                borderRadius: 8,
-                padding: '12px 16px',
-                background: 'var(--card)',
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 9,
-                  color: 'var(--tx3)',
-                  letterSpacing: '.12em',
-                  textTransform: 'uppercase',
-                  marginBottom: 8,
-                }}
-              >
-                languages
-              </div>
-              <div style={{ display: 'flex', gap: 6 }}>
-                <Tag label="Italian (native)" />
-                <Tag label="English C1" />
-              </div>
-            </div>
-            <div
-              style={{
-                border: '.5px solid var(--bd)',
-                borderRadius: 8,
-                padding: '12px 16px',
-                background: 'var(--card)',
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 9,
-                  color: 'var(--tx3)',
-                  letterSpacing: '.12em',
-                  textTransform: 'uppercase',
-                  marginBottom: 8,
-                }}
-              >
-                certificates
-              </div>
-              <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-                <Tag label="Sviluppo web front-end" />
-              </div>
-            </div>
+            <CategoryCard label="languages">
+              <div className="flex gap-1.5"><Tag label="Italian (native)" /><Tag label="English C1" /></div>
+            </CategoryCard>
+            <CategoryCard label="certificates">
+              <div className="flex flex-wrap gap-1.5"><Tag label="Sviluppo web front-end" /></div>
+            </CategoryCard>
           </div>
         </ResumeSection>
 

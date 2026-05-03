@@ -1,4 +1,3 @@
-import Link           from "next/link";
 import { Topbar }     from "@/components/Topbar";
 import { Hero }       from "@/components/sections/Hero";
 import { Work }       from "@/components/sections/Work";
@@ -13,9 +12,9 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 export default function Home() {
   return (
     <>
-      <div className="page">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_68px] max-w-[800px] mx-auto pl-6 pr-4 md:pl-14 md:pr-3 pb-[140px] overflow-x-hidden">
         <Topbar />
-        <main>
+        <main className="min-w-0">
           <Hero />
           <Work />
           <Stack />

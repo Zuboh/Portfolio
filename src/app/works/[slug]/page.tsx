@@ -5,6 +5,10 @@ import { Topbar } from '@/components/Topbar'
 import { Footer } from '@/components/sections/Footer'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 
+const PAGE = 'grid grid-cols-1 md:grid-cols-[1fr_68px] max-w-[800px] mx-auto pl-6 pr-4 md:pl-14 md:pr-3 pb-[140px] overflow-x-hidden'
+const LINK = 'text-[11px] text-tx3 no-underline tracking-[.06em] inline-block mb-8 border-b-[0.5px] border-bd pb-0.5 transition-colors duration-200 hover:text-acc hover:border-acc'
+const EXT_LINK = 'text-xs text-tx3 no-underline tracking-[.05em] border-b-[0.5px] border-bd pb-0.5 transition-colors duration-200 hover:text-acc hover:border-acc'
+
 export function generateStaticParams() {
   return projects
     .filter((p) => p.status === 'in progress')
@@ -13,23 +17,10 @@ export function generateStaticParams() {
 
 function ProgressBar({ value }: { value: number }) {
   return (
-    <div
-      style={{
-        height: 3,
-        background: 'var(--bg3)',
-        borderRadius: 99,
-        overflow: 'hidden',
-        marginTop: 8,
-      }}
-    >
+    <div className="h-[3px] bg-bg3 rounded-full overflow-hidden mt-2">
       <div
-        style={{
-          height: '100%',
-          width: `${value}%`,
-          background: 'var(--acc)',
-          borderRadius: 99,
-          transition: 'width .6s ease',
-        }}
+        className="h-full bg-acc rounded-full transition-[width] duration-[600ms] ease-out"
+        style={{ width: `${value}%` }}
       />
     </div>
   )
@@ -45,77 +36,43 @@ export default async function WipSlugPage({
   if (!project) notFound()
 
   return (
-    <div className="page">
+    <div className={PAGE}>
       <Topbar />
-      <main>
+      <main className="min-w-0">
         {/* Hero */}
-        <section style={{ padding: '64px 0 48px', animation: 'fadeUp .5s ease both' }}>
-          <Link
-            href="/works"
-            className="nav-link-acc"
-            style={{ fontSize: 11, display: 'inline-block', marginBottom: 32 }}
-          >
-            ← works
-          </Link>
+        <section className="pt-16 pb-12 [animation:fadeUp_0.5s_ease_both]">
+          <Link href="/works" className={LINK}>← works</Link>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-            <h1
-              style={{
-                fontSize: 'clamp(28px, 5vw, 40px)',
-                fontWeight: 500,
-                letterSpacing: '-.02em',
-                lineHeight: 1,
-                color: 'var(--tx)',
-              }}
-            >
+          <div className="flex items-center gap-2.5 mb-3">
+            <h1 className="text-[clamp(28px,5vw,40px)] font-medium tracking-[-0.02em] leading-none text-tx">
               {project.name}
             </h1>
-            <span
-              style={{
-                fontSize: 9,
-                fontWeight: 500,
-                letterSpacing: '.1em',
-                textTransform: 'uppercase',
-                padding: '4px 10px',
-                borderRadius: 20,
-                background: 'rgba(192, 91, 0, .1)',
-                color: '#C05B00',
-                flexShrink: 0,
-                alignSelf: 'center',
-              }}
-            >
+            <span className="text-[9px] font-medium tracking-[.1em] uppercase px-2.5 py-1 rounded-[20px] shrink-0 self-center bg-[rgba(192,91,0,.1)] text-[#C05B00]">
               wip
             </span>
           </div>
 
-          <p style={{ fontSize: 13, color: 'var(--tx2)', lineHeight: 1.75, maxWidth: 480 }}>
+          <p className="text-[13px] text-tx2 leading-[1.75] max-w-[480px]">
             {project.description}
           </p>
         </section>
 
         {/* Overview */}
-        <section style={{ marginBottom: 48, animation: 'fadeUp .5s .08s ease both' }}>
+        <section className="mb-12 [animation:fadeUp_0.5s_0.08s_ease_both]">
           <SectionLabel>overview</SectionLabel>
-          <p style={{ fontSize: 12, color: 'var(--tx2)', lineHeight: 1.85, maxWidth: 560 }}>
+          <p className="text-xs text-tx2 leading-[1.85] max-w-[560px]">
             {project.longDescription ?? project.description}
           </p>
         </section>
 
         {/* Tech stack */}
-        <section style={{ marginBottom: 48, animation: 'fadeUp .5s .14s ease both' }}>
+        <section className="mb-12 [animation:fadeUp_0.5s_0.14s_ease_both]">
           <SectionLabel>stack</SectionLabel>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+          <div className="flex flex-wrap gap-1.5">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                style={{
-                  fontSize: 11,
-                  color: 'var(--tx2)',
-                  background: 'var(--bg3)',
-                  padding: '4px 10px',
-                  borderRadius: 4,
-                  letterSpacing: '.03em',
-                }}
+                className="text-[11px] text-tx2 bg-bg3 px-2.5 py-1 rounded tracking-[.03em]"
               >
                 {tag}
               </span>
@@ -125,14 +82,14 @@ export default async function WipSlugPage({
 
         {/* Progress */}
         {project.progress !== undefined && (
-          <section style={{ marginBottom: 48, animation: 'fadeUp .5s .18s ease both' }}>
+          <section className="mb-12 [animation:fadeUp_0.5s_0.18s_ease_both]">
             <SectionLabel>progress</SectionLabel>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
-              <span style={{ fontSize: 11, color: 'var(--tx3)', letterSpacing: '.04em' }}>
+            <div className="flex items-center gap-3 mb-1.5">
+              <span className="text-[11px] text-tx3 tracking-[.04em]">
                 {project.progress}% complete
               </span>
               {project.estimatedCompletion && (
-                <span style={{ fontSize: 11, color: 'var(--tx3)' }}>
+                <span className="text-[11px] text-tx3">
                   · est. {project.estimatedCompletion}
                 </span>
               )}
@@ -143,22 +100,12 @@ export default async function WipSlugPage({
 
         {/* What's next */}
         {project.whatsnext && project.whatsnext.length > 0 && (
-          <section style={{ marginBottom: 48, animation: 'fadeUp .5s .22s ease both' }}>
+          <section className="mb-12 [animation:fadeUp_0.5s_0.22s_ease_both]">
             <SectionLabel>what&apos;s next</SectionLabel>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <ul className="list-none flex flex-col gap-2">
               {project.whatsnext.map((item) => (
-                <li
-                  key={item}
-                  style={{
-                    fontSize: 12,
-                    color: 'var(--tx2)',
-                    lineHeight: 1.6,
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: 8,
-                  }}
-                >
-                  <span style={{ color: 'var(--acc)', flexShrink: 0, marginTop: 1 }}>·</span>
+                <li key={item} className="text-xs text-tx2 leading-[1.6] flex items-start gap-2">
+                  <span className="text-acc shrink-0 mt-px">·</span>
                   {item}
                 </li>
               ))}
@@ -168,21 +115,21 @@ export default async function WipSlugPage({
 
         {/* Links */}
         {(project.github || project.demo || project.docs) && (
-          <section style={{ marginBottom: 48, animation: 'fadeUp .5s .26s ease both' }}>
+          <section className="mb-12 [animation:fadeUp_0.5s_0.26s_ease_both]">
             <SectionLabel>links</SectionLabel>
-            <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+            <div className="flex gap-5 flex-wrap">
               {project.github && (
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="nav-link-acc" style={{ fontSize: 12 }}>
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className={EXT_LINK}>
                   ↗ github
                 </a>
               )}
               {project.demo && (
-                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="nav-link-acc" style={{ fontSize: 12 }}>
+                <a href={project.demo} target="_blank" rel="noopener noreferrer" className={EXT_LINK}>
                   ↗ demo
                 </a>
               )}
               {project.docs && (
-                <a href={project.docs} target="_blank" rel="noopener noreferrer" className="nav-link-acc" style={{ fontSize: 12 }}>
+                <a href={project.docs} target="_blank" rel="noopener noreferrer" className={EXT_LINK}>
                   ↗ docs
                 </a>
               )}
@@ -192,14 +139,7 @@ export default async function WipSlugPage({
 
         {/* Metadata */}
         {project.lastUpdated && (
-          <div
-            style={{
-              fontSize: 10,
-              color: 'var(--tx3)',
-              letterSpacing: '.06em',
-              marginBottom: 56,
-            }}
-          >
+          <div className="text-[10px] text-tx3 tracking-[.06em] mb-14">
             last updated {project.lastUpdated}
           </div>
         )}

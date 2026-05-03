@@ -92,27 +92,13 @@ export function Topbar() {
   const current = mounted ? ((theme as Theme | HiddenTheme) ?? 'light') : 'light'
 
   return (
-    <div
-      style={{
-        gridColumn: '1 / -1',
-        display: 'flex',
-        justifyContent: 'flex-end',
-        padding: '24px 0 0',
-      }}
-    >
+    <div className="col-span-full flex justify-end pt-6">
       <button
         onClick={cycleTheme}
         aria-label="toggle theme"
-        className="theme-toggle"
+        className="bg-transparent border-[0.5px] border-bd rounded cursor-pointer font-mono text-[11px] tracking-[.1em] text-tx3 px-3 py-1.5 flex items-center gap-2 transition-colors duration-200 hover:border-acc hover:text-acc outline-none"
       >
-        <span
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0,
-          }}
-        >
+        <span className="flex items-center justify-center shrink-0">
           {current === 'light' && <SunIcon />}
           {current === 'dark' && <MoonIcon />}
           {current === 'panda' && <PandaIcon />}

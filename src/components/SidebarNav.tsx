@@ -49,12 +49,16 @@ export function SidebarNav() {
   }, []);
 
   return (
-    <nav className="sidebar-nav hidden md:flex" aria-label="Page sections">
-      <div style={{ display: "flex", flexDirection: "column" }}>
+    <nav
+      className="hidden md:flex fixed top-1/2 -translate-y-1/2 z-[100] flex-col items-start"
+      style={{ right: 'max(16px, calc(50vw - 400px - 64px))' }}
+      aria-label="Page sections"
+    >
+      <div className="flex flex-col">
         {SECTIONS.map(({ id, label }, i) => (
           <button
             key={id}
-            className={`nav-label${active === i ? " active" : ""}`}
+            className={`text-[9px] font-mono tracking-[0.1em] uppercase cursor-pointer py-1 leading-none whitespace-nowrap select-none bg-transparent border-none outline-none will-change-[color] transition-[color,letter-spacing] duration-[220ms] hover:text-tx2 ${active === i ? 'text-acc tracking-[0.14em]' : 'text-tx3'}`}
             onClick={() => scrollTo(id)}
           >
             {label}

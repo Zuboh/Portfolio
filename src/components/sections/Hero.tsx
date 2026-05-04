@@ -60,7 +60,7 @@ export function Hero() {
     >
       <div>
         <motion.h1
-          className="text-[clamp(40px,6vw,52px)] font-medium leading-none mb-2.5 tracking-[-0.03em] will-change-transform transition-transform duration-[120ms] ease-out"
+          className="text-[clamp(40px,6vw,52px)] font-bold leading-none mb-2.5 tracking-[-0.04em] will-change-transform transition-transform duration-[120ms] ease-out"
           style={{ translateX: tx, translateY: ty }}
         >
           zubo<span className="text-acc">.dev</span>
@@ -85,19 +85,9 @@ export function Hero() {
             </a>
           ))}
         </nav>
-        <div className="mt-7 overflow-hidden w-full max-w-[420px] [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          <div className="ticker-track">
-            <span className="text-[10px] text-tx3 tracking-[.06em] shrink-0">
-              {TICKER_TEXT}
-            </span>
-            <span
-              aria-hidden="true"
-              className="text-[10px] text-tx3 tracking-[.06em] shrink-0"
-            >
-              {TICKER_TEXT}
-            </span>
-          </div>
-        </div>
+        <p className="mt-6 text-[10px] text-tx3 tracking-[.08em] uppercase">
+          Brescia, Italy · available for work
+        </p>
       </div>
       <div className="hidden md:block">
         <AnalogClock />

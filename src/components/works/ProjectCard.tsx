@@ -3,20 +3,20 @@
 import { ProjectLinks } from './ProjectLinks'
 import type { Project } from '@/types'
 
-const STATUS_STYLES: Record<string, { bg: string; color: string; label: string }> = {
+const STATUS_STYLES: Record<string, { bgClass: string; colorClass: string; label: string }> = {
   'in progress': {
-    bg: 'rgba(192, 91, 0, .1)',
-    color: '#C05B00',
+    bgClass: 'bg-[oklch(from_var(--acc)_l_c_h_/_0.1)]',
+    colorClass: 'text-acc',
     label: 'in progress',
   },
   shipped: {
-    bg: 'rgba(45, 122, 79, .1)',
-    color: '#2D7A4F',
+    bgClass: 'bg-bg3',
+    colorClass: 'text-tx2',
     label: 'shipped',
   },
   planning: {
-    bg: 'rgba(168, 164, 154, .12)',
-    color: '#A8A49A',
+    bgClass: 'bg-bg3',
+    colorClass: 'text-tx3',
     label: 'planning',
   },
 }
@@ -37,19 +37,7 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
             {project.name}
           </h2>
           <div className="flex items-center gap-2 shrink-0">
-            <span
-              style={{
-                fontSize: 9,
-                fontWeight: 500,
-                letterSpacing: '.1em',
-                textTransform: 'uppercase',
-                padding: '3px 8px',
-                borderRadius: 20,
-                background: status.bg,
-                color: status.color,
-                whiteSpace: 'nowrap',
-              }}
-            >
+            <span className={`text-[9px] font-medium tracking-[.1em] uppercase px-2 py-[3px] rounded-full whitespace-nowrap ${status.bgClass} ${status.colorClass}`}>
               {status.label}
             </span>
             <span className="text-[10px] text-tx3 tracking-[.06em]">

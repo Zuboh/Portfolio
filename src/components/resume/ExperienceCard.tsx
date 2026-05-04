@@ -20,7 +20,7 @@ export function ExperienceCard({ role, company, period, bullets, current }: Expe
         </div>
         <div className="flex items-center gap-2 shrink-0">
           {current && (
-            <span className="text-[9px] tracking-[.1em] uppercase px-2 py-[3px] rounded-[20px] bg-[rgba(192,91,0,0.1)] text-[#C05B00]">
+            <span className="text-[9px] tracking-[.1em] uppercase px-2 py-[3px] rounded-full bg-[oklch(from_var(--acc)_l_c_h_/_0.1)] text-acc">
               now
             </span>
           )}

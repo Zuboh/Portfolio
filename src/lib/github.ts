@@ -25,6 +25,14 @@ export async function fetchLastCommitDate(username: string, repo: string): Promi
   }
 }
 
+// Strip "type(scope): " prefix from conventional commits for readable display
+function cleanMessage(raw: string): string {
+  const firstLine = raw.split('\n')[0]
+  // Match "type(scope): message" or "type: message"
+  const match = firstLine.match(/^(?:feat|fix|refactor|chore|docs|style|test|perf|ci|build|revert)(?:\([^)]+\))?:\s*(.+)$/i)
+  return (match ? match[1] : firstLine).slice(0, 72)
+}
+
 function tagFromMessage(msg: string): ActivityEntry['tag'] | undefined {
   const lower = msg.toLowerCase()
   if (lower.startsWith('fix')) return { label: 'fix', variant: 'fix' as TagVariant }
@@ -59,9 +67,13 @@ export async function fetchGitHubActivity(username: string, limit = 10): Promise
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const repos: any[] = await reposRes.json()
 
+    // Exclude meta repos — portfolio, profile README, forks
+    const EXCLUDE = new Set(['Portfolio', 'Zuboh', 'fullstackopen'])
+    const projectRepos = repos.filter((r) => !EXCLUDE.has(r.name) && !r.fork)
+
     // 2. Fetch recent commits from each repo (parallel, limit 5 per repo)
     const commitResults = await Promise.all(
-      repos.slice(0, 6).map(async (repo) => {
+      projectRepos.slice(0, 8).map(async (repo) => {
         const res = await fetch(
           `https://api.github.com/repos/${username}/${repo.name}/commits?author=${username}&per_page=5`,
           { headers, next: { revalidate: 3600 } }
@@ -73,7 +85,7 @@ export async function fetchGitHubActivity(username: string, limit = 10): Promise
           date: toYearMonth(c.commit.author?.date ?? c.commit.committer?.date ?? ''),
           repo: repo.name,
           type: 'commit' as const,
-          message: c.commit.message.split('\n')[0].slice(0, 80),
+          message: cleanMessage(c.commit.message),
           tag: tagFromMessage(c.commit.message),
         } satisfies ActivityEntry))
       })

@@ -4,8 +4,13 @@ import { useIntersectionReveal } from '@/hooks/useIntersectionReveal'
 import { ENTRIES } from '@/data/log'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { TagPill } from '@/components/ui/TagPill'
+import type { ActivityEntry } from '@/types'
 
-export function Log() {
+interface LogProps {
+  entries?: ActivityEntry[]
+}
+
+export function Log({ entries = ENTRIES }: LogProps) {
   const ref = useIntersectionReveal<HTMLElement>()
 
   return (
@@ -13,7 +18,7 @@ export function Log() {
       <SectionLabel>log</SectionLabel>
 
       <div className="flex flex-col border-t-[0.5px] border-bd">
-        {ENTRIES.map((e, i) => (
+        {entries.map((e, i) => (
           <div
             key={e.date + e.repo + e.message}
             className={`log-row grid grid-cols-[72px_1fr] gap-3 py-3.5 border-b-[0.5px] border-bd items-baseline${i === 0 ? '' : ' border-t-[0.5px] border-t-bd'}`}

@@ -8,8 +8,13 @@ import { Contact }    from "@/components/sections/Contact";
 import { Footer }     from "@/components/sections/Footer";
 import { SidebarNav } from "@/components/SidebarNav";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { fetchGitHubActivity } from "@/lib/github";
 
-export default function Home() {
+export const revalidate = 3600; // refresh GitHub activity every hour
+
+export default async function Home() {
+  const githubEntries = await fetchGitHubActivity('zuboh', 10);
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-[1fr_68px] max-w-[800px] mx-auto pl-6 pr-4 md:pl-14 md:pr-3 pb-[140px] overflow-x-hidden">
@@ -19,7 +24,7 @@ export default function Home() {
           <Work />
           <Stack />
           <About />
-          <Log />
+          <Log entries={githubEntries.length > 0 ? githubEntries : undefined} />
           <Contact />
           <Footer />
         </main>

@@ -75,7 +75,10 @@ export function Contact() {
             {AVAILABILITY_BODY}
           </p>
           <span className="inline-flex items-center gap-2 mt-4 bg-[oklch(from_var(--acc)_l_c_h_/_0.1)] border-[0.5px] border-[oklch(from_var(--acc)_l_c_h_/_0.35)] text-acc text-[11px] font-medium px-3.5 py-1.5 rounded-[20px] tracking-[.06em]">
-            <span className="breathe w-1.5 h-1.5 rounded-full bg-acc shrink-0 inline-block" />
+            <span className="relative flex h-1.5 w-1.5 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-acc opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-acc" />
+            </span>
             available now
           </span>
         </Card>

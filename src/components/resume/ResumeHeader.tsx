@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export function ResumeHeader() {
   return (
@@ -6,11 +7,13 @@ export function ResumeHeader() {
       className="flex gap-6 items-start mb-12 flex-wrap"
       style={{ animation: 'fadeUp .5s ease both' }}
     >
-      {/* Photo placeholder */}
-      <div className="w-24 h-24 rounded-full bg-bg3 border-[0.5px] border-bd shrink-0 flex items-center justify-center text-[28px] text-tx3 tracking-[-0.02em] font-medium">
-        LZ
-      </div>
-
+      <Image
+        src="/profile-image.jpeg"
+        alt="Lorenzo Zubani"
+        width={128}
+        height={128}
+        className="w-32 h-32 rounded-full border-[0.5px] border-bd shrink-0 object-cover"
+      />
       <div className="flex-1">
         <h1 className="text-[clamp(22px,4vw,32px)] font-medium tracking-[-0.02em] text-tx mb-1">
           Lorenzo Zubani
@@ -20,7 +23,7 @@ export function ResumeHeader() {
           Frontend &amp; AI Engineer
         </p>
 
-        <p className="text-[11px] text-tx2 leading-[1.8] max-w-[440px] mb-3.5">
+        <p className="text-[11px] text-tx2 leading-[1.8] max-w-110 mb-3.5">
           Frontend engineer focused on architecture and design systems. Growing into AI engineering
           — integrating LLMs as core product experience, not just features. Based in Brescia, Italy.
         </p>

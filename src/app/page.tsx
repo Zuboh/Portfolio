@@ -8,12 +8,15 @@ import { Contact }    from "@/components/sections/Contact";
 import { Footer }     from "@/components/sections/Footer";
 import { SidebarNav } from "@/components/SidebarNav";
 import { ScrollToTop } from "@/components/ScrollToTop";
-import { fetchGitHubActivity } from "@/lib/github";
+import { fetchGitHubActivity, fetchLastCommitDate } from "@/lib/github";
 
 export const revalidate = 3600; // refresh GitHub activity every hour
 
 export default async function Home() {
-  const githubEntries = await fetchGitHubActivity('zuboh', 10);
+  const [githubEntries, lastUpdated] = await Promise.all([
+    fetchGitHubActivity('zuboh', 10),
+    fetchLastCommitDate('Zuboh', 'Portfolio'),
+  ]);
 
   return (
     <>
@@ -26,7 +29,7 @@ export default async function Home() {
           <About />
           <Log entries={githubEntries.length > 0 ? githubEntries : undefined} />
           <Contact />
-          <Footer />
+          <Footer lastUpdated={lastUpdated} />
         </main>
       </div>
       <SidebarNav />

@@ -4,6 +4,27 @@ function toYearMonth(iso: string): string {
   return iso.slice(0, 7) // "2026-05-04T..." → "2026-05"
 }
 
+function formatDate(iso: string): string {
+  const d = new Date(iso)
+  return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) // "May 2026"
+}
+
+export async function fetchLastCommitDate(username: string, repo: string): Promise<string | null> {
+  try {
+    const headers = makeHeaders()
+    const res = await fetch(
+      `https://api.github.com/repos/${username}/${repo}/commits?per_page=1`,
+      { headers, next: { revalidate: 3600 } }
+    )
+    if (!res.ok) return null
+    const commits = await res.json()
+    const date = commits[0]?.commit?.committer?.date ?? commits[0]?.commit?.author?.date
+    return date ? formatDate(date) : null
+  } catch {
+    return null
+  }
+}
+
 function tagFromMessage(msg: string): ActivityEntry['tag'] | undefined {
   const lower = msg.toLowerCase()
   if (lower.startsWith('fix')) return { label: 'fix', variant: 'fix' as TagVariant }

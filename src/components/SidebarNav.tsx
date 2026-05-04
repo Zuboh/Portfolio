@@ -25,6 +25,12 @@ export function SidebarNav() {
 
   useEffect(() => {
     function onScroll() {
+      // At page bottom → always activate last section (contact)
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+        setActive(SECTIONS.length - 1);
+        return;
+      }
+
       // Pick section whose top is closest to (but not past) 30% from viewport top
       const target = window.innerHeight * 0.3;
       let best = 0;

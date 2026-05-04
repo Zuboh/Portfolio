@@ -61,32 +61,15 @@ function PandaIcon() {
 export function Topbar() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
-  const [clicks, setClicks] = useState(0)
 
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), [])
 
   function cycleTheme() {
     const current = (theme as Theme | HiddenTheme) ?? 'light'
-
-    if (current === 'panda') {
-      setTheme('light')
-      setClicks(0)
-      return
-    }
-
     const next = THEMES[(THEMES.indexOf(current as Theme) + 1) % THEMES.length]
     setTheme(next)
 
-    const newClicks = clicks + 1
-
-    if (newClicks >= 5) {
-      setTheme('panda' as HiddenTheme)
-      setClicks(0)
-      return
-    }
-
-    setClicks(newClicks)
   }
 
   const current = mounted ? ((theme as Theme | HiddenTheme) ?? 'light') : 'light'

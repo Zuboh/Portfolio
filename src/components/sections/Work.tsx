@@ -13,7 +13,7 @@ export function Work() {
     <section ref={ref} id="s-work" className="reveal mb-14">
       <SectionLabel>work</SectionLabel>
 
-      <div className="project-list relative md:grid md:grid-cols-2 border-[0.5px] border-bd rounded-lg overflow-hidden">
+      <div className="project-list relative border-[0.5px] border-bd rounded-lg overflow-hidden">
         {projects.map((p, i) => (
           <a
             key={p.name}

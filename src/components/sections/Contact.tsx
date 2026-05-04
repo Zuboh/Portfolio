@@ -33,7 +33,7 @@ function InfoList({ rows }: { rows: InfoRow[] }) {
         const isLink = !!r.href
         const content = (
           <div
-            className={`flex justify-between items-center text-[11px] py-2${i < rows.length - 1 ? ' border-b-[0.5px] border-bd' : ''}`}
+            className={`flex justify-between items-center text-[11px] p-2${i < rows.length - 1 ? ' border-b-[0.5px] border-bd' : ''}`}
           >
             <span className="text-tx2">{r.key}</span>
             {isLink ? (

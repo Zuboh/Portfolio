@@ -73,9 +73,6 @@ export function Hero() {
           {HERO_BIO}
         </p>
         <nav className="flex gap-5 flex-wrap">
-          <Link href="/works" className="text-xs text-tx3 no-underline tracking-[.05em] border-b-[0.5px] border-bd pb-0.5 transition-colors duration-200 hover:text-acc hover:border-acc">
-            works
-          </Link>
           {NAV_LINKS.map(({ key, label, href }) => (
             <a
               key={key}

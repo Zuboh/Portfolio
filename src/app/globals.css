@@ -53,30 +53,32 @@
   --font-mono: var(--font-dm-mono), 'Courier New', monospace;
 }
 
-/* ─── Base reset ─────────────────────────────────────────────── */
+/* ─── Base reset (inside @layer base so Tailwind utilities win) ── */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  background: var(--bg);
-  color: var(--tx);
-  font-family: var(--font-dm-mono), 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.6;
-  transition:
-    background 0.45s ease,
-    color 0.45s ease;
-  min-height: 100vh;
+  body {
+    background: var(--bg);
+    color: var(--tx);
+    font-family: var(--font-dm-mono), 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    transition:
+      background 0.45s ease,
+      color 0.45s ease;
+    min-height: 100vh;
+  }
 }
 
 /* ─── Keyframes ──────────────────────────────────────────────── */

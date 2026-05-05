@@ -85,9 +85,6 @@ export function Hero() {
             </a>
           ))}
         </nav>
-        <p className="mt-6 text-[10px] text-tx3 tracking-[.08em] uppercase">
-          Brescia, Italy · available for work
-        </p>
       </div>
       <div className="hidden md:block">
         <AnalogClock />

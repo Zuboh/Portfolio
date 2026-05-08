@@ -10,7 +10,7 @@ import { SidebarNav } from "@/components/SidebarNav";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { fetchGitHubActivity, fetchLastCommitDate } from "@/lib/github";
 
-export const revalidate = 3600; // refresh GitHub activity every hour
+export const revalidate = 60;
 
 export default async function Home() {
   const [githubEntries, lastUpdated] = await Promise.all([

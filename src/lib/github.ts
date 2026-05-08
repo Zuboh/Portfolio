@@ -14,7 +14,7 @@ export async function fetchLastCommitDate(username: string, repo: string): Promi
     const headers = makeHeaders()
     const res = await fetch(
       `https://api.github.com/repos/${username}/${repo}/commits?per_page=1`,
-      { headers, next: { revalidate: 3600 } }
+      { headers, next: { revalidate: 60 } }
     )
     if (!res.ok) return null
     const commits = await res.json()
@@ -60,7 +60,7 @@ export async function fetchGitHubActivity(username: string, limit = 10): Promise
     // 1. Get recently pushed repos (skip forks)
     const reposRes = await fetch(
       `https://api.github.com/users/${username}/repos?sort=pushed&per_page=10&type=owner`,
-      { headers, next: { revalidate: 3600 } }
+      { headers, next: { revalidate: 60 } }
     )
     if (!reposRes.ok) return []
 
@@ -76,7 +76,7 @@ export async function fetchGitHubActivity(username: string, limit = 10): Promise
       projectRepos.slice(0, 8).map(async (repo) => {
         const res = await fetch(
           `https://api.github.com/repos/${username}/${repo.name}/commits?author=${username}&per_page=5`,
-          { headers, next: { revalidate: 3600 } }
+          { headers, next: { revalidate: 60 } }
         )
         if (!res.ok) return []
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -94,7 +94,7 @@ export async function fetchGitHubActivity(username: string, limit = 10): Promise
     // 3. Also pull PR + Release events from Events API
     const eventsRes = await fetch(
       `https://api.github.com/users/${username}/events/public?per_page=50`,
-      { headers, next: { revalidate: 3600 } }
+      { headers, next: { revalidate: 60 } }
     )
     if (eventsRes.ok) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

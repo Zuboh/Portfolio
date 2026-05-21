@@ -8,8 +8,8 @@ interface ExperienceCardProps {
 
 export function ExperienceCard({ role, company, period, bullets, current }: ExperienceCardProps) {
   return (
-    <div className="border-[0.5px] border-bd rounded-lg p-[18px_20px] bg-card mb-2.5 transition-colors duration-200 hover:border-acc">
-      <div className="flex justify-between items-start gap-3 mb-2.5 flex-wrap">
+    <div className="pb-6 mb-6 border-b-[0.5px] border-bd last:border-b-0 last:mb-0">
+      <div className="flex justify-between items-start gap-3 mb-3 flex-wrap">
         <div>
           <div className="text-[13px] font-medium text-tx mb-0.5">
             {role}
@@ -24,7 +24,7 @@ export function ExperienceCard({ role, company, period, bullets, current }: Expe
               now
             </span>
           )}
-          <span className="text-[10px] text-tx3 tracking-[.04em]">
+          <span className="text-[10px] text-tx3 font-mono tracking-[.04em]">
             {period}
           </span>
         </div>

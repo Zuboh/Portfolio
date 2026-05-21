@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 const SECTIONS = [
   { id: "s-hero",    label: "top" },
   { id: "s-work",   label: "work" },
+  { id: "s-log",    label: "log" },
   { id: "s-stack",  label: "stack" },
   { id: "s-about",  label: "about" },
-  { id: "s-log",    label: "log" },
   { id: "s-contact", label: "contact" },
 ];
 
@@ -64,7 +64,9 @@ export function SidebarNav() {
         {SECTIONS.map(({ id, label }, i) => (
           <button
             key={id}
-            className={`text-[9px] font-mono tracking-[0.1em] uppercase cursor-pointer py-1 leading-none whitespace-nowrap select-none bg-transparent border-none outline-none will-change-[color] transition-[color,letter-spacing] duration-[220ms] hover:text-tx2 ${active === i ? 'text-acc tracking-[0.14em]' : 'text-tx3'}`}
+            aria-label={`Navigate to ${label} section`}
+            aria-current={active === i ? 'location' : undefined}
+            className={`text-[9px] tracking-[0.06em] uppercase cursor-pointer py-1 leading-none whitespace-nowrap select-none bg-transparent border-none outline-none will-change-[color] transition-[color,letter-spacing] duration-[220ms] hover:text-tx2 ${active === i ? 'text-acc tracking-[0.09em]' : 'text-tx3'}`}
             onClick={() => scrollTo(id)}
           >
             {label}

@@ -4,13 +4,10 @@ interface FooterProps {
 
 export function Footer({ lastUpdated }: FooterProps) {
   return (
-    <footer className="mt-8 pt-3 border-t-[0.5px] border-bd text-[10px] text-tx3 tracking-[.06em]">
-      <div className="flex justify-between">
-        <span>zubo.dev · Brescia, Italy</span>
-        {lastUpdated && <span>last updated {lastUpdated}</span>}
-      </div>
-      <div className="text-center mt-2 tracking-[.04em]">
-        made with <span className="text-acc">♥</span>
+    <footer className="mt-8 pt-3 border-t-[0.5px] border-bd">
+      <div className="flex justify-between text-[10px] text-tx3 tracking-[.06em]">
+        <span>zubo.dev &nbsp;·&nbsp; Brescia, Italy</span>
+        {lastUpdated && <span>updated {lastUpdated}</span>}
       </div>
     </footer>
   )

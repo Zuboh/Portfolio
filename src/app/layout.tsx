@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
-import { DM_Mono } from "next/font/google";
+import { DM_Mono, Hanken_Grotesk } from "next/font/google";
 import { Providers } from "./providers";
 import "./globals.css";
 import { DynamicFavicon } from "@/components/DynamicFavicon";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+
+const hankenGrotesk = Hanken_Grotesk({
+  variable: "--font-sans",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+});
 
 const dmMono = DM_Mono({
   variable: "--font-dm-mono",
@@ -40,10 +48,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={dmMono.variable} suppressHydrationWarning>
+      <body className={`${hankenGrotesk.variable} ${dmMono.variable}`} suppressHydrationWarning>
+        <ScrollProgress className="from-acc via-acc to-acc h-[1px] z-[200]" />
         <Providers>
-             <DynamicFavicon />
-             {children}
+          <DynamicFavicon />
+          {children}
         </Providers>
       </body>
     </html>

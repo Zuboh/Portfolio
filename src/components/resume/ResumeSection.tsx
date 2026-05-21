@@ -1,25 +1,20 @@
 'use client'
 
-import { useIntersectionReveal } from '@/hooks/useIntersectionReveal'
+import { BlurFade } from '@/components/ui/blur-fade'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 
 interface ResumeSectionProps {
   label: string
   children: React.ReactNode
-  delay?: number
 }
 
-export function ResumeSection({ label, children, delay = 0 }: ResumeSectionProps) {
-  const ref = useIntersectionReveal<HTMLElement>()
-
+export function ResumeSection({ label, children }: ResumeSectionProps) {
   return (
-    <section
-      ref={ref}
-      className="reveal mb-12"
-      style={{ animationDelay: `${delay}ms` }}
-    >
-      <SectionLabel>{label}</SectionLabel>
-      {children}
-    </section>
+    <BlurFade inView>
+      <section className="mb-12">
+        <SectionLabel>{label}</SectionLabel>
+        {children}
+      </section>
+    </BlurFade>
   )
 }

@@ -1,13 +1,12 @@
 'use client'
 
-import { useIntersectionReveal } from '@/hooks/useIntersectionReveal'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { ICONS } from '@/data/stack'
 import { SectionLabel } from '@/components/ui/SectionLabel'
+import { BlurFade } from '@/components/ui/blur-fade'
 
 export function Stack() {
-  const ref = useIntersectionReveal<HTMLElement>()
   const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [hovered, setHovered] = useState<string | null>(null)
@@ -17,10 +16,10 @@ export function Stack() {
   const isDark = mounted && (theme === 'dark' || theme === 'panda')
 
   return (
+    <BlurFade inView>
     <section
-      ref={ref}
       id="s-stack"
-      className="reveal mb-14 pb-6"
+      className="mb-16 pb-4"
     >
       <SectionLabel>stack</SectionLabel>
 
@@ -67,5 +66,6 @@ export function Stack() {
         ))}
       </div>
     </section>
+    </BlurFade>
   )
 }

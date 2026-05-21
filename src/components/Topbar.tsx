@@ -78,15 +78,12 @@ export function Topbar() {
     <div className="col-span-full flex justify-end pt-6">
       <button
         onClick={cycleTheme}
-        aria-label="toggle theme"
-        className="bg-transparent border-[0.5px] border-bd rounded cursor-pointer font-mono text-[11px] tracking-[.1em] text-tx3 px-3 py-1.5 flex items-center gap-2 transition-colors duration-200 hover:border-acc hover:text-acc outline-none"
+        aria-label={`Switch theme (current: ${current})`}
+        className="bg-transparent border-[0.5px] border-bd rounded-md p-1.5 cursor-pointer text-tx3 flex items-center justify-center transition-colors duration-200 hover:border-acc hover:text-acc outline-none"
       >
-        <span className="flex items-center justify-center shrink-0">
-          {current === 'light' && <SunIcon />}
-          {current === 'dark' && <MoonIcon />}
-          {current === 'panda' && <PandaIcon />}
-        </span>
-        <span>{current}</span>
+        {current === 'light' && <SunIcon />}
+        {current === 'dark' && <MoonIcon />}
+        {current === 'panda' && <PandaIcon />}
       </button>
     </div>
   )

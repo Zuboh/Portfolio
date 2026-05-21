@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-21T00:00:00Z",
+  "title": "Design System: zubo.dev",
+  "extensions": {
+    "colorMeta": {
+      "page-surface": {
+        "role": "neutral",
+        "displayName": "Laid Paper",
+        "canonical": "oklch(97.2% 0.008 75)",
+        "tonalRamp": [
+          "oklch(12% 0.010 75)",
+          "oklch(20% 0.009 75)",
+          "oklch(35% 0.008 75)",
+          "oklch(52% 0.007 75)",
+          "oklch(68% 0.006 75)",
+          "oklch(80% 0.006 75)",
+          "oklch(90% 0.007 75)",
+          "oklch(97.2% 0.008 75)"
+        ]
+      },
+      "surface-raised": {
+        "role": "neutral",
+        "displayName": "Field Margin",
+        "canonical": "oklch(93.5% 0.007 75)",
+        "tonalRamp": [
+          "oklch(12% 0.010 75)",
+          "oklch(20% 0.009 75)",
+          "oklch(35% 0.008 75)",
+          "oklch(52% 0.007 75)",
+          "oklch(68% 0.006 75)",
+          "oklch(80% 0.006 75)",
+          "oklch(90% 0.007 75)",
+          "oklch(93.5% 0.007 75)"
+        ]
+      },
+      "surface-sunken": {
+        "role": "neutral",
+        "displayName": "Ruled Surface",
+        "canonical": "oklch(88% 0.006 75)",
+        "tonalRamp": [
+          "oklch(12% 0.010 75)",
+          "oklch(20% 0.009 75)",
+          "oklch(35% 0.008 75)",
+          "oklch(52% 0.007 75)",
+          "oklch(68% 0.006 75)",
+          "oklch(80% 0.006 75)",
+          "oklch(88% 0.006 75)",
+          "oklch(95% 0.006 75)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(14% 0.012 255)",
+        "tonalRamp": [
+          "oklch(14% 0.012 255)",
+          "oklch(25% 0.011 255)",
+          "oklch(35% 0.010 255)",
+          "oklch(44% 0.010 255)",
+          "oklch(55% 0.009 255)",
+          "oklch(62% 0.008 255)",
+          "oklch(74% 0.007 255)",
+          "oklch(86% 0.006 255)"
+        ]
+      },
+      "ink-mid": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "oklch(44% 0.010 255)",
+        "tonalRamp": [
+          "oklch(14% 0.012 255)",
+          "oklch(25% 0.011 255)",
+          "oklch(35% 0.010 255)",
+          "oklch(44% 0.010 255)",
+          "oklch(55% 0.009 255)",
+          "oklch(62% 0.008 255)",
+          "oklch(74% 0.007 255)",
+          "oklch(86% 0.006 255)"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Pencil",
+        "canonical": "oklch(62% 0.008 255)",
+        "tonalRamp": [
+          "oklch(14% 0.012 255)",
+          "oklch(25% 0.011 255)",
+          "oklch(35% 0.010 255)",
+          "oklch(44% 0.010 255)",
+          "oklch(55% 0.009 255)",
+          "oklch(62% 0.008 255)",
+          "oklch(74% 0.007 255)",
+          "oklch(86% 0.006 255)"
+        ]
+      },
+      "edit-mark": {
+        "role": "primary",
+        "displayName": "Edit Mark",
+        "canonical": "oklch(46% 0.11 145)",
+        "tonalRamp": [
+          "oklch(15% 0.04 145)",
+          "oklch(22% 0.07 145)",
+          "oklch(30% 0.09 145)",
+          "oklch(38% 0.10 145)",
+          "oklch(46% 0.11 145)",
+          "oklch(56% 0.10 145)",
+          "oklch(68% 0.09 145)",
+          "oklch(80% 0.06 145)"
+        ]
+      },
+      "ruling-line": {
+        "role": "neutral",
+        "displayName": "Ruling Line",
+        "canonical": "oklch(84% 0.005 75)",
+        "tonalRamp": [
+          "oklch(22% 0.006 75)",
+          "oklch(35% 0.006 75)",
+          "oklch(48% 0.005 75)",
+          "oklch(60% 0.005 75)",
+          "oklch(72% 0.005 75)",
+          "oklch(80% 0.005 75)",
+          "oklch(84% 0.005 75)",
+          "oklch(91% 0.005 75)"
+        ]
+      },
+      "card-leaf": {
+        "role": "neutral",
+        "displayName": "Page Leaf",
+        "canonical": "oklch(95.5% 0.007 75)",
+        "tonalRamp": [
+          "oklch(12% 0.010 75)",
+          "oklch(20% 0.009 75)",
+          "oklch(35% 0.008 75)",
+          "oklch(52% 0.007 75)",
+          "oklch(68% 0.006 75)",
+          "oklch(80% 0.006 75)",
+          "oklch(90% 0.007 75)",
+          "oklch(95.5% 0.007 75)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero name only. One instance per page." },
+      "title": { "displayName": "Title", "purpose": "Project names and weight-driven hierarchy at 13px." },
+      "body": { "displayName": "Body", "purpose": "Prose, descriptions. Max 62ch line length." },
+      "label": { "displayName": "Label", "purpose": "Navigation, links, small interactive text." },
+      "mono": { "displayName": "Mono", "purpose": "Index numbers, dates, structural labels only." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-state", "value": "ease", "purpose": "Default for color/opacity state transitions (150-220ms)." },
+      { "name": "ease-accordion", "value": "ease-out", "purpose": "Accordion open/close (200ms)." },
+      { "name": "ease-theme", "value": "ease", "purpose": "Theme switch on background and color (450ms)." },
+      { "name": "ease-breathe", "value": "ease-in-out", "purpose": "Availability indicator pulse (2.5s infinite)." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px", "purpose": "Sidebar nav appears; two-column layout activates." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "text-link",
+      "description": "The primary interactive element. No button chrome — underline via border-bottom only.",
+      "html": "<a class=\"ds-text-link\" href=\"#\">view project <span aria-hidden=\"true\">↗</span></a>",
+      "css": ".ds-text-link { display: inline; color: oklch(62% 0.008 255); text-decoration: none; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.04em; border-bottom: 0.5px solid oklch(84% 0.005 75); padding-bottom: 2px; transition: color 150ms ease, border-color 150ms ease; } .ds-text-link:hover { color: oklch(46% 0.11 145); border-bottom-color: oklch(46% 0.11 145); } .ds-text-link:focus-visible { outline: 2px solid oklch(46% 0.11 145); outline-offset: 2px; border-radius: 2px; }"
+    },
+    {
+      "name": "Tech Tag",
+      "kind": "chip",
+      "refersTo": "tag-tech",
+      "description": "Project technology label. Flat, not interactive.",
+      "html": "<span class=\"ds-tech-tag\">TypeScript</span>",
+      "css": ".ds-tech-tag { display: inline-block; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 10px; font-weight: 400; color: oklch(62% 0.008 255); background: oklch(88% 0.006 75); padding: 2px 7px; border-radius: 3px; }"
+    },
+    {
+      "name": "Status Pill — Shipped",
+      "kind": "chip",
+      "refersTo": "tag-status-shipped",
+      "description": "Shipped project status signal. Edit-mark tinted background.",
+      "html": "<span class=\"ds-status-shipped\">shipped</span>",
+      "css": ".ds-status-shipped { display: inline-block; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(46% 0.11 145); background: oklch(46% 0.11 145 / 0.1); padding: 1px 6px; border-radius: 2px; margin-left: 6px; vertical-align: middle; }"
+    },
+    {
+      "name": "Section Label",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Lowercase section heading with trailing ruling line extending to container edge.",
+      "html": "<h2 class=\"ds-section-label\">work</h2>",
+      "css": ".ds-section-label { display: flex; align-items: center; gap: 10px; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 10px; font-weight: 500; color: oklch(62% 0.008 255); margin-bottom: 22px; text-transform: lowercase; } .ds-section-label::after { content: ''; flex: 1; height: 0.5px; background: oklch(84% 0.005 75); }"
+    },
+    {
+      "name": "Accordion Row",
+      "kind": "custom",
+      "refersTo": "accordion-row",
+      "description": "Work section project row. Numbered, expand/collapse. Toggle character is + / ×.",
+      "html": "<div class=\"ds-accordion-row\"><span class=\"ds-accordion-index\">01</span><div class=\"ds-accordion-content\"><div class=\"ds-accordion-title\">Project Name</div><p class=\"ds-accordion-desc\">Short project description text here.</p></div><span class=\"ds-accordion-year\">2024</span><span class=\"ds-accordion-toggle\" aria-hidden=\"true\">+</span></div>",
+      "css": ".ds-accordion-row { display: grid; grid-template-columns: 32px 1fr 64px 44px; align-items: start; gap: 0 16px; padding: 18px 4px; border-bottom: 0.5px solid oklch(84% 0.005 75); margin: 0 -4px; border-radius: 2px; cursor: pointer; transition: background 180ms ease; } .ds-accordion-row:hover { background: oklch(93.5% 0.007 75); } .ds-accordion-index { font-family: 'DM Mono', 'Courier New', monospace; font-size: 11px; font-weight: 500; color: oklch(62% 0.008 255); padding-top: 1px; } .ds-accordion-content { min-width: 0; text-align: left; } .ds-accordion-title { font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 13px; font-weight: 600; color: oklch(14% 0.012 255); line-height: 1.4; margin-bottom: 4px; transition: color 180ms ease; } .ds-accordion-row:hover .ds-accordion-title { color: oklch(46% 0.11 145); } .ds-accordion-desc { font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 11px; color: oklch(44% 0.010 255); line-height: 1.6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .ds-accordion-year { font-family: 'DM Mono', 'Courier New', monospace; font-size: 11px; color: oklch(62% 0.008 255); padding-top: 1px; } .ds-accordion-toggle { display: flex; align-items: center; justify-content: center; font-size: 16px; color: oklch(62% 0.008 255); transition: color 180ms ease; user-select: none; } .ds-accordion-row:hover .ds-accordion-toggle { color: oklch(46% 0.11 145); }"
+    },
+    {
+      "name": "Sidebar Nav",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Fixed vertical nav. Active item expands letter-spacing; no indicator dot or bar.",
+      "html": "<nav class=\"ds-sidebar-nav\"><button class=\"ds-sidebar-item ds-sidebar-item--active\">work</button><button class=\"ds-sidebar-item\">log</button><button class=\"ds-sidebar-item\">stack</button><button class=\"ds-sidebar-item\">about</button></nav>",
+      "css": ".ds-sidebar-nav { display: flex; flex-direction: column; } .ds-sidebar-item { font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(62% 0.008 255); background: transparent; border: none; outline: none; cursor: pointer; padding: 4px 0; line-height: 1; white-space: nowrap; transition: color 220ms ease, letter-spacing 220ms ease; } .ds-sidebar-item:hover { color: oklch(44% 0.010 255); } .ds-sidebar-item--active { color: oklch(46% 0.11 145); letter-spacing: 0.09em; } .ds-sidebar-item:focus-visible { outline: 2px solid oklch(46% 0.11 145); outline-offset: 2px; border-radius: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Engineer's Taccuino",
+    "overview": "A personal notebook carried in a coat pocket: structured enough to find things, informal enough to feel personal. The system looks authored, not assembled. It rewards the reader who lingers — a small typographic choice here, a detail in the margin there — without ever announcing itself. The grid is real; the columns align; but the human hand is legible in every line weight and spacing decision.\n\nThis is not a showcase of capabilities. It is evidence. The design defers to the work it carries. Every element that does not contribute to reading, navigating, or trusting the work is removed. Hierarchy comes from weight and rhythm, not from size and color. The accent is rare by doctrine, functional when it appears, and never decorative.\n\nThe system rejects the generic SaaS template (hero metrics, blue gradient CTAs, Framer-starter energy), corporate formality (navy and gold, professional-services whitespace, stock lifestyle imagery), and creative-developer overload (WebGL canvases, particle fields, scroll-hijacking). Creativity here means the unexpected detail, not the overwhelming effect.",
+    "keyCharacteristics": [
+      "Dual-hue neutral system: warm amber surfaces (75°) against blue-gray ink (255°)",
+      "Three-tier tonal layering for elevation instead of shadows",
+      "Typographic hierarchy through weight contrast alone at the body scale",
+      "Monospace as a structural element, not decoration",
+      "Accent reserved for state signals only (hover, active, focus)",
+      "Three themes (light, dark, panda) as first-class system variants"
+    ],
+    "rules": [
+      { "name": "The Edit Mark Rule", "body": "The accent (edit-mark) appears on ≤10% of any screen. It is a state signal only. Never use it as a background fill, never apply it to resting text, never use it to color an arbitrary element for visual interest.", "section": "colors" },
+      { "name": "The Two-Hue Rule", "body": "Surfaces always pull from the warm axis (hue 75°). Text always pulls from the cool axis (hue 255°). Do not mix these: no warm-tinted text, no cool-tinted backgrounds.", "section": "colors" },
+      { "name": "The Weight Hierarchy Rule", "body": "Between 13px title and 13px body, weight is the only differentiator. Never change the font-size to signal importance at this scale — only font-weight.", "section": "typography" },
+      { "name": "The Mono Restraint Rule", "body": "DM Mono is structural, not decorative. Use it for numbers that measure (index, date, count) and labels that categorize. Prohibited for prose, headings, or accent callouts.", "section": "typography" },
+      { "name": "The Shadowless Rule", "body": "Prohibited: box-shadow, drop-shadow, filter: blur() used as depth cues. If an element needs to feel elevated, it belongs to a different surface step, not a shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use OKLCH for all color definitions — every token is OKLCH, maintain this for new tokens.",
+      "Do keep the edit-mark accent to ≤10% of screen area, reserved for state signals only.",
+      "Do use 0.5px for all separator lines, ruling lines, and link underlines.",
+      "Do use weight contrast to establish hierarchy at 13px — title is 600, body is 400, same size.",
+      "Do use DM Mono for index numbers, dates, and structural labels; Hanken Grotesk for everything prose-like.",
+      "Do respect prefers-reduced-motion at the CSS layer.",
+      "Do treat the surface tonal steps (--bg → --bg2 → --bg3) as the entire elevation vocabulary.",
+      "Do append ↗ as a plain text character for external links, not as an icon component.",
+      "Do keep section labels lowercase — intentional voice choice."
+    ],
+    "donts": [
+      "Don't use box-shadow or filter: drop-shadow() anywhere. The system is flat by doctrine.",
+      "Don't use border-left or border-right greater than 1px as a colored accent stripe on any element.",
+      "Don't use gradient text (background-clip: text with a gradient). Emphasis through weight or size only.",
+      "Don't build a hero section with metrics, statistics, or a big number + small label pattern.",
+      "Don't create a grid of identical cards — accordion or list structures are preferred.",
+      "Don't apply the edit-mark color to resting, non-interactive elements for visual interest.",
+      "Don't add new font families. Two-voice only: Hanken Grotesk for prose, DM Mono for structure.",
+      "Don't create modal dialogs as a first solution.",
+      "Don't introduce WebGL, canvas animations, 3D transforms, or particle effects.",
+      "Don't use warm-axis colors (hue 75°) for text, or cool-axis colors (hue 255°) for surfaces."
+    ]
+  }
+}

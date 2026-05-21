@@ -1,9 +1,9 @@
 import { Topbar }     from "@/components/Topbar";
 import { Hero }       from "@/components/sections/Hero";
 import { Work }       from "@/components/sections/Work";
+import { Log }        from "@/components/sections/Log";
 import { Stack }      from "@/components/sections/Stack";
 import { About }      from "@/components/sections/About";
-import { Log }        from "@/components/sections/Log";
 import { Contact }    from "@/components/sections/Contact";
 import { Footer }     from "@/components/sections/Footer";
 import { SidebarNav } from "@/components/SidebarNav";
@@ -25,9 +25,9 @@ export default async function Home() {
         <main className="min-w-0">
           <Hero />
           <Work />
+          <Log entries={githubEntries.length > 0 ? githubEntries : undefined} />
           <Stack />
           <About />
-          <Log entries={githubEntries.length > 0 ? githubEntries : undefined} />
           <Contact />
           <Footer lastUpdated={lastUpdated} />
         </main>

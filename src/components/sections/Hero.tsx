@@ -1,31 +1,15 @@
 "use client";
 
 import { useEffect } from "react";
-import { useMotionValue, useTransform, motion } from "framer-motion";
-import { useTypewriter } from "@/hooks/useTypewriter";
 import { AnalogClock } from "@/components/AnalogClock";
-import Link from "next/link";
 import { SOCIAL_LINKS } from "@/data/social";
-import { PHRASES, TICKER_TEXT, AWAY_TITLES, HERO_BIO } from "@/data/content";
+import { AWAY_TITLES, HERO_SUBTITLE } from "@/data/content";
+import { BlurFade } from "@/components/ui/blur-fade";
+import { KineticText } from "@/components/ui/kinetic-text";
 
 const NAV_LINKS = SOCIAL_LINKS.filter((s) => s.showInNav);
 
 export function Hero() {
-  const typed = useTypewriter(PHRASES);
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const tx = useTransform(mx, (v) => `${v * 4}px`);
-  const ty = useTransform(my, (v) => `${v * 2}px`);
-
-  useEffect(() => {
-    function onMove(e: MouseEvent) {
-      mx.set((e.clientX - window.innerWidth / 2) / (window.innerWidth / 2));
-      my.set((e.clientY - window.innerHeight / 2) / (window.innerHeight / 2));
-    }
-    document.addEventListener("mousemove", onMove, { passive: true });
-    return () => document.removeEventListener("mousemove", onMove);
-  }, [mx, my]);
-
   useEffect(() => {
     let timer: ReturnType<typeof setInterval> | null = null;
     let idx = 0;
@@ -40,9 +24,7 @@ export function Hero() {
       } else {
         if (timer) clearInterval(timer);
         document.title = "welcome back!";
-        setTimeout(() => {
-          document.title = "zubo.dev";
-        }, 2000);
+        setTimeout(() => { document.title = "zubo.dev"; }, 2000);
       }
     }
 
@@ -54,40 +36,42 @@ export function Hero() {
   }, []);
 
   return (
-    <section
-      id="s-hero"
-      className="flex flex-col gap-6 md:grid md:grid-cols-[1fr_auto] md:items-start md:gap-8 pt-16 pb-14 [animation:fadeUp_0.5s_ease_both]"
-    >
-      <div>
-        <motion.h1
-          className="text-[clamp(40px,6vw,52px)] font-bold leading-none mb-2.5 tracking-[-0.04em] will-change-transform transition-transform duration-[120ms] ease-out"
-          style={{ translateX: tx, translateY: ty }}
-        >
-          zubo<span className="text-acc">.dev</span>
-        </motion.h1>
-        <p className="text-sm text-tx2 mb-1.5">
-          <span>{typed}</span>
-          <span className="cursor" />
-        </p>
-        <p className="text-xs text-tx3 leading-[1.85] max-w-[420px] mb-[30px]">
-          {HERO_BIO}
-        </p>
-        <nav className="flex gap-5 flex-wrap">
-          {NAV_LINKS.map(({ key, label, href }) => (
-            <a
-              key={key}
-              href={href}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="text-xs text-tx3 no-underline tracking-[.05em] border-b-[0.5px] border-bd pb-0.5 transition-colors duration-200 hover:text-acc hover:border-acc"
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
-      </div>
-      <div className="hidden md:block">
-        <AnalogClock />
+    <section id="s-hero" className="pt-10 pb-10">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] items-center gap-x-8">
+        <div>
+          <BlurFade delay={0}>
+            <h1 className="text-[clamp(40px,6.5vw,58px)] tracking-[-0.04em] leading-none mb-4">
+              <span className="inline-flex items-baseline gap-[0.28em]">
+                <KineticText text="Lorenzo" as="span" />
+                <KineticText text="Zubani" as="span" className="text-acc" />
+              </span>
+            </h1>
+          </BlurFade>
+
+          <BlurFade delay={0.1}>
+            <p className="text-sm text-tx2 mb-4">{HERO_SUBTITLE}</p>
+          </BlurFade>
+
+          <BlurFade delay={0.15}>
+            <nav className="flex gap-5 flex-wrap">
+              {NAV_LINKS.map(({ key, label, href }) => (
+                <a
+                  key={key}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="text-xs text-tx3 no-underline tracking-[.05em] border-b-[0.5px] border-bd pb-0.5 transition-colors duration-200 hover:text-acc hover:border-acc"
+                >
+                  {label}
+                </a>
+              ))}
+            </nav>
+          </BlurFade>
+        </div>
+
+        <BlurFade delay={0.05} className="hidden md:flex items-center justify-center">
+          <AnalogClock />
+        </BlurFade>
       </div>
     </section>
   );

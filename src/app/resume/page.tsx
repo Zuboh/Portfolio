@@ -10,15 +10,13 @@ const PAGE = 'grid grid-cols-1 md:grid-cols-[1fr_68px] max-w-[800px] mx-auto pl-
 
 const EXPERIENCE = [
   {
-    role: 'Frontend & AI Engineer',
+    role: 'Frontend Engineer',
     company: 'Lavoratore autonomo',
     period: 'Mar 2024 – present',
     current: true,
     bullets: [
-      'Prism — Figma token extractor for Claude Code integration',
-      'PR Review Assistant — AI code review tool with Claude API',
-      'Second Brain — AI knowledge base with semantic search (pgvector)',
-      'PrimoContratto — Contract analyzer app (React Native + OpenAI)',
+      'Prism — local Figma to TSX pipeline with inspection workbench',
+      'Primo — Italian contract analyzer (React Native + Supabase)',
     ],
   },
   {
@@ -65,25 +63,13 @@ const PROJECTS = [
   {
     name: 'Prism',
     year: 2025,
-    description: 'Figma design token extractor. Generates AI-ready context for Claude Code.',
-    tags: ['React', 'Figma API', 'Claude API', 'TypeScript'],
+    description: 'Local Figma to TSX pipeline. Drop a URL or export, get a clean React + Tailwind component validated with tsc.',
+    tags: ['React', 'Tailwind', 'TypeScript', 'Figma API'],
   },
   {
-    name: 'PR Review Assistant',
+    name: 'Primo',
     year: 2025,
-    description: 'Paste a diff, get an AI code review. Focus on best practices, performance.',
-    tags: ['React', 'Claude API', 'Monaco Editor'],
-  },
-  {
-    name: 'Second Brain',
-    year: 2024,
-    description: 'Personal knowledge base with AI categorization and semantic search.',
-    tags: ['Next.js', 'pgvector', 'Drizzle ORM', 'Claude API'],
-  },
-  {
-    name: 'PrimoContratto',
-    year: 2025,
-    description: 'Contract & payslip analyzer for workers. AI-powered insights.',
+    description: 'Contract and payslip analyzer for Italian workers. AI reads the document, flags issues, explains in plain language.',
     tags: ['React Native', 'Expo', 'OpenAI', 'Supabase'],
   },
 ]

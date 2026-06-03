@@ -20,7 +20,7 @@ export function ResumeHeader() {
         </h1>
 
         <p className="text-xs text-acc tracking-[.06em] mb-2.5">
-          Frontend &amp; AI Engineer
+          Frontend Engineer
         </p>
 
         <p className="text-[11px] text-tx2 leading-[1.8] max-w-110 mb-3.5">

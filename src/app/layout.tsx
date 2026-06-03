@@ -23,11 +23,14 @@ const dmMono = DM_Mono({
 export const metadata: Metadata = {
   applicationName: "zubo.dev",
   metadataBase: new URL("https://zubo.dev"),
-  title: "zubo.dev — Frontend & AI Engineer",
+  title: "zubo.dev",
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+  },
   description:
     "Portfolio of a frontend & AI engineer based in Brescia, Italy. Building interfaces and AI-powered tools with React, TypeScript, and Claude API.",
   openGraph: {
-    title: "zubo.dev — Frontend & AI Engineer",
+    title: "zubo.devFrontend & AI Engineer",
     description:
       "Portfolio of a frontend & AI engineer based in Brescia, Italy. Building interfaces and AI-powered tools with React, TypeScript, and Claude API.",
     url: "https://zubo.dev",

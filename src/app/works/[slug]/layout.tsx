@@ -12,7 +12,6 @@ export async function generateMetadata({
   if (!project) notFound()
 
   return {
-    title: `${project.name} — work in progress · zubo.dev`,
     description: project.description,
   }
 }

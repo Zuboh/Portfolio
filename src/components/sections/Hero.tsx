@@ -1,39 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+
 import { AnalogClock } from "@/components/AnalogClock";
 import { SOCIAL_LINKS } from "@/data/social";
-import { AWAY_TITLES, HERO_SUBTITLE } from "@/data/content";
+import { HERO_SUBTITLE } from "@/data/content";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { KineticText } from "@/components/ui/kinetic-text";
 
 const NAV_LINKS = SOCIAL_LINKS.filter((s) => s.showInNav);
 
 export function Hero() {
-  useEffect(() => {
-    let timer: ReturnType<typeof setInterval> | null = null;
-    let idx = 0;
-
-    function onVisibility() {
-      if (document.hidden) {
-        idx = 0;
-        timer = setInterval(() => {
-          document.title = AWAY_TITLES[idx % AWAY_TITLES.length];
-          idx++;
-        }, 900);
-      } else {
-        if (timer) clearInterval(timer);
-        document.title = "welcome back!";
-        setTimeout(() => { document.title = "zubo.dev"; }, 2000);
-      }
-    }
-
-    document.addEventListener("visibilitychange", onVisibility);
-    return () => {
-      document.removeEventListener("visibilitychange", onVisibility);
-      if (timer) clearInterval(timer);
-    };
-  }, []);
 
   return (
     <section id="s-hero" className="pt-10 pb-10">

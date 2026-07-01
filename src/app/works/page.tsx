@@ -23,7 +23,7 @@ export default function WorksPage() {
 
           <p className="text-xs text-tx2 leading-[1.85] max-w-[480px]">
             A selection of projects built with React, TypeScript, and AI.
-            Most are tools I wanted but couldn&apos;t find — so I built them.
+            Most are tools I wanted but couldn&apos;t find, so I built them.
           </p>
         </section>
 

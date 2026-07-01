@@ -11,17 +11,7 @@ export const projects: Project[] = [
     tags: ['React', 'Tailwind', 'TypeScript', 'Figma API'],
     year: 2025,
     status: 'in progress',
-    href: '/works/prism',
     github: 'https://github.com/Zuboh/Prism',
-    whatsnext: [
-      'Support for Figma component variants',
-      'Auto token extraction into CSS variables',
-      'One-click copy to project with path picker',
-      'Batch export for multiple frames',
-    ],
-    progress: 45,
-    lastUpdated: 'May 2026',
-    estimatedCompletion: 'Q3 2026',
   },
   {
     name: 'Primo',
@@ -29,20 +19,22 @@ export const projects: Project[] = [
     description:
       'Upload a contract or payslip, AI reads it, flags issues, and breaks it down in plain language. Built for workers, not lawyers.',
     longDescription:
-      'Italian labour law is dense. Primo takes a contract or payslip photo, extracts the text, and runs it through a prompt that knows Italian employment law. It flags missing clauses, illegal terms, and underpayment — then explains each finding in plain language. No legal jargon.',
+      'Italian labour law is dense. Primo takes a contract or payslip photo, extracts the text, and runs it through a prompt that knows Italian employment law. It flags missing clauses, illegal terms, and underpayment, then explains each finding in plain language. No legal jargon.',
     tags: ['React Native', 'Expo', 'OpenAI', 'Supabase'],
     year: 2025,
     status: 'in progress',
-    href: '/works/primo',
     github: 'https://github.com/Zuboh/Primo',
-    whatsnext: [
-      'OCR pipeline for handwritten contracts',
-      'Push notifications for contract expiry dates',
-      'Italian App Store submission',
-      'Support for CCNL (national collective agreements)',
-    ],
-    progress: 60,
-    lastUpdated: 'April 2026',
-    estimatedCompletion: 'Q2 2026',
+  },
+  {
+    name: 'Zubo OS',
+    slug: 'zubo-os',
+    description:
+      "Rebuilt Claude Code's core loop by hand in Python: hooks, permission gates, tool dispatch, context assembly. No framework, just the loop.",
+    longDescription:
+      "Zubo OS is a personal CLI agent on the Claude API that mirrors Claude Code's internals in about 300 lines of Python: a PreToolUse/PostToolUse hook system, a 3-mode permission gate (default/auto/plan), a tool dispatch dict, and a system prompt assembled at runtime from a base prompt, active skills, and a memory index. I built it to understand the deterministic infrastructure behind tool execution and context assembly, not the model.",
+    tags: ['Python', 'Claude API', 'CLI', 'Agents'],
+    year: 2026,
+    status: 'in progress',
+    github: 'https://github.com/Zuboh/zubo-os',
   },
 ]

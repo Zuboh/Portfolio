@@ -1,11 +1,9 @@
 'use client'
 
 interface ProjectLinksProps {
-  href: string
   github?: string
   demo?: string
   docs?: string
-  detailHref?: string
 }
 
 function LinkItem({
@@ -29,9 +27,8 @@ function LinkItem({
   )
 }
 
-export function ProjectLinks({ github, demo, docs, detailHref }: ProjectLinksProps) {
+export function ProjectLinks({ github, demo, docs }: ProjectLinksProps) {
   const links = [
-    detailHref && { href: detailHref, label: 'details', symbol: '→' },
     github && { href: github, label: 'github', symbol: '↗' },
     demo && { href: demo, label: 'demo', symbol: '↗' },
     docs && { href: docs, label: 'docs', symbol: '↗' },

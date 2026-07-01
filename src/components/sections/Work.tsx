@@ -78,14 +78,6 @@ export function Work() {
                 </div>
 
                 <div className="flex gap-4">
-                  {p.href && !p.href.startsWith("#") && (
-                    <a
-                      href={p.href}
-                      className="text-[11px] text-tx3 no-underline tracking-[.04em] border-b-[0.5px] border-bd pb-0.5 transition-colors duration-150 hover:text-acc hover:border-acc"
-                    >
-                      view project ↗
-                    </a>
-                  )}
                   {p.github && p.github !== "#" && (
                     <a
                       href={p.github}

@@ -24,8 +24,8 @@ export function ResumeHeader() {
         </p>
 
         <p className="text-[11px] text-tx2 leading-[1.8] max-w-110 mb-3.5">
-          Frontend engineer focused on architecture and design systems. Growing into AI engineering
-          — integrating LLMs as core product experience, not just features. Based in Brescia, Italy.
+          Frontend engineer focused on architecture and design systems. Growing into AI engineering,
+          treating LLMs as the core of the product, not an add-on. Based in Brescia, Italy.
         </p>
 
         <div className="flex flex-wrap gap-x-5 gap-y-1.5">

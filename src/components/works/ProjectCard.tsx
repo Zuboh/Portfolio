@@ -63,11 +63,9 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
 
         <div className="border-t-[0.5px] border-bd mt-4 pt-3.5">
           <ProjectLinks
-            href={project.href}
             github={project.github}
             demo={project.demo}
             docs={project.docs}
-            detailHref={project.status === 'in progress' ? `/works/${project.slug}` : undefined}
           />
         </div>
       </div>

@@ -20,7 +20,7 @@ export function About() {
               Building React interfaces with deep attention to architecture and design systems.
               Working at the intersection of
               <strong className="text-tx font-medium"> Frontend + AI engineering</strong>
-              {" "}— integrating LLMs not as features, but as the core of the product experience.
+              , integrating LLMs as the core of the product experience, not a bolted-on feature.
               Currently building tools that bridge
               <strong className="text-tx font-medium"> Figma, Claude Code, and real codebases</strong>.
             </p>

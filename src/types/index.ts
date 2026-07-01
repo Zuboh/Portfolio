@@ -8,14 +8,9 @@ export interface Project {
   tags: string[]
   year: number
   status: ProjectStatus
-  href: string
   github?: string
   demo?: string
   docs?: string
-  whatsnext?: string[]
-  progress?: number
-  lastUpdated?: string
-  estimatedCompletion?: string
 }
 
 export interface StackItem {

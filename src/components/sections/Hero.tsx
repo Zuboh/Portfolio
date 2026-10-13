@@ -88,10 +88,23 @@ export function Hero() {
         </div>
 
         <div
-          className="rise mx-auto w-full max-w-[260px] md:max-w-[420px] md:justify-self-end"
+          className="rise relative mx-auto w-full max-w-[260px] md:max-w-[420px] md:justify-self-end"
           style={{ '--d': '400ms' } as React.CSSProperties}
         >
-          <div className="float group relative">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-[2%] -right-[18%] z-0 w-[27%] md:top-[4%] md:right-[calc(-1*clamp(0px,calc((100vw_-_1080px)/2_-_55px),110px))] md:w-[21%]"
+          >
+            <Image
+              src="/moon.png"
+              alt=""
+              width={1254}
+              height={1254}
+              sizes="(min-width: 768px) 88px, 70px"
+              className="drift h-auto w-full"
+            />
+          </div>
+          <div className="float group relative z-10">
             <Image
               src="/hero-body-2.png"
               alt=""

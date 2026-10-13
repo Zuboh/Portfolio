@@ -11,7 +11,7 @@ export function Work() {
       <Container>
         <SectionHeader
           id="work-title"
-          title="Selected work"
+          title="Works"
           aside={`${String(projects.length).padStart(2, '0')} projects`}
         />
 

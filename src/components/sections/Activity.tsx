@@ -18,7 +18,7 @@ export function Activity({ entries }: { entries: ActivityEntry[] }) {
       <Container>
         <SectionHeader
           id="activity-title"
-          title="Latest commits"
+          title="Commits"
           aside={
             entries.length > 0 ? (
               <span className="inline-flex items-center gap-2">

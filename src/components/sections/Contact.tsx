@@ -16,7 +16,7 @@ export function Contact() {
           >
             👋
           </span>
-          Hi, reach out to me at&hellip;
+          Hi reach out to me at&hellip;
         </p>
 
         <a

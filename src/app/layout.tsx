@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/sections/Footer'
+import { ScrollTop } from '@/components/ui/ScrollTop'
 import { fetchLastCommitDate } from '@/lib/github'
 
 const geistSans = Geist({
@@ -81,6 +82,7 @@ export default async function RootLayout({
         <Nav />
         {children}
         <Footer lastUpdated={lastUpdated} />
+        <ScrollTop />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: PERSON_JSON_LD }}

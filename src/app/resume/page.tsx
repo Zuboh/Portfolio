@@ -6,7 +6,8 @@ import { ResumeSection } from '@/components/resume/ResumeSection'
 import { ExperienceCard } from '@/components/resume/ExperienceCard'
 import { BlurFade } from '@/components/ui/blur-fade'
 
-const PAGE = 'grid grid-cols-1 md:grid-cols-[1fr_68px] max-w-[800px] mx-auto pl-6 pr-4 md:pl-14 md:pr-3 pb-[140px] overflow-x-hidden'
+const PAGE =
+  'grid grid-cols-1 md:grid-cols-[1fr_68px] max-w-[800px] mx-auto pl-6 pr-4 md:pl-14 md:pr-3 pb-[140px] overflow-x-hidden'
 
 const EXPERIENCE = [
   {
@@ -15,7 +16,7 @@ const EXPERIENCE = [
     period: 'Mar 2024 – present',
     current: true,
     bullets: [
-      'Prism — local Figma to TSX pipeline with inspection workbench',
+      'Eira — digital nursing handover platform, Vue 3 + FastAPI (university thesis)',
       'Primo — Italian contract analyzer (React Native + Supabase)',
     ],
   },
@@ -61,24 +62,46 @@ const EDUCATION = [
 
 const PROJECTS = [
   {
-    name: 'Prism',
-    year: 2025,
-    description: 'Local Figma to TSX pipeline. Drop a URL or export, get a clean React + Tailwind component validated with tsc.',
-    tags: ['React', 'Tailwind', 'TypeScript', 'Figma API'],
+    name: 'Eira',
+    year: 2026,
+    description:
+      'Digital nursing handover platform: SBAR/ISBAR reports, patient charts, shift scheduling. Full-stack thesis project.',
+    tags: ['Vue 3', 'TypeScript', 'FastAPI', 'Python'],
   },
   {
     name: 'Primo',
     year: 2025,
-    description: 'Contract and payslip analyzer for Italian workers. AI reads the document, flags issues, explains in plain language.',
+    description:
+      'Contract and payslip analyzer for Italian workers. AI reads the document, flags issues, explains in plain language.',
     tags: ['React Native', 'Expo', 'OpenAI', 'Supabase'],
   },
 ]
 
 const SKILLS: { category: string; items: string[] }[] = [
-  { category: 'Architecture', items: ['Component design', 'design systems', 'state management'] },
-  { category: 'Frontend', items: ['React', 'React Native', 'TypeScript', 'Next.js', 'Tailwind', 'Angular', 'Framer Motion'] },
-  { category: 'Backend', items: ['Node.js', 'Python', 'Supabase', 'Drizzle ORM', 'Edge Functions'] },
-  { category: 'AI / LLM', items: ['Claude API', 'OpenAI', 'prompt engineering', 'pgvector'] },
+  {
+    category: 'Architecture',
+    items: ['Component design', 'design systems', 'state management'],
+  },
+  {
+    category: 'Frontend',
+    items: [
+      'React',
+      'React Native',
+      'TypeScript',
+      'Next.js',
+      'Tailwind',
+      'Angular',
+      'Framer Motion',
+    ],
+  },
+  {
+    category: 'Backend',
+    items: ['Node.js', 'Python', 'Supabase', 'Drizzle ORM', 'Edge Functions'],
+  },
+  {
+    category: 'AI / LLM',
+    items: ['Claude API', 'OpenAI', 'prompt engineering', 'pgvector'],
+  },
   { category: 'Tools', items: ['Figma', 'Git', 'VS Code', 'Vercel'] },
 ]
 
@@ -122,11 +145,21 @@ export default function ResumePage() {
                 className="pb-5 mb-5 border-b-[0.5px] border-bd last:border-b-0 last:mb-0"
               >
                 <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-[13px] font-medium text-tx">{p.name}</span>
-                  <span className="text-[10px] text-tx3 font-mono tracking-[.04em]">{p.year}</span>
+                  <span className="text-[13px] font-medium text-tx">
+                    {p.name}
+                  </span>
+                  <span className="text-[10px] text-tx3 font-mono tracking-[.04em]">
+                    {p.year}
+                  </span>
                 </div>
-                <p className="text-[11px] text-tx2 leading-[1.65] mb-2">{p.description}</p>
-                <div className="flex flex-wrap gap-1">{p.tags.map((t) => <Tag key={t} label={t} />)}</div>
+                <p className="text-[11px] text-tx2 leading-[1.65] mb-2">
+                  {p.description}
+                </p>
+                <div className="flex flex-wrap gap-1">
+                  {p.tags.map((t) => (
+                    <Tag key={t} label={t} />
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -136,8 +169,14 @@ export default function ResumePage() {
           <div className="flex flex-col gap-5">
             {SKILLS.map((s) => (
               <div key={s.category}>
-                <div className="text-[10px] text-tx3 font-medium mb-2">{s.category}</div>
-                <div className="flex flex-wrap gap-1">{s.items.map((i) => <Tag key={i} label={i} />)}</div>
+                <div className="text-[10px] text-tx3 font-medium mb-2">
+                  {s.category}
+                </div>
+                <div className="flex flex-wrap gap-1">
+                  {s.items.map((i) => (
+                    <Tag key={i} label={i} />
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -146,11 +185,18 @@ export default function ResumePage() {
         <ResumeSection label="education">
           <div className="flex flex-col">
             {EDUCATION.map((e) => (
-              <div key={e.degree} className="pb-5 mb-5 border-b-[0.5px] border-bd last:border-b-0 last:mb-0">
+              <div
+                key={e.degree}
+                className="pb-5 mb-5 border-b-[0.5px] border-bd last:border-b-0 last:mb-0"
+              >
                 <div className="flex justify-between items-start gap-3 flex-wrap">
                   <div>
-                    <div className="text-[13px] font-medium text-tx mb-0.5">{e.degree}</div>
-                    <div className="text-[11px] text-tx2 tracking-[.03em]">{e.institution}</div>
+                    <div className="text-[13px] font-medium text-tx mb-0.5">
+                      {e.degree}
+                    </div>
+                    <div className="text-[11px] text-tx2 tracking-[.03em]">
+                      {e.institution}
+                    </div>
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     {e.status && (
@@ -158,7 +204,9 @@ export default function ResumePage() {
                         {e.status}
                       </span>
                     )}
-                    <span className="text-[10px] text-tx3 font-mono tracking-[.04em]">{e.period}</span>
+                    <span className="text-[10px] text-tx3 font-mono tracking-[.04em]">
+                      {e.period}
+                    </span>
                   </div>
                 </div>
               </div>

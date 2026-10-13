@@ -2,16 +2,16 @@ import type { Project } from '@/types'
 
 export const projects: Project[] = [
   {
-    name: 'Prism',
-    slug: 'prism',
+    name: 'Eira',
+    slug: 'eira',
     description:
-      'Drop a Figma URL or export, get a clean React + Tailwind component. Strips noise, flags hardcoded values, validates with tsc.',
+      'Digital nursing handover platform — SBAR/ISBAR reports, patient charts, shift scheduling. Full-stack university thesis project.',
     longDescription:
-      'Prism is a local Figma to TSX pipeline. A /prism skill takes a Figma URL or local SVG/CSS export and outputs a cleaned React + Tailwind component to ./prism-output. It strips Figma noise, flags hardcoded colors and fonts, localizes assets, and validates with tsc. The Prism Workbench is a local inspection UI that renders the output, surfaces tsc errors and TODOs, and lets you verify before copying to your project. Goal: confidence in the component in under 30 seconds.',
-    tags: ['React', 'Tailwind', 'TypeScript', 'Figma API'],
-    year: 2025,
-    status: 'in progress',
-    github: 'https://github.com/Zuboh/Prism',
+      'Eira digitizes nursing shift handovers: SBAR/ISBAR reports, SOAPIE diary, patient vitals, Norton/Conley risk assessments, shift and staff management, with separate flows for nurses and ward heads. Built as the final project work for a Computer Science degree at Università Telematica Pegaso. Academic/demo project — fictional clinical context, not a medical device.',
+    tags: ['Vue 3', 'TypeScript', 'FastAPI', 'Python'],
+    year: 2026,
+    status: 'shipped',
+    github: 'https://github.com/Zuboh/Eira',
   },
   {
     name: 'Primo',

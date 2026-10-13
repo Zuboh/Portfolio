@@ -16,6 +16,9 @@ const LINKS = [
 const linkClass =
   'block rounded-lg px-3.5 py-2.5 text-sm text-tx2 transition-colors hover:bg-bg2 hover:text-tx aria-[current=page]:text-tx'
 
+const barClass =
+  'absolute left-0 h-[1.5px] w-5 rounded-full bg-current transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)]'
+
 export function Nav() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
@@ -59,39 +62,66 @@ export function Nav() {
 
         <button
           type="button"
-          className="-mr-3 min-h-11 rounded-lg px-3 text-sm text-tx2 transition-colors hover:text-tx md:hidden"
+          className="group -mr-3 grid size-11 place-items-center rounded-lg text-tx2 transition-colors hover:text-tx md:hidden"
+          aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((o) => !o)}
         >
-          {open ? 'Close' : 'Menu'}
+          <span aria-hidden="true" className="relative block size-5">
+            <span
+              className={`${barClass} top-[5px] ${open ? 'translate-y-[4.25px] rotate-45' : ''}`}
+            />
+            <span
+              className={`${barClass} top-[9.25px] ${open ? 'scale-x-0 opacity-0' : ''}`}
+            />
+            <span
+              className={`${barClass} top-[13.5px] ${open ? '-translate-y-[4.25px] -rotate-45' : ''}`}
+            />
+          </span>
         </button>
       </Container>
 
-      {open && (
-        <nav
-          id="mobile-nav"
-          aria-label="Primary"
-          className="border-t border-bd md:hidden"
-        >
-          <Container>
-            <ul className="flex flex-col py-2">
-              {LINKS.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className={`${linkClass} py-3`}
-                    aria-current={l.href === pathname ? 'page' : undefined}
-                    onClick={() => setOpen(false)}
+      <nav
+        id="mobile-nav"
+        aria-label="Primary"
+        className={`grid transition-[grid-template-rows,opacity,visibility] duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] md:hidden ${
+          open
+            ? 'visible grid-rows-[1fr] opacity-100'
+            : 'invisible grid-rows-[0fr] opacity-0'
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="border-t border-bd">
+            <Container>
+              <ul className="flex flex-col py-2">
+                {LINKS.map((l, i) => (
+                  <li
+                    key={l.href}
+                    className={`transition-[opacity,transform] duration-300 ease-out ${
+                      open
+                        ? 'translate-y-0 opacity-100'
+                        : '-translate-y-1 opacity-0'
+                    }`}
+                    style={{
+                      transitionDelay: open ? `${80 + i * 45}ms` : '0ms',
+                    }}
                   >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </Container>
-        </nav>
-      )}
+                    <Link
+                      href={l.href}
+                      className={`${linkClass} py-3`}
+                      aria-current={l.href === pathname ? 'page' : undefined}
+                      onClick={() => setOpen(false)}
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Container>
+          </div>
+        </div>
+      </nav>
     </header>
   )
 }

@@ -123,6 +123,68 @@
   animation-delay: var(--d, 0ms);
 }
 
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1deg);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(1deg);
+  }
+}
+
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(16deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+.wave {
+  transform-origin: 70% 75%;
+  animation: wave 3.2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.twinkle {
+  animation: twinkle 5s ease-in-out infinite;
+}
+
+.twinkle-slow {
+  animation-duration: 8s;
+  animation-delay: -3s;
+}
+
+.float {
+  animation: float 7s cubic-bezier(0.45, 0, 0.55, 1) 0.8s infinite;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

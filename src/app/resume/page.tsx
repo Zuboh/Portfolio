@@ -78,7 +78,7 @@ const SKILLS = [
     category: 'AI and LLM',
     items: ['Claude API', 'OpenAI', 'Prompt engineering', 'pgvector'],
   },
-  { category: 'Tools', items: ['Figma', 'Git', 'VS Code', 'Vercel'] },
+  { category: 'Tools', items: ['Figma', 'Git', 'Cursor', 'Vercel'] },
 ]
 
 const rowClass =
@@ -101,14 +101,16 @@ export default function ResumePage() {
           </Link>
 
           <div className="flex flex-wrap items-start gap-8">
-            <Image
-              src="/profile-image.jpeg"
-              alt="Portrait of Lorenzo Zubani"
-              width={128}
-              height={128}
-              priority
-              className="size-32 shrink-0 rounded-2xl border border-bd2 object-cover object-[50%_18%]"
-            />
+            <div className="size-32 shrink-0 overflow-hidden rounded-full border border-bd2">
+              <Image
+                src="/profile-image.jpeg"
+                alt="Portrait of Lorenzo Zubani"
+                width={256}
+                height={256}
+                priority
+                className="size-full scale-[1.22] object-cover object-[50%_41%]"
+              />
+            </div>
             <div className="min-w-0 flex-1">
               <p className="font-mono text-[13px] text-tx3">
                 Frontend Engineer

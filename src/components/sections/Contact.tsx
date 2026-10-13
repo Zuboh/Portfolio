@@ -9,8 +9,14 @@ export function Contact() {
       <Container>
         <SectionHeader id="contact-title" title="Contact" />
 
-        <p className="mb-5 text-base text-tx2">
-          <span aria-hidden="true">👋 </span>Hi, reach me out on&hellip;
+        <p className="mb-6 flex items-center gap-3 text-[clamp(18px,2.2vw,26px)] leading-tight tracking-[-0.02em] text-tx2">
+          <span
+            aria-hidden="true"
+            className="wave inline-block text-[1.35em] leading-none"
+          >
+            👋
+          </span>
+          Hi, reach out to me at&hellip;
         </p>
 
         <a

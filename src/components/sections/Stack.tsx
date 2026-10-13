@@ -25,7 +25,7 @@ export function Stack() {
               <ul className="flex flex-wrap gap-2">
                 {g.items.map((item) => (
                   <li key={item}>
-                    <Badge label={item} size="md" />
+                    <Badge label={item} size="md" interactive />
                   </li>
                 ))}
               </ul>

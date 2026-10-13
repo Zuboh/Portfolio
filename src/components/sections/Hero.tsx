@@ -1,5 +1,8 @@
+import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
+import { Clock } from '@/components/ui/Clock'
 import { Icon } from '@/components/ui/Icon'
+import { Starfield } from '@/components/ui/Starfield'
 import { EMAIL, GITHUB_URL, LINKEDIN_URL, RESUME_PDF } from '@/data/social'
 
 const linkClass =
@@ -9,73 +12,117 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="pt-[clamp(80px,12vw,152px)] pb-10"
+      className="relative isolate pt-[clamp(80px,12vw,152px)] pb-10"
     >
-      <Container>
-        <p
-          className="rise inline-flex rounded-full border border-bd2 px-3 py-1.5 font-mono text-[13px] text-tx3"
-          style={{ '--d': '0ms' } as React.CSSProperties}
-        >
-          Frontend Engineer · Brescia, Italy
-        </p>
-
-        <h1
-          id="hero-title"
-          className="rise mt-6 text-[clamp(40px,6.5vw,80px)] leading-[0.97] font-semibold tracking-[-0.058em]"
-          style={{ '--d': '80ms' } as React.CSSProperties}
-        >
-          Lorenzo <span className="text-acc">Zubani</span>
-        </h1>
-
-        <p
-          className="rise mt-7 max-w-[52ch] text-[clamp(16px,1.4vw,18px)] text-tx2 [text-wrap:pretty]"
-          style={{ '--d': '160ms' } as React.CSSProperties}
-        >
-          Frontend engineer specializing in React and TypeScript, with strong
-          attention to architecture, UX, and implementation quality.
-        </p>
-
-        <div
-          className="rise mt-9 flex flex-wrap gap-2.5"
-          style={{ '--d': '240ms' } as React.CSSProperties}
-        >
-          <a href={`mailto:${EMAIL}`} className="btn btn-primary">
-            <Icon name="mail" className="text-base" />
-            Get in touch
-          </a>
-          <a
-            href={RESUME_PDF}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn"
+      <Starfield className="-z-10 [mask-image:linear-gradient(to_bottom,black_55%,transparent)]" />
+      <Container className="grid items-center gap-12 md:grid-cols-[1.25fr_1fr]">
+        <div>
+          <div
+            className="rise flex flex-wrap items-center gap-x-4 gap-y-2"
+            style={{ '--d': '0ms' } as React.CSSProperties}
           >
-            <Icon name="download" className="text-base" />
-            Résumé
-          </a>
+            <p className="inline-flex py-1.5 font-mono text-[13px] text-tx3">
+              Frontend Engineer · Brescia, Italy
+            </p>
+            <Clock className="font-mono text-[13px]" />
+          </div>
+
+          <h1
+            id="hero-title"
+            className="rise mt-6 text-[clamp(40px,6.5vw,80px)] leading-[0.97] font-semibold tracking-[-0.058em]"
+            style={{ '--d': '80ms' } as React.CSSProperties}
+          >
+            Lorenzo <span className="text-acc">Zubani</span>
+          </h1>
+
+          <p
+            className="rise mt-7 max-w-[52ch] text-[clamp(16px,1.4vw,18px)] text-tx2 [text-wrap:pretty]"
+            style={{ '--d': '160ms' } as React.CSSProperties}
+          >
+            Frontend engineer specializing in React and TypeScript, with strong
+            attention to architecture, UX, and implementation quality.
+          </p>
+
+          <div
+            className="rise mt-9 flex flex-wrap gap-2.5"
+            style={{ '--d': '240ms' } as React.CSSProperties}
+          >
+            <a href={`mailto:${EMAIL}`} className="btn btn-primary">
+              <Icon name="mail" className="text-base" />
+              Get in touch
+            </a>
+            <a
+              href={RESUME_PDF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn"
+            >
+              <Icon name="download" className="text-base" />
+              Résumé
+            </a>
+          </div>
+
+          <div
+            className="rise mt-10 flex flex-wrap gap-x-6 gap-y-3"
+            style={{ '--d': '320ms' } as React.CSSProperties}
+          >
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={linkClass}
+            >
+              <Icon name="github" className="text-[17px]" />
+              GitHub
+            </a>
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={linkClass}
+            >
+              <Icon name="linkedin" className="text-[17px]" />
+              LinkedIn
+            </a>
+          </div>
         </div>
 
         <div
-          className="rise mt-10 flex flex-wrap gap-x-6 gap-y-3"
-          style={{ '--d': '320ms' } as React.CSSProperties}
+          className="rise mx-auto w-full max-w-[260px] md:max-w-[420px] md:justify-self-end"
+          style={{ '--d': '400ms' } as React.CSSProperties}
         >
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClass}
-          >
-            <Icon name="github" className="text-[17px]" />
-            GitHub
-          </a>
-          <a
-            href={LINKEDIN_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClass}
-          >
-            <Icon name="linkedin" className="text-[17px]" />
-            LinkedIn
-          </a>
+          <div className="float group relative">
+            <Image
+              src="/hero-body-2.png"
+              alt=""
+              aria-hidden="true"
+              width={1230}
+              height={1278}
+              sizes="(min-width: 768px) 420px, 260px"
+              priority
+              className="h-auto w-full"
+            />
+            <Image
+              src="/hero-arm-rest-2.png"
+              alt=""
+              aria-hidden="true"
+              width={1230}
+              height={1278}
+              sizes="(min-width: 768px) 420px, 260px"
+              loading="eager"
+              className="absolute inset-0 h-auto w-full transition-opacity duration-[240ms] ease-out group-hover:opacity-0 group-hover:delay-[140ms] group-hover:duration-[160ms]"
+            />
+            <Image
+              src="/hero-arm-wave-2.png"
+              alt=""
+              aria-hidden="true"
+              width={1230}
+              height={1278}
+              sizes="(min-width: 768px) 420px, 260px"
+              loading="eager"
+              className="absolute inset-0 h-auto w-full opacity-0 transition-opacity delay-[140ms] duration-[160ms] ease-out group-hover:opacity-100 group-hover:delay-0 group-hover:duration-[240ms]"
+            />
+          </div>
         </div>
       </Container>
     </section>

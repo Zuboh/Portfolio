@@ -12,6 +12,11 @@ export const STACK_GROUPS: StackGroup[] = [
       'TypeScript',
       'Next.js',
       'Tailwind',
+      'MUI',
+      'Redux',
+      'Zustand',
+      'React Query',
+      'GraphQL',
       'React Native',
       'Angular',
       'Vue',
@@ -34,6 +39,6 @@ export const STACK_GROUPS: StackGroup[] = [
   },
   {
     title: 'Tools',
-    items: ['Git', 'Figma', 'Vercel', 'VS Code'],
+    items: ['Claude Code', 'Codex', 'Bash', 'Git', 'Figma', 'Vercel', 'Cursor'],
   },
 ]

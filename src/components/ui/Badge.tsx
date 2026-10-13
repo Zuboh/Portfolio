@@ -5,9 +5,10 @@ import { cn } from '@/lib/utils'
 interface BadgeProps {
   label: string
   size?: 'sm' | 'md'
+  interactive?: boolean
 }
 
-export function Badge({ label, size = 'sm' }: BadgeProps) {
+export function Badge({ label, size = 'sm', interactive = false }: BadgeProps) {
   const icon = TECH_ICONS[label]
   return (
     <span
@@ -15,7 +16,9 @@ export function Badge({ label, size = 'sm' }: BadgeProps) {
         'inline-flex items-center gap-1.5 rounded-full border border-bd2 bg-bg font-mono text-tx2',
         size === 'sm'
           ? 'py-[3px] pr-[11px] pl-2 text-xs'
-          : 'py-[5px] pr-[13px] pl-2.5 text-[13px]'
+          : 'py-[5px] pr-[13px] pl-2.5 text-[13px]',
+        interactive &&
+          'transition-[transform,color,border-color,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-acc/60 hover:bg-acc-dim hover:text-tx motion-reduce:transition-none motion-reduce:hover:translate-y-0'
       )}
     >
       {icon && (

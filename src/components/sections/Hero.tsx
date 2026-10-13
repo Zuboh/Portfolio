@@ -36,7 +36,7 @@ export function Hero() {
             className="rise mt-6 text-[clamp(40px,6.5vw,80px)] leading-[0.97] font-semibold tracking-[-0.058em]"
             style={{ '--d': '80ms' } as React.CSSProperties}
           >
-            Lorenzo <span className="text-acc">Zubani</span>
+            Lorenzo <span className="text-acc light:text-tx">Zubani</span>
           </h1>
 
           <p
@@ -91,9 +91,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div
-          className="rise-lift relative mx-auto w-full max-w-[210px] md:max-w-[340px] md:justify-self-end"
-        >
+        <div className="rise-lift relative mx-auto w-full max-w-[210px] md:max-w-[340px] md:justify-self-end">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -z-10 aspect-square top-[2%] -right-[18%] w-[33%] md:top-[4%] md:right-[calc(-1*clamp(0px,calc((100vw_-_1080px)/2_-_55px),110px))] md:w-[26%]"

@@ -35,7 +35,7 @@ export function Nav() {
         <Link
           href="/"
           aria-label="Lorenzo Zubani, home"
-          className="inline-flex items-center gap-[0.35em] py-2 text-xl leading-none font-semibold tracking-[-0.04em]"
+          className="inline-flex items-center gap-[0.35em] py-2 text-lg leading-none font-semibold tracking-[-0.04em]"
         >
           <span>L</span>
           <span>Z</span>
@@ -69,7 +69,11 @@ export function Nav() {
       </Container>
 
       {open && (
-        <nav id="mobile-nav" aria-label="Primary" className="border-t border-bd md:hidden">
+        <nav
+          id="mobile-nav"
+          aria-label="Primary"
+          className="border-t border-bd md:hidden"
+        >
           <Container>
             <ul className="flex flex-col py-2">
               {LINKS.map((l) => (

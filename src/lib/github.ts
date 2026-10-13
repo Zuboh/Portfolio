@@ -49,16 +49,18 @@ async function getJson<T>(path: string): Promise<T | null> {
  */
 export async function fetchRecentCommits(limit = 6): Promise<ActivityEntry[]> {
   const repos = await getJson<RepoSummary[]>(
-    `/users/${GITHUB_USER}/repos?sort=pushed&per_page=10&type=owner`,
+    `/users/${GITHUB_USER}/repos?sort=pushed&per_page=10&type=owner`
   )
   if (!repos) return []
 
-  const targets = repos.filter((r) => !r.fork && !EXCLUDE.has(r.name)).slice(0, 5)
+  const targets = repos
+    .filter((r) => !r.fork && !EXCLUDE.has(r.name))
+    .slice(0, 5)
 
   const perRepo = await Promise.all(
     targets.map(async (repo): Promise<ActivityEntry[]> => {
       const commits = await getJson<CommitSummary[]>(
-        `/repos/${GITHUB_USER}/${repo.name}/commits?author=${GITHUB_USER}&per_page=3`,
+        `/repos/${GITHUB_USER}/${repo.name}/commits?author=${GITHUB_USER}&per_page=3`
       )
       return (commits ?? []).map((c) => ({
         date: c.commit.author?.date ?? c.commit.committer?.date ?? '',
@@ -67,7 +69,7 @@ export async function fetchRecentCommits(limit = 6): Promise<ActivityEntry[]> {
         sha: c.sha.slice(0, 7),
         url: c.html_url,
       }))
-    }),
+    })
   )
 
   return perRepo
@@ -77,11 +79,14 @@ export async function fetchRecentCommits(limit = 6): Promise<ActivityEntry[]> {
     .slice(0, limit)
 }
 
-export async function fetchLastCommitDate(repo: string): Promise<string | null> {
+export async function fetchLastCommitDate(
+  repo: string
+): Promise<string | null> {
   const commits = await getJson<CommitSummary[]>(
-    `/repos/${GITHUB_USER}/${repo}/commits?per_page=1`,
+    `/repos/${GITHUB_USER}/${repo}/commits?per_page=1`
   )
-  const iso = commits?.[0]?.commit.committer?.date ?? commits?.[0]?.commit.author?.date
+  const iso =
+    commits?.[0]?.commit.committer?.date ?? commits?.[0]?.commit.author?.date
   if (!iso) return null
   return new Date(iso).toLocaleDateString('en-US', {
     month: 'long',

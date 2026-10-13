@@ -13,7 +13,9 @@ export function Badge({ label, size = 'sm' }: BadgeProps) {
     <span
       className={cn(
         'inline-flex items-center gap-1.5 rounded-full border border-bd2 bg-bg font-mono text-tx2',
-        size === 'sm' ? 'py-[3px] pr-[11px] pl-2 text-xs' : 'py-[5px] pr-[13px] pl-2.5 text-[13px]',
+        size === 'sm'
+          ? 'py-[3px] pr-[11px] pl-2 text-xs'
+          : 'py-[5px] pr-[13px] pl-2.5 text-[13px]'
       )}
     >
       {icon && (
@@ -23,7 +25,10 @@ export function Badge({ label, size = 'sm' }: BadgeProps) {
           width={16}
           height={16}
           unoptimized
-          className={cn(size === 'sm' ? 'size-[13px]' : 'size-4', icon.invert && 'invert')}
+          className={cn(
+            size === 'sm' ? 'size-[13px]' : 'size-4',
+            icon.invert && 'invert'
+          )}
         />
       )}
       {label}

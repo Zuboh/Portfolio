@@ -54,26 +54,44 @@ const EDUCATION = [
 ]
 
 const SKILLS = [
-  { category: 'Architecture', items: ['Component design', 'Design systems', 'State management'] },
+  {
+    category: 'Architecture',
+    items: ['Component design', 'Design systems', 'State management'],
+  },
   {
     category: 'Frontend',
-    items: ['React', 'React Native', 'TypeScript', 'Next.js', 'Tailwind', 'Angular', 'Framer Motion'],
+    items: [
+      'React',
+      'React Native',
+      'TypeScript',
+      'Next.js',
+      'Tailwind',
+      'Angular',
+      'Framer Motion',
+    ],
   },
   {
     category: 'Backend',
     items: ['Node.js', 'Python', 'Supabase', 'Drizzle ORM', 'Edge Functions'],
   },
-  { category: 'AI and LLM', items: ['Claude API', 'OpenAI', 'Prompt engineering', 'pgvector'] },
+  {
+    category: 'AI and LLM',
+    items: ['Claude API', 'OpenAI', 'Prompt engineering', 'pgvector'],
+  },
   { category: 'Tools', items: ['Figma', 'Git', 'VS Code', 'Vercel'] },
 ]
 
-const rowClass = 'grid gap-3 border-b border-bd py-7 md:grid-cols-[200px_1fr] md:gap-6'
+const rowClass =
+  'grid gap-3 border-b border-bd py-7 md:grid-cols-[200px_1fr] md:gap-6'
 const labelClass = 'pt-1.5 font-mono text-[13px] font-normal text-tx3'
 
 export default function ResumePage() {
   return (
     <main id="main" className="pb-4">
-      <section className="pt-[clamp(48px,7vw,88px)]" aria-labelledby="resume-title">
+      <section
+        className="pt-[clamp(48px,7vw,88px)]"
+        aria-labelledby="resume-title"
+      >
         <Container>
           <Link
             href="/"
@@ -92,32 +110,49 @@ export default function ResumePage() {
               className="size-32 shrink-0 rounded-2xl border border-bd2 object-cover object-[50%_18%]"
             />
             <div className="min-w-0 flex-1">
-              <p className="font-mono text-[13px] text-tx3">Frontend Engineer</p>
+              <p className="font-mono text-[13px] text-tx3">
+                Frontend Engineer
+              </p>
               <h1
                 id="resume-title"
-                className="mt-2 text-[clamp(40px,7vw,72px)] leading-none font-semibold tracking-[-0.055em]"
+                className="mt-2 text-[clamp(32px,5vw,52px)] leading-none font-semibold tracking-[-0.055em]"
               >
                 Lorenzo <span className="text-acc">Zubani</span>
               </h1>
               <p className="mt-5 max-w-[56ch] text-tx2 [text-wrap:pretty]">
-                Frontend engineer focused on architecture and design systems. Growing into AI
-                engineering, treating LLMs as the core of the product, not an add-on. Based in
-                Brescia, Italy.
+                Frontend engineer focused on architecture and design systems.
+                Growing into AI engineering, treating LLMs as the core of the
+                product, not an add-on. Based in Brescia, Italy.
               </p>
               <div className="mt-7 flex flex-wrap gap-2.5">
                 <a href={`mailto:${EMAIL}`} className="btn btn-primary">
                   <Icon name="mail" className="text-base" />
                   Get in touch
                 </a>
-                <a href={RESUME_PDF} target="_blank" rel="noopener noreferrer" className="btn">
+                <a
+                  href={RESUME_PDF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn"
+                >
                   <Icon name="download" className="text-base" />
                   Download PDF
                 </a>
-                <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="btn">
+                <a
+                  href={GITHUB_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn"
+                >
                   <Icon name="github" className="text-base" />
                   GitHub
                 </a>
-                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="btn">
+                <a
+                  href={LINKEDIN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn"
+                >
                   <Icon name="linkedin" className="text-base" />
                   LinkedIn
                 </a>
@@ -135,7 +170,9 @@ export default function ResumePage() {
               <div key={e.company} className={rowClass}>
                 <p className={labelClass}>{e.period}</p>
                 <div>
-                  <h3 className="text-lg font-semibold tracking-[-0.02em]">{e.role}</h3>
+                  <h3 className="text-base font-semibold tracking-[-0.02em]">
+                    {e.role}
+                  </h3>
                   <p className="text-tx2">{e.company}</p>
                   <ul className="mt-4 flex flex-col gap-2 text-tx2">
                     {e.bullets.map((b) => (
@@ -162,8 +199,11 @@ export default function ResumePage() {
               <div key={p.slug} className={rowClass}>
                 <p className={labelClass}>{p.year}</p>
                 <div>
-                  <h3 className="text-lg font-semibold tracking-[-0.02em]">
-                    <Link href={`/work/${p.slug}`} className="transition-colors hover:text-acc">
+                  <h3 className="text-base font-semibold tracking-[-0.02em]">
+                    <Link
+                      href={`/work/${p.slug}`}
+                      className="transition-colors hover:text-acc"
+                    >
                       {p.name}
                     </Link>
                   </h3>
@@ -210,7 +250,9 @@ export default function ResumePage() {
               <div key={e.degree} className={rowClass}>
                 <p className={labelClass}>{e.period}</p>
                 <div>
-                  <h3 className="text-lg font-semibold tracking-[-0.02em]">{e.degree}</h3>
+                  <h3 className="text-base font-semibold tracking-[-0.02em]">
+                    {e.degree}
+                  </h3>
                   <p className="text-tx2">{e.institution}</p>
                 </div>
               </div>

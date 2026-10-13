@@ -28,10 +28,18 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
           {
             text: 'Patient chart with vital signs, SOAPIE diary and Norton and Conley risk assessments.',
           },
-          { text: 'Shift planning, assignments and detection of uncovered shifts.' },
-          { text: 'Shift swaps with double confirmation: the colleague and the ward head.' },
-          { text: 'Leave requests, hours bank and monitoring of medication stock.' },
-          { text: 'Role-specific dashboards and a responsive interface for desktop and tablet.' },
+          {
+            text: 'Shift planning, assignments and detection of uncovered shifts.',
+          },
+          {
+            text: 'Shift swaps with double confirmation: the colleague and the ward head.',
+          },
+          {
+            text: 'Leave requests, hours bank and monitoring of medication stock.',
+          },
+          {
+            text: 'Role-specific dashboards and a responsive interface for desktop and tablet.',
+          },
         ],
       },
       {

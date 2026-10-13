@@ -42,13 +42,18 @@ export function Activity({ entries }: { entries: ActivityEntry[] }) {
                   rel="noopener noreferrer"
                   className="group grid items-baseline gap-1 py-[18px] transition-colors hover:bg-bg2 md:grid-cols-[110px_190px_1fr_auto] md:gap-4"
                 >
-                  <time dateTime={e.date} className="font-mono text-[13px] text-tx3">
+                  <time
+                    dateTime={e.date}
+                    className="font-mono text-[13px] text-tx3"
+                  >
                     {formatDate(e.date)}
                   </time>
                   <span className="font-mono text-sm font-medium transition-colors group-hover:text-acc">
                     {e.repo}
                   </span>
-                  <span className="truncate text-tx2 max-md:whitespace-normal">{e.message}</span>
+                  <span className="truncate text-tx2 max-md:whitespace-normal">
+                    {e.message}
+                  </span>
                   <span className="font-mono text-xs text-tx3">{e.sha}</span>
                 </a>
               </li>

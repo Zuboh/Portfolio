@@ -9,23 +9,42 @@ export function Contact() {
       <Container>
         <SectionHeader id="contact-title" title="Contact" />
 
+        <p className="mb-5 text-base text-tx2">
+          <span aria-hidden="true">👋 </span>Hi, reach me out on&hellip;
+        </p>
+
         <a
           href={`mailto:${EMAIL}`}
-          className="mb-9 block text-[clamp(19px,5.6vw,72px)] leading-none font-semibold tracking-[-0.05em] [overflow-wrap:anywhere] transition-colors hover:text-acc"
+          className="mb-9 block text-[clamp(17px,4.2vw,52px)] leading-none font-semibold tracking-[-0.05em] [overflow-wrap:anywhere] transition-colors hover:text-acc"
         >
           {EMAIL}
         </a>
 
         <div className="flex flex-wrap gap-2.5">
-          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="btn">
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn"
+          >
             <Icon name="github" className="text-base" />
             GitHub
           </a>
-          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="btn">
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn"
+          >
             <Icon name="linkedin" className="text-base" />
             LinkedIn
           </a>
-          <a href={RESUME_PDF} target="_blank" rel="noopener noreferrer" className="btn">
+          <a
+            href={RESUME_PDF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn"
+          >
             <Icon name="download" className="text-base" />
             Résumé
           </a>

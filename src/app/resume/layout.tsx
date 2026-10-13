@@ -7,6 +7,10 @@ export const metadata: Metadata = {
     'Résumé of Lorenzo Zubani, Frontend Engineer: experience, projects, skills and education.',
 }
 
-export default function ResumeLayout({ children }: { children: React.ReactNode }) {
+export default function ResumeLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return children
 }

@@ -7,11 +7,26 @@ export interface StackGroup {
 export const STACK_GROUPS: StackGroup[] = [
   {
     title: 'Frontend',
-    items: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'React Native', 'Angular', 'Vue'],
+    items: [
+      'React',
+      'TypeScript',
+      'Next.js',
+      'Tailwind',
+      'React Native',
+      'Angular',
+      'Vue',
+    ],
   },
   {
     title: 'Backend and data',
-    items: ['Node.js', 'Python', 'FastAPI', 'Supabase', 'PostgreSQL', 'MongoDB'],
+    items: [
+      'Node.js',
+      'Python',
+      'FastAPI',
+      'Supabase',
+      'PostgreSQL',
+      'MongoDB',
+    ],
   },
   {
     title: 'AI and LLM',

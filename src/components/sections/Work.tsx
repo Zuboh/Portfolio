@@ -30,11 +30,14 @@ export function Work() {
                 </span>
 
                 <div>
-                  <h3 className="mb-2 text-[26px] leading-tight font-semibold tracking-[-0.035em]">
+                  <h3 className="mb-2 text-xl leading-tight font-semibold tracking-[-0.035em]">
                     {p.name}
                   </h3>
                   <p className="max-w-[54ch] text-tx2">{p.description}</p>
-                  <ul className="mt-[18px] flex flex-wrap gap-2" aria-label={`${p.name} stack`}>
+                  <ul
+                    className="mt-[18px] flex flex-wrap gap-2"
+                    aria-label={`${p.name} stack`}
+                  >
                     {p.stack.map((s) => (
                       <li key={s}>
                         <Badge label={s} />
@@ -50,7 +53,9 @@ export function Work() {
                   </span>
                 </div>
 
-                <span className="font-mono text-[13px] text-tx3 md:pt-2">{statusLabel(p)}</span>
+                <span className="font-mono text-[13px] text-tx3 md:pt-2">
+                  {statusLabel(p)}
+                </span>
               </Link>
             </li>
           ))}

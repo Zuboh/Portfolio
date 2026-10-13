@@ -36,7 +36,10 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return (
     <main id="main" className="pb-4">
-      <article aria-labelledby="case-title" className="pt-[clamp(48px,7vw,88px)]">
+      <article
+        aria-labelledby="case-title"
+        className="pt-[clamp(48px,7vw,88px)]"
+      >
         <Container>
           <Link
             href="/#work"
@@ -45,14 +48,16 @@ export default async function CaseStudyPage({ params }: Props) {
             <span aria-hidden="true">←</span> All work
           </Link>
 
-          <p className="font-mono text-[13px] text-tx3">{statusLabel(project)}</p>
+          <p className="font-mono text-[13px] text-tx3">
+            {statusLabel(project)}
+          </p>
           <h1
             id="case-title"
-            className="mt-3 text-[clamp(48px,8vw,96px)] leading-[0.98] font-semibold tracking-[-0.055em]"
+            className="mt-3 text-[clamp(36px,5.5vw,64px)] leading-[0.98] font-semibold tracking-[-0.055em]"
           >
             {project.name}
           </h1>
-          <p className="mt-6 max-w-[56ch] text-[clamp(17px,1.7vw,20px)] text-tx2 [text-wrap:pretty]">
+          <p className="mt-6 max-w-[56ch] text-[clamp(16px,1.4vw,18px)] text-tx2 [text-wrap:pretty]">
             {project.description}
           </p>
 
@@ -67,13 +72,23 @@ export default async function CaseStudyPage({ params }: Props) {
           {(project.github || project.demo) && (
             <div className="mt-8 flex flex-wrap gap-2.5">
               {project.github && (
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn"
+                >
                   <Icon name="github" className="text-base" />
                   Source on GitHub
                 </a>
               )}
               {project.demo && (
-                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn">
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn"
+                >
                   <Icon name="arrow" className="text-base" />
                   Live demo
                 </a>
@@ -96,7 +111,10 @@ export default async function CaseStudyPage({ params }: Props) {
                 </h2>
                 <div className="max-w-[64ch]">
                   {section.paragraphs?.map((para) => (
-                    <p key={para} className="mb-4 text-[17px] text-tx2 [text-wrap:pretty] last:mb-0">
+                    <p
+                      key={para}
+                      className="mb-4 text-base text-tx2 [text-wrap:pretty] last:mb-0"
+                    >
                       {para}
                     </p>
                   ))}
@@ -109,7 +127,11 @@ export default async function CaseStudyPage({ params }: Props) {
                             ·
                           </span>
                           <span>
-                            {b.label && <strong className="font-medium text-tx">{b.label}. </strong>}
+                            {b.label && (
+                              <strong className="font-medium text-tx">
+                                {b.label}.{' '}
+                              </strong>
+                            )}
                             {b.text}
                           </span>
                         </li>
@@ -126,7 +148,7 @@ export default async function CaseStudyPage({ params }: Props) {
             className="group mt-16 flex items-baseline justify-between gap-4 border-b border-bd pb-6 transition-colors hover:border-acc"
           >
             <span className="font-mono text-[13px] text-tx3">Next project</span>
-            <span className="inline-flex items-center gap-2 text-2xl font-semibold tracking-[-0.035em]">
+            <span className="inline-flex items-center gap-2 text-xl font-semibold tracking-[-0.035em]">
               {next.name}
               <Icon
                 name="arrow"

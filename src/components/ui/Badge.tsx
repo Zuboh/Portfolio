@@ -18,7 +18,7 @@ export function Badge({ label, size = 'sm', interactive = false }: BadgeProps) {
           ? 'py-[3px] pr-[11px] pl-2 text-xs'
           : 'py-[5px] pr-[13px] pl-2.5 text-[13px]',
         interactive &&
-          'transition-[transform,color,border-color,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-acc/60 hover:bg-acc-dim hover:text-tx motion-reduce:transition-none motion-reduce:hover:translate-y-0'
+          'transition-[translate,color,border-color,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-acc/60 hover:bg-acc-dim hover:text-tx motion-reduce:transition-none motion-reduce:hover:translate-y-0'
       )}
     >
       {icon && (

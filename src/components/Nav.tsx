@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Container } from '@/components/ui/Container'
 
 const LINKS = [
@@ -16,12 +16,49 @@ const LINKS = [
 const linkClass =
   'block rounded-lg px-3.5 py-2.5 text-sm text-tx2 transition-colors hover:bg-bg2 hover:text-tx aria-[current=page]:text-tx'
 
+const CONTENT_SELECTOR =
+  'main :is(h1, h2, h3, h4, p, a, li, img, button, time, pre)'
+
 const barClass =
-  'absolute left-0 h-[1.5px] w-5 rounded-full bg-current transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)]'
+  'absolute left-0 h-[1.5px] w-5 rounded-full bg-current transition-[translate,rotate,scale,opacity] duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)]'
 
 export function Nav() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [underHeader, setUnderHeader] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
+
+  // Show the bottom border only while real content scrolls beneath the header.
+  useEffect(() => {
+    let raf = 0
+    const check = () => {
+      raf = 0
+      const header = headerRef.current
+      if (!header) return
+      const limit = header.getBoundingClientRect().bottom
+      let hit = false
+      for (const el of document.querySelectorAll(CONTENT_SELECTOR)) {
+        if (el.closest('.pointer-events-none')) continue
+        const r = el.getBoundingClientRect()
+        if (r.height > 0 && r.bottom > 1 && r.top < limit - 1) {
+          hit = true
+          break
+        }
+      }
+      setUnderHeader(hit)
+    }
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(check)
+    }
+    schedule()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+    return () => {
+      if (raf) cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+    }
+  }, [pathname])
 
   useEffect(() => {
     if (!open) return
@@ -33,7 +70,12 @@ export function Nav() {
   }, [open])
 
   return (
-    <header className="sticky top-0 z-20 border-b border-bd bg-bg/80 backdrop-blur-md">
+    <header
+      ref={headerRef}
+      className={`sticky top-0 z-20 border-b bg-bg/80 backdrop-blur-md transition-colors duration-300 ${
+        underHeader || open ? 'border-bd' : 'border-transparent'
+      }`}
+    >
       <Container className="flex h-[68px] items-center justify-between">
         <Link
           href="/"
@@ -98,7 +140,7 @@ export function Nav() {
                 {LINKS.map((l, i) => (
                   <li
                     key={l.href}
-                    className={`transition-[opacity,transform] duration-300 ease-out ${
+                    className={`transition-[opacity,translate] duration-300 ease-out ${
                       open
                         ? 'translate-y-0 opacity-100'
                         : '-translate-y-1 opacity-0'

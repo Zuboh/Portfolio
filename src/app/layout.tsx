@@ -18,6 +18,8 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
   display: 'swap',
+  // Only small labels use mono; keep its download off the LCP critical path.
+  preload: false,
 })
 
 const DESCRIPTION =
@@ -62,9 +64,15 @@ const PERSON_JSON_LD = JSON.stringify({
 }).replace(/</g, '\\u003c')
 
 export const viewport: Viewport = {
-  themeColor: '#0a0a0a',
-  colorScheme: 'dark',
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+    { media: '(prefers-color-scheme: light)', color: '#fafaf7' },
+  ],
+  colorScheme: 'dark light',
 }
+
+// Runs before paint so the saved or system theme is applied without a flash.
+const THEME_INIT = `try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t}catch(e){}`
 
 export default async function RootLayout({
   children,
@@ -74,7 +82,14 @@ export default async function RootLayout({
   const lastUpdated = await fetchLastCommitDate('Portfolio')
 
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
+      </head>
       <body>
         <a href="#main" className="skip-link">
           Skip to content

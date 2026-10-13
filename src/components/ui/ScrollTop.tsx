@@ -35,7 +35,7 @@ export function ScrollTop() {
       aria-label="Back to top"
       tabIndex={show ? 0 : -1}
       onClick={launch}
-      className={`group fixed right-[max(12px,env(safe-area-inset-right))] bottom-[max(16px,env(safe-area-inset-bottom))] z-20 size-16 ${
+      className={`group fixed cursor-pointer right-[max(12px,env(safe-area-inset-right))] bottom-[max(16px,env(safe-area-inset-bottom))] z-20 size-16 ${
         launching
           ? 'visible -translate-y-[130vh] opacity-0 transition-[translate,opacity] duration-[900ms] ease-[cubic-bezier(0.5,0,0.9,0.4)]'
           : show
@@ -47,9 +47,9 @@ export function ScrollTop() {
         src="/rocket.png"
         alt=""
         aria-hidden="true"
-        width={128}
-        height={128}
-        className="size-full drop-shadow-[0_6px_14px_rgb(0_0_0/0.55)] transition-transform duration-300 ease-out group-hover:-translate-y-1.5 group-hover:scale-110"
+        width={192}
+        height={192}
+        className="size-full drop-shadow-[0_6px_14px_rgb(0_0_0/0.55)] light:drop-shadow-[0_6px_12px_rgb(0_0_0/0.25)] transition-transform duration-300 ease-out group-hover:-translate-y-1.5 group-hover:scale-110"
       />
     </button>
   )

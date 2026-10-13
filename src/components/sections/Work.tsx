@@ -20,7 +20,7 @@ export function Work() {
             <li key={p.slug}>
               <Link
                 href={`/work/${p.slug}`}
-                className="group -mx-3 grid gap-x-6 gap-y-3 border-t border-bd px-3 py-9 transition-colors hover:bg-[#0e0e0e] md:grid-cols-[48px_1fr_200px] [li:last-child>&]:border-b"
+                className="group -mx-3 grid gap-x-6 gap-y-3 border-t border-bd px-3 py-9 transition-colors hover:bg-bg2 md:grid-cols-[48px_1fr_200px] [li:last-child>&]:border-b"
               >
                 <span
                   aria-hidden="true"

@@ -1,5 +1,8 @@
 // Logos live in /public/icons (devicon, MIT). Labels without an entry render as text-only badges.
-export const TECH_ICONS: Record<string, { file: string; invert?: boolean }> = {
+export const TECH_ICONS: Record<
+  string,
+  { file: string; invert?: boolean; pale?: boolean }
+> = {
   React: { file: 'react' },
   TypeScript: { file: 'typescript' },
   'Next.js': { file: 'nextjs', invert: true },
@@ -21,11 +24,11 @@ export const TECH_ICONS: Record<string, { file: string; invert?: boolean }> = {
   MongoDB: { file: 'mongodb' },
   'Claude Code': { file: 'claude' },
   'Claude API': { file: 'claude' },
-  Codex: { file: 'codex' },
-  OpenAI: { file: 'codex' },
-  Bash: { file: 'bash' },
+  Codex: { file: 'codex', pale: true },
+  OpenAI: { file: 'codex', pale: true },
+  Bash: { file: 'bash', pale: true },
   Git: { file: 'git' },
   Figma: { file: 'figma' },
   Vercel: { file: 'vercel', invert: true },
-  Cursor: { file: 'cursor' },
+  Cursor: { file: 'cursor', pale: true },
 }

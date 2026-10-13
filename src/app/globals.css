@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-/* ─── Design tokens (dark only) ──────────────────────────────── */
+/* ─── Design tokens (dark default, light via [data-theme=light]) ─ */
 
 :root {
   --bg: #0a0a0a;
@@ -12,8 +12,29 @@
   --bd2: #363636;
   --acc: oklch(78% 0.13 150);
   --acc-dim: oklch(78% 0.13 150 / 0.14);
+  --star: rgb(237 237 237 / 0.5);
+  --star-bright: rgb(237 237 237 / 0.85);
+  --star-acc: oklch(85% 0.12 150 / 0.9);
   color-scheme: dark;
 }
+
+:root[data-theme='light'] {
+  --bg: #fafaf7;
+  --bg2: #f1f0ea;
+  --tx: #151515;
+  --tx2: #52524e;
+  --tx3: #6b6b66; /* 5:1 on --bg */
+  --bd: #e4e3dc;
+  --bd2: #cfcdc4;
+  --acc: oklch(48% 0.13 150);
+  --acc-dim: oklch(48% 0.13 150 / 0.12);
+  --star: rgb(40 60 110 / 0.2);
+  --star-bright: rgb(40 60 110 / 0.34);
+  --star-acc: oklch(55% 0.12 150 / 0.5);
+  color-scheme: light;
+}
+
+@custom-variant light (&:where([data-theme='light'], [data-theme='light'] *));
 
 @theme inline {
   --color-bg: var(--bg);
@@ -82,11 +103,11 @@
 
 @layer components {
   .btn {
-    @apply inline-flex h-11 items-center gap-2 rounded-[9px] border border-bd2 px-5 text-sm font-medium text-tx transition-[background-color,border-color,transform] duration-150 hover:border-[#4a4a4a] hover:bg-[#151515] active:translate-y-px;
+    @apply inline-flex h-11 items-center gap-2 rounded-[9px] border border-bd2 px-5 text-sm font-medium text-tx transition-[background-color,border-color,transform] duration-150 hover:border-tx3 hover:bg-bg2 active:translate-y-px;
   }
 
   .btn-primary {
-    @apply border-tx bg-tx text-bg hover:border-white hover:bg-white;
+    @apply border-tx bg-tx text-bg hover:border-tx hover:bg-tx hover:opacity-90;
   }
 
   .section {
@@ -121,6 +142,18 @@
 .rise {
   animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   animation-delay: var(--d, 0ms);
+}
+
+/* Movement without the fade: the hero astronaut is the LCP element, so it must
+   paint on the first frame instead of waiting out an opacity ramp. */
+@keyframes lift {
+  from {
+    transform: translateY(10px);
+  }
+}
+
+.rise-lift {
+  animation: lift 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 @keyframes float {
@@ -176,6 +209,191 @@
   will-change: transform;
 }
 
+/* Sun/moon swap in the hero: the inactive body sets, the active one rises. */
+.celestial {
+  transition:
+    opacity 0.6s ease,
+    translate 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    scale 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.celestial-sun,
+:root[data-theme='light'] .celestial-moon {
+  opacity: 0;
+  translate: 0 40%;
+  scale: 0.6;
+}
+
+:root[data-theme='light'] .celestial-sun {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+}
+
+/* Header toggle: sun and moon ride one orbit whose pivot sits 22px below the
+   24px window; a 90° turn lifts the sun into view while the moon sets. */
+.theme-orbit {
+  transform-origin: 12px 34px;
+  transition: rotate 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.theme-orbit > * {
+  transition: rotate 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+:root[data-theme='light'] .theme-orbit {
+  rotate: 90deg;
+}
+
+:root[data-theme='light'] .theme-orbit > * {
+  rotate: -90deg;
+}
+
+/* Sunlit space: light mode washes the hero in sky tint and a soft sun glow. */
+.starfield g {
+  transition: fill 0.8s ease;
+}
+
+.sky,
+.sun-glow,
+.rim {
+  transition:
+    opacity 1s ease,
+    filter 1s ease;
+}
+
+.sky {
+  opacity: 0;
+  background: linear-gradient(
+    to bottom,
+    oklch(92% 0.045 235),
+    oklch(96% 0.03 85 / 0.6) 60%,
+    transparent
+  );
+}
+
+.sun-glow {
+  opacity: 0;
+  background: radial-gradient(
+    circle,
+    oklch(97% 0.12 95 / 0.85) 0,
+    oklch(95% 0.1 90 / 0.4) 22%,
+    oklch(94% 0.06 85 / 0.14) 45%,
+    transparent 68%
+  );
+}
+
+:root[data-theme='light'] :is(.sky, .sun-glow) {
+  opacity: 1;
+}
+
+:root[data-theme='light'] .rim {
+  filter: drop-shadow(10px -6px 18px oklch(88% 0.15 85 / 0.55));
+}
+
+/* Theme change: day rises from the bottom edge, night falls from the top, with
+   a soft horizon; the hero body itself sets and rises as its own group. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+  mask-size: 100% 300%;
+  -webkit-mask-size: 100% 300%;
+}
+
+:root[data-vt='day']::view-transition-new(root) {
+  mask-image: linear-gradient(to top, #000 0 33.3%, transparent 66.6% 100%);
+  -webkit-mask-image: linear-gradient(
+    to top,
+    #000 0 33.3%,
+    transparent 66.6% 100%
+  );
+  animation: sweep-down 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+:root[data-vt='night']::view-transition-new(root) {
+  mask-image: linear-gradient(to bottom, #000 0 33.3%, transparent 66.6% 100%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0 33.3%,
+    transparent 66.6% 100%
+  );
+  animation: sweep-up 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes sweep-down {
+  from {
+    mask-position: 0 0%;
+    -webkit-mask-position: 0 0%;
+  }
+  to {
+    mask-position: 0 100%;
+    -webkit-mask-position: 0 100%;
+  }
+}
+
+@keyframes sweep-up {
+  from {
+    mask-position: 0 100%;
+    -webkit-mask-position: 0 100%;
+  }
+  to {
+    mask-position: 0 0%;
+    -webkit-mask-position: 0 0%;
+  }
+}
+
+.celestial-sky {
+  view-transition-name: celestial;
+}
+
+::view-transition-old(celestial) {
+  animation: body-set 0.7s cubic-bezier(0.5, 0, 0.8, 0.4) both;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(celestial) {
+  animation: body-rise 0.95s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s both;
+  mix-blend-mode: normal;
+}
+
+/* The wave reveals the finished new theme, so skip the slow hero tweens that
+   would still be running under it. Naming the classes keeps the toggle from
+   restyling the whole document; short colour tweens end before the wave. */
+.theme-vt header,
+.theme-vt .sky,
+.theme-vt .sun-glow,
+.theme-vt .rim,
+.theme-vt .celestial,
+.theme-vt .starfield g {
+  transition: none !important;
+}
+
+@keyframes body-set {
+  to {
+    opacity: 0;
+    transform: translate(-46px, 96px) rotate(-28deg) scale(0.6);
+  }
+}
+
+@keyframes body-rise {
+  from {
+    opacity: 0;
+    transform: translate(52px, 110px) rotate(28deg) scale(0.5);
+  }
+  55% {
+    opacity: 1;
+  }
+}
+
 @keyframes twinkle {
   0%,
   100% {
@@ -188,6 +406,7 @@
 
 .twinkle {
   animation: twinkle 5s ease-in-out infinite;
+  will-change: opacity;
 }
 
 .twinkle-slow {

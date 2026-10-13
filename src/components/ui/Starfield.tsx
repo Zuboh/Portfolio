@@ -8,7 +8,7 @@ function mulberry32(seed: number) {
   }
 }
 
-type Star = { x: string; y: string; r: number; delay: string }
+type Star = { x: string; y: string; r: number }
 
 function stars(count: number, seed: number, minR: number, maxR: number) {
   const rand = mulberry32(seed)
@@ -18,51 +18,76 @@ function stars(count: number, seed: number, minR: number, maxR: number) {
       x: `${(rand() * 100).toFixed(2)}%`,
       y: `${(rand() * 100).toFixed(2)}%`,
       r: +(minR + rand() * (maxR - minR)).toFixed(2),
-      delay: `-${(rand() * 8).toFixed(2)}s`,
     })
   )
 }
 
-const DUST = stars(90, 7, 0.4, 0.8)
-const BRIGHT = stars(30, 21, 0.8, 1.2)
-const ACCENT = stars(7, 42, 1.2, 1.7)
+// Twinkling stars are split into a few phase groups, each its own <svg>, so the
+// opacity animation runs on the compositor instead of restyling every circle.
+function phases(list: Star[], groups: number, period: number) {
+  return Array.from({ length: groups }, (_, g) => ({
+    stars: list.filter((_, i) => i % groups === g),
+    delay: `-${((period / groups) * g).toFixed(2)}s`,
+  }))
+}
 
-export function Starfield({ className = '' }: { className?: string }) {
+const DUST = stars(90, 7, 0.4, 0.8)
+const BRIGHT = phases(stars(30, 21, 0.8, 1.2), 5, 5)
+const ACCENT = phases(stars(7, 42, 1.2, 1.7), 3, 8)
+
+const layerClass = 'absolute inset-0 h-full w-full'
+
+function Layer({
+  stars,
+  fill,
+  className = '',
+  delay,
+}: {
+  stars: Star[]
+  fill: string
+  className?: string
+  delay?: string
+}) {
   return (
     <svg
-      aria-hidden="true"
       focusable="false"
-      className={`starfield pointer-events-none absolute inset-0 h-full w-full ${className}`}
+      className={`${layerClass} ${className}`}
+      style={delay ? { animationDelay: delay } : undefined}
     >
-      <g fill="rgb(237 237 237 / 0.5)">
-        {DUST.map((s, i) => (
+      <g fill={fill}>
+        {stars.map((s, i) => (
           <circle key={i} cx={s.x} cy={s.y} r={s.r} />
         ))}
       </g>
-      <g fill="rgb(237 237 237 / 0.85)">
-        {BRIGHT.map((s, i) => (
-          <circle
-            key={i}
-            cx={s.x}
-            cy={s.y}
-            r={s.r}
-            className="twinkle"
-            style={{ animationDelay: s.delay }}
-          />
-        ))}
-      </g>
-      <g fill="oklch(85% 0.12 150 / 0.9)">
-        {ACCENT.map((s, i) => (
-          <circle
-            key={i}
-            cx={s.x}
-            cy={s.y}
-            r={s.r}
-            className="twinkle twinkle-slow"
-            style={{ animationDelay: s.delay }}
-          />
-        ))}
-      </g>
     </svg>
+  )
+}
+
+export function Starfield({ className = '' }: { className?: string }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`starfield pointer-events-none absolute inset-0 ${className}`}
+    >
+      <Layer stars={DUST} fill="var(--star)" />
+      {BRIGHT.map((p, i) => (
+        <Layer
+          key={`b${i}`}
+          stars={p.stars}
+          fill="var(--star-bright)"
+          className="twinkle"
+          delay={p.delay}
+        />
+      ))}
+      {ACCENT.map((p, i) => (
+        <Layer
+          key={`a${i}`}
+          stars={p.stars}
+          fill="var(--star-acc)"
+          className="twinkle twinkle-slow"
+          delay={p.delay}
+        />
+      ))}
+    </div>
   )
 }

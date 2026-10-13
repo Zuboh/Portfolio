@@ -12,11 +12,15 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative isolate pt-[clamp(80px,12vw,152px)] pb-10"
+      className="relative isolate overflow-x-clip pt-[clamp(80px,12vw,152px)] pb-10"
     >
+      <div
+        aria-hidden="true"
+        className="sky pointer-events-none absolute inset-x-0 -top-[68px] bottom-0 -z-10 [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"
+      />
       <Starfield className="-z-10 [mask-image:linear-gradient(to_bottom,black_55%,transparent)]" />
       <Container className="grid items-center gap-12 md:grid-cols-[1.25fr_1fr]">
-        <div>
+        <div className="relative z-10">
           <div
             className="rise flex flex-wrap items-center gap-x-4 gap-y-2"
             style={{ '--d': '0ms' } as React.CSSProperties}
@@ -88,30 +92,43 @@ export function Hero() {
         </div>
 
         <div
-          className="rise relative mx-auto w-full max-w-[260px] md:max-w-[420px] md:justify-self-end"
-          style={{ '--d': '400ms' } as React.CSSProperties}
+          className="rise-lift relative mx-auto w-full max-w-[210px] md:max-w-[340px] md:justify-self-end"
         >
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute top-[2%] -right-[18%] z-0 w-[27%] md:top-[4%] md:right-[calc(-1*clamp(0px,calc((100vw_-_1080px)/2_-_55px),110px))] md:w-[21%]"
+            className="pointer-events-none absolute -z-10 aspect-square top-[2%] -right-[18%] w-[33%] md:top-[4%] md:right-[calc(-1*clamp(0px,calc((100vw_-_1080px)/2_-_55px),110px))] md:w-[26%]"
+          >
+            <div className="sun-glow absolute top-1/2 left-1/2 size-[min(130vw,1000px)] -translate-1/2" />
+          </div>
+          <div
+            aria-hidden="true"
+            className="celestial-sky pointer-events-none absolute z-0 top-[2%] -right-[18%] w-[33%] md:top-[4%] md:right-[calc(-1*clamp(0px,calc((100vw_-_1080px)/2_-_55px),110px))] md:w-[26%]"
           >
             <Image
               src="/moon.png"
               alt=""
-              width={1254}
-              height={1254}
+              width={288}
+              height={288}
               sizes="(min-width: 768px) 88px, 70px"
-              className="drift h-auto w-full"
+              className="drift celestial celestial-moon h-auto w-full"
+            />
+            <Image
+              src="/sun.png"
+              alt=""
+              width={320}
+              height={320}
+              sizes="(min-width: 768px) 104px, 80px"
+              className="drift celestial celestial-sun absolute inset-0 h-auto w-full"
             />
           </div>
-          <div className="float group relative z-10">
+          <div className="float rim group relative z-10">
             <Image
               src="/hero-body-2.png"
               alt=""
               aria-hidden="true"
-              width={1230}
-              height={1278}
-              sizes="(min-width: 768px) 420px, 260px"
+              width={720}
+              height={748}
+              sizes="(min-width: 768px) 340px, 210px"
               priority
               className="h-auto w-full"
             />
@@ -119,9 +136,9 @@ export function Hero() {
               src="/hero-arm-rest-2.png"
               alt=""
               aria-hidden="true"
-              width={1230}
-              height={1278}
-              sizes="(min-width: 768px) 420px, 260px"
+              width={720}
+              height={748}
+              sizes="(min-width: 768px) 340px, 210px"
               loading="eager"
               className="absolute inset-0 h-auto w-full transition-opacity duration-[240ms] ease-out group-hover:opacity-0 group-hover:delay-[140ms] group-hover:duration-[160ms]"
             />
@@ -129,10 +146,9 @@ export function Hero() {
               src="/hero-arm-wave-2.png"
               alt=""
               aria-hidden="true"
-              width={1230}
-              height={1278}
-              sizes="(min-width: 768px) 420px, 260px"
-              loading="eager"
+              width={720}
+              height={748}
+              sizes="(min-width: 768px) 340px, 210px"
               className="absolute inset-0 h-auto w-full opacity-0 transition-opacity delay-[140ms] duration-[160ms] ease-out group-hover:opacity-100 group-hover:delay-0 group-hover:duration-[240ms]"
             />
           </div>

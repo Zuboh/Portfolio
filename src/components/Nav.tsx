@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { Container } from '@/components/ui/Container'
+import { ThemeToggle } from '@/components/ui/ThemeToggle'
 
 const LINKS = [
   { href: '/#work', label: 'Work' },
@@ -29,34 +30,41 @@ export function Nav() {
   const headerRef = useRef<HTMLElement>(null)
 
   // Show the bottom border only while real content scrolls beneath the header.
+  // An observer watches that band, so scrolling itself does no work.
   useEffect(() => {
-    let raf = 0
-    const check = () => {
-      raf = 0
-      const header = headerRef.current
-      if (!header) return
-      const limit = header.getBoundingClientRect().bottom
-      let hit = false
-      for (const el of document.querySelectorAll(CONTENT_SELECTOR)) {
-        if (el.closest('.pointer-events-none')) continue
-        const r = el.getBoundingClientRect()
-        if (r.height > 0 && r.bottom > 1 && r.top < limit - 1) {
-          hit = true
-          break
+    const bar = headerRef.current?.firstElementChild
+    if (!bar) return
+    const targets = [...document.querySelectorAll(CONTENT_SELECTOR)].filter(
+      (el) => !el.closest('.pointer-events-none')
+    )
+    const inBand = new Set<Element>()
+    let io: IntersectionObserver | undefined
+
+    const observe = () => {
+      io?.disconnect()
+      inBand.clear()
+      const limit = bar.getBoundingClientRect().height
+      io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting && e.boundingClientRect.height > 0)
+              inBand.add(e.target)
+            else inBand.delete(e.target)
+          }
+          setUnderHeader(inBand.size > 0)
+        },
+        {
+          rootMargin: `-1px 0px ${-(window.innerHeight - limit + 1)}px 0px`,
         }
-      }
-      setUnderHeader(hit)
+      )
+      for (const el of targets) io.observe(el)
     }
-    const schedule = () => {
-      if (!raf) raf = requestAnimationFrame(check)
-    }
-    schedule()
-    window.addEventListener('scroll', schedule, { passive: true })
-    window.addEventListener('resize', schedule)
+
+    observe()
+    window.addEventListener('resize', observe)
     return () => {
-      if (raf) cancelAnimationFrame(raf)
-      window.removeEventListener('scroll', schedule)
-      window.removeEventListener('resize', schedule)
+      io?.disconnect()
+      window.removeEventListener('resize', observe)
     }
   }, [pathname])
 
@@ -73,7 +81,9 @@ export function Nav() {
     <header
       ref={headerRef}
       className={`sticky top-0 z-20 border-b bg-bg/80 backdrop-blur-md transition-colors duration-300 ${
-        underHeader || open ? 'border-bd' : 'border-transparent'
+        underHeader || open
+          ? 'border-bd'
+          : 'border-transparent light:bg-transparent light:backdrop-blur-none'
       }`}
     >
       <Container className="flex h-[68px] items-center justify-between">
@@ -86,42 +96,46 @@ export function Nav() {
           <span>Z</span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex gap-1">
-            {LINKS.map((l) => (
-              <li key={l.href}>
-                <Link
-                  href={l.href}
-                  className={linkClass}
-                  aria-current={l.href === pathname ? 'page' : undefined}
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="flex items-center gap-1">
+          <nav aria-label="Primary" className="hidden md:block">
+            <ul className="flex gap-1">
+              {LINKS.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className={linkClass}
+                    aria-current={l.href === pathname ? 'page' : undefined}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <button
-          type="button"
-          className="group -mr-3 grid size-11 place-items-center rounded-lg text-tx2 transition-colors hover:text-tx md:hidden"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          onClick={() => setOpen((o) => !o)}
-        >
-          <span aria-hidden="true" className="relative block size-5">
-            <span
-              className={`${barClass} top-[5px] ${open ? 'translate-y-[4.25px] rotate-45' : ''}`}
-            />
-            <span
-              className={`${barClass} top-[9.25px] ${open ? 'scale-x-0 opacity-0' : ''}`}
-            />
-            <span
-              className={`${barClass} top-[13.5px] ${open ? '-translate-y-[4.25px] -rotate-45' : ''}`}
-            />
-          </span>
-        </button>
+          <ThemeToggle />
+
+          <button
+            type="button"
+            className="group -mr-3 grid size-11 place-items-center rounded-lg text-tx2 transition-colors hover:text-tx md:hidden"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen((o) => !o)}
+          >
+            <span aria-hidden="true" className="relative block size-5">
+              <span
+                className={`${barClass} top-[5px] ${open ? 'translate-y-[4.25px] rotate-45' : ''}`}
+              />
+              <span
+                className={`${barClass} top-[9.25px] ${open ? 'scale-x-0 opacity-0' : ''}`}
+              />
+              <span
+                className={`${barClass} top-[13.5px] ${open ? '-translate-y-[4.25px] -rotate-45' : ''}`}
+              />
+            </span>
+          </button>
+        </div>
       </Container>
 
       <nav

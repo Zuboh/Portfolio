@@ -30,7 +30,8 @@ export function Badge({ label, size = 'sm', interactive = false }: BadgeProps) {
           unoptimized
           className={cn(
             size === 'sm' ? 'size-[13px]' : 'size-4',
-            icon.invert && 'invert'
+            icon.invert && 'invert light:invert-0',
+            icon.pale && 'light:invert'
           )}
         />
       )}

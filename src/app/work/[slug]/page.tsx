@@ -18,7 +18,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const project = getProject(slug)
   if (!project) return {}
-  return { title: project.name, description: project.description }
+  return {
+    title: project.name,
+    description: project.description,
+    alternates: { canonical: `/work/${slug}` },
+  }
 }
 
 export default async function CaseStudyPage({ params }: Props) {

@@ -42,6 +42,17 @@ export const metadata: Metadata = {
   },
 }
 
+const PERSON_JSON_LD = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Lorenzo Zubani',
+  jobTitle: 'Frontend Engineer',
+  url: 'https://zubo.dev',
+  address: { '@type': 'PostalAddress', addressLocality: 'Brescia', addressCountry: 'IT' },
+  knowsAbout: ['React', 'TypeScript', 'Frontend architecture'],
+  sameAs: ['https://github.com/zuboh', 'https://www.linkedin.com/in/lorenzo-zubani/'],
+}).replace(/</g, '\\u003c')
+
 export const viewport: Viewport = {
   themeColor: '#0a0a0a',
   colorScheme: 'dark',
@@ -63,6 +74,7 @@ export default async function RootLayout({
         <Nav />
         {children}
         <Footer lastUpdated={lastUpdated} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: PERSON_JSON_LD }} />
       </body>
     </html>
   )

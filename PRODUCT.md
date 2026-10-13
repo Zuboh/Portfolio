@@ -10,7 +10,7 @@ Hiring managers, technical leads, and fellow engineers evaluating Lorenzo Zubani
 
 ## Product Purpose
 
-zubo.dev is Lorenzo's primary professional artifact — a personal portfolio that functions as a living sketchbook rather than a resume site. It should feel like picking up someone's taccuino: immediately personal, quietly surprising, organized but not sterile. The goal is to make a capable, creative engineer feel like a real person — not a brand — before a single line of experience is read.
+zubo.dev is Lorenzo's primary professional artifact: a portfolio for a Frontend Engineer specializing in React and TypeScript, with strong attention to architecture, UX and implementation quality. It shows the work as case studies, the stack as evidence, and live commits as proof of ongoing activity. A recruiter should understand who he is and what he has built within a minute, and an engineer should be able to go deeper.
 
 ## Brand Personality
 
@@ -20,7 +20,7 @@ Voice: low-key, no hype, technically confident. Writes like an engineer who thin
 
 ## References
 
-A personal notebook (taccuino): simple structure with human texture. Small doodles and details that reward attention. Clearly authored by one person, not assembled from a template. Feels analog in origin even when executed digitally.
+Vercel and its Geist design system: dark, typographic, hairline-divided, nearly no color. Product-engineering case studies that show architecture and decisions, not screenshots alone. Clearly authored by one person, not assembled from a template.
 
 ## Anti-references
 
@@ -31,7 +31,7 @@ A personal notebook (taccuino): simple structure with human texture. Small doodl
 ## Design Principles
 
 1. **Here's the proof, nothing else.** The work is the argument. No marketing copy, no padded intros, no heroic self-description. Evidence precedes claim.
-2. **Human artifact over digital template.** Small details — micro-typography, deliberate imperfections, handmade-feeling touches — signal that a person made this, not an AI or a Figma template kit.
+2. **Authored, not templated.** Precise typography, real content and live data signal that a person made this, not a template kit. Nothing is claimed that the repo or the résumé cannot back up.
 3. **Quiet confidence.** Presence through restraint. No design element should shout. If something draws attention, it earns it through quality, not size or color.
 4. **Reward the curious.** Visitors who look closely find more. The surface is clean; the depth is there for those who want it.
 5. **Direct and complete.** If it can be cut, cut it. Every section answers a real question the visitor has.

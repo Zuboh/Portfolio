@@ -1,0 +1,22 @@
+// Logos live in /public/icons (devicon, MIT). Labels without an entry render as text-only badges.
+export const TECH_ICONS: Record<string, { file: string; invert?: boolean }> = {
+  React: { file: 'react' },
+  TypeScript: { file: 'typescript' },
+  'Next.js': { file: 'nextjs', invert: true },
+  Tailwind: { file: 'tailwindcss' },
+  'React Native': { file: 'reactnative' },
+  Expo: { file: 'expo', invert: true },
+  Angular: { file: 'angular' },
+  Vue: { file: 'vuejs' },
+  'Vue 3': { file: 'vuejs' },
+  'Node.js': { file: 'nodejs' },
+  Python: { file: 'python' },
+  FastAPI: { file: 'fastapi' },
+  Supabase: { file: 'supabase' },
+  PostgreSQL: { file: 'postgresql' },
+  MongoDB: { file: 'mongodb' },
+  Git: { file: 'git' },
+  Figma: { file: 'figma' },
+  Vercel: { file: 'vercel', invert: true },
+  'VS Code': { file: 'vscode' },
+}

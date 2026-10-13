@@ -1,20 +1,17 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import { Topbar } from '@/components/Topbar'
-import { Footer } from '@/components/sections/Footer'
-import { ResumeHeader } from '@/components/resume/ResumeHeader'
-import { ResumeSection } from '@/components/resume/ResumeSection'
-import { ExperienceCard } from '@/components/resume/ExperienceCard'
-import { BlurFade } from '@/components/ui/blur-fade'
-
-const PAGE =
-  'grid grid-cols-1 md:grid-cols-[1fr_68px] max-w-[800px] mx-auto pl-6 pr-4 md:pl-14 md:pr-3 pb-[140px] overflow-x-hidden'
+import { Container } from '@/components/ui/Container'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Badge } from '@/components/ui/Badge'
+import { Icon } from '@/components/ui/Icon'
+import { projects } from '@/lib/projects'
+import { EMAIL, GITHUB_URL, LINKEDIN_URL, RESUME_PDF } from '@/data/social'
 
 const EXPERIENCE = [
   {
     role: 'Frontend Engineer',
-    company: 'Lavoratore autonomo',
+    company: 'Self-employed',
     period: 'Mar 2024 – present',
-    current: true,
     bullets: [
       'Eira — digital nursing handover platform, Vue 3 + FastAPI (university thesis)',
       'Primo — Italian contract analyzer (React Native + Supabase)',
@@ -24,7 +21,6 @@ const EXPERIENCE = [
     role: 'Frontend Developer',
     company: 'Codiceplastico',
     period: '2022 – 2024',
-    current: false,
     bullets: [
       'Built React component libraries and design system primitives',
       'Led migration from class components to hooks across legacy codebase',
@@ -36,7 +32,6 @@ const EXPERIENCE = [
     role: 'Frontend Developer',
     company: 'Accenture',
     period: '2019 – 2022',
-    current: false,
     bullets: [
       'Developed Angular applications for enterprise clients',
       'Integrated REST APIs and managed complex data flows with Redux',
@@ -49,180 +44,191 @@ const EDUCATION = [
   {
     degree: 'Laurea triennale in Digital Business',
     institution: 'Università Telematica Pegaso',
-    period: '2024 – 2027',
-    status: 'in progress' as const,
+    period: '2024 – 2027 (in progress)',
   },
   {
     degree: 'Diploma di Liceo Tecnico Informatico',
     institution: 'IIS "Carlo Beretta", Gardone Val Trompia',
     period: '2014 – 2019',
-    status: null,
   },
 ]
 
-const PROJECTS = [
-  {
-    name: 'Eira',
-    year: 2026,
-    description:
-      'Digital nursing handover platform: SBAR/ISBAR reports, patient charts, shift scheduling. Full-stack thesis project.',
-    tags: ['Vue 3', 'TypeScript', 'FastAPI', 'Python'],
-  },
-  {
-    name: 'Primo',
-    year: 2025,
-    description:
-      'Contract and payslip analyzer for Italian workers. AI reads the document, flags issues, explains in plain language.',
-    tags: ['React Native', 'Expo', 'OpenAI', 'Supabase'],
-  },
-]
-
-const SKILLS: { category: string; items: string[] }[] = [
-  {
-    category: 'Architecture',
-    items: ['Component design', 'design systems', 'state management'],
-  },
+const SKILLS = [
+  { category: 'Architecture', items: ['Component design', 'Design systems', 'State management'] },
   {
     category: 'Frontend',
-    items: [
-      'React',
-      'React Native',
-      'TypeScript',
-      'Next.js',
-      'Tailwind',
-      'Angular',
-      'Framer Motion',
-    ],
+    items: ['React', 'React Native', 'TypeScript', 'Next.js', 'Tailwind', 'Angular', 'Framer Motion'],
   },
   {
     category: 'Backend',
     items: ['Node.js', 'Python', 'Supabase', 'Drizzle ORM', 'Edge Functions'],
   },
-  {
-    category: 'AI / LLM',
-    items: ['Claude API', 'OpenAI', 'prompt engineering', 'pgvector'],
-  },
+  { category: 'AI and LLM', items: ['Claude API', 'OpenAI', 'Prompt engineering', 'pgvector'] },
   { category: 'Tools', items: ['Figma', 'Git', 'VS Code', 'Vercel'] },
 ]
 
-function Tag({ label }: { label: string }) {
-  return (
-    <span className="text-[10px] text-tx3 bg-bg3 px-[7px] py-0.5 rounded-[3px]">
-      {label}
-    </span>
-  )
-}
+const rowClass = 'grid gap-3 border-b border-bd py-7 md:grid-cols-[200px_1fr] md:gap-6'
+const labelClass = 'pt-1.5 font-mono text-[13px] font-normal text-tx3'
 
 export default function ResumePage() {
   return (
-    <div className={PAGE}>
-      <Topbar />
-      <main className="min-w-0">
-        <BlurFade delay={0}>
-          <div className="pt-10">
-            <Link
-              href="/"
-              className="text-[11px] text-tx3 no-underline tracking-[.06em] inline-block mb-8 border-b-[0.5px] border-bd pb-0.5 transition-colors duration-200 hover:text-acc hover:border-acc"
-            >
-              ← back
-            </Link>
-          </div>
-        </BlurFade>
+    <main id="main" className="pb-4">
+      <section className="pt-[clamp(48px,7vw,88px)]" aria-labelledby="resume-title">
+        <Container>
+          <Link
+            href="/"
+            className="mb-10 inline-flex items-center gap-2 text-sm text-tx3 transition-colors hover:text-tx"
+          >
+            <span aria-hidden="true">←</span> Back to home
+          </Link>
 
-        <ResumeHeader />
-
-        <ResumeSection label="experience">
-          {EXPERIENCE.map((e) => (
-            <ExperienceCard key={e.company} {...e} />
-          ))}
-        </ResumeSection>
-
-        <ResumeSection label="side projects">
-          <div className="flex flex-col">
-            {PROJECTS.map((p) => (
-              <div
-                key={p.name}
-                className="pb-5 mb-5 border-b-[0.5px] border-bd last:border-b-0 last:mb-0"
+          <div className="flex flex-wrap items-start gap-8">
+            <Image
+              src="/profile-image.jpeg"
+              alt="Portrait of Lorenzo Zubani"
+              width={128}
+              height={128}
+              priority
+              className="size-32 shrink-0 rounded-2xl border border-bd2 object-cover object-[50%_18%]"
+            />
+            <div className="min-w-0 flex-1">
+              <p className="font-mono text-[13px] text-tx3">Frontend Engineer</p>
+              <h1
+                id="resume-title"
+                className="mt-2 text-[clamp(40px,7vw,72px)] leading-none font-semibold tracking-[-0.055em]"
               >
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-[13px] font-medium text-tx">
-                    {p.name}
-                  </span>
-                  <span className="text-[10px] text-tx3 font-mono tracking-[.04em]">
-                    {p.year}
-                  </span>
-                </div>
-                <p className="text-[11px] text-tx2 leading-[1.65] mb-2">
-                  {p.description}
-                </p>
-                <div className="flex flex-wrap gap-1">
-                  {p.tags.map((t) => (
-                    <Tag key={t} label={t} />
-                  ))}
+                Lorenzo <span className="text-acc">Zubani</span>
+              </h1>
+              <p className="mt-5 max-w-[56ch] text-tx2 [text-wrap:pretty]">
+                Frontend engineer focused on architecture and design systems. Growing into AI
+                engineering, treating LLMs as the core of the product, not an add-on. Based in
+                Brescia, Italy.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-2.5">
+                <a href={`mailto:${EMAIL}`} className="btn btn-primary">
+                  <Icon name="mail" className="text-base" />
+                  Get in touch
+                </a>
+                <a href={RESUME_PDF} target="_blank" rel="noopener noreferrer" className="btn">
+                  <Icon name="download" className="text-base" />
+                  Download PDF
+                </a>
+                <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="btn">
+                  <Icon name="github" className="text-base" />
+                  GitHub
+                </a>
+                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="btn">
+                  <Icon name="linkedin" className="text-base" />
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="pt-24" aria-labelledby="exp-title">
+        <Container>
+          <SectionHeader id="exp-title" title="Experience" />
+          <div className="border-t border-bd">
+            {EXPERIENCE.map((e) => (
+              <div key={e.company} className={rowClass}>
+                <p className={labelClass}>{e.period}</p>
+                <div>
+                  <h3 className="text-lg font-semibold tracking-[-0.02em]">{e.role}</h3>
+                  <p className="text-tx2">{e.company}</p>
+                  <ul className="mt-4 flex flex-col gap-2 text-tx2">
+                    {e.bullets.map((b) => (
+                      <li key={b} className="flex gap-3">
+                        <span aria-hidden="true" className="text-acc">
+                          ·
+                        </span>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             ))}
           </div>
-        </ResumeSection>
+        </Container>
+      </section>
 
-        <ResumeSection label="skills">
-          <div className="flex flex-col gap-5">
+      <section className="pt-24" aria-labelledby="proj-title">
+        <Container>
+          <SectionHeader id="proj-title" title="Projects" />
+          <div className="border-t border-bd">
+            {projects.map((p) => (
+              <div key={p.slug} className={rowClass}>
+                <p className={labelClass}>{p.year}</p>
+                <div>
+                  <h3 className="text-lg font-semibold tracking-[-0.02em]">
+                    <Link href={`/work/${p.slug}`} className="transition-colors hover:text-acc">
+                      {p.name}
+                    </Link>
+                  </h3>
+                  <p className="mt-1 max-w-[60ch] text-tx2">{p.description}</p>
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {p.stack.map((s) => (
+                      <li key={s}>
+                        <Badge label={s} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="pt-24" aria-labelledby="skills-title">
+        <Container>
+          <SectionHeader id="skills-title" title="Skills" />
+          <div className="border-t border-bd">
             {SKILLS.map((s) => (
-              <div key={s.category}>
-                <div className="text-[10px] text-tx3 font-medium mb-2">
-                  {s.category}
-                </div>
-                <div className="flex flex-wrap gap-1">
+              <div key={s.category} className={rowClass}>
+                <h3 className={labelClass}>{s.category}</h3>
+                <ul className="flex flex-wrap gap-2">
                   {s.items.map((i) => (
-                    <Tag key={i} label={i} />
+                    <li key={i}>
+                      <Badge label={i} size="md" />
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             ))}
           </div>
-        </ResumeSection>
+        </Container>
+      </section>
 
-        <ResumeSection label="education">
-          <div className="flex flex-col">
+      <section className="pt-24" aria-labelledby="edu-title">
+        <Container>
+          <SectionHeader id="edu-title" title="Education" />
+          <div className="border-t border-bd">
             {EDUCATION.map((e) => (
-              <div
-                key={e.degree}
-                className="pb-5 mb-5 border-b-[0.5px] border-bd last:border-b-0 last:mb-0"
-              >
-                <div className="flex justify-between items-start gap-3 flex-wrap">
-                  <div>
-                    <div className="text-[13px] font-medium text-tx mb-0.5">
-                      {e.degree}
-                    </div>
-                    <div className="text-[11px] text-tx2 tracking-[.03em]">
-                      {e.institution}
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 shrink-0">
-                    {e.status && (
-                      <span className="text-[9px] tracking-[.1em] uppercase px-2 py-[3px] rounded-[20px] bg-[oklch(from_var(--acc)_l_c_h_/_0.1)] text-acc">
-                        {e.status}
-                      </span>
-                    )}
-                    <span className="text-[10px] text-tx3 font-mono tracking-[.04em]">
-                      {e.period}
-                    </span>
-                  </div>
+              <div key={e.degree} className={rowClass}>
+                <p className={labelClass}>{e.period}</p>
+                <div>
+                  <h3 className="text-lg font-semibold tracking-[-0.02em]">{e.degree}</h3>
+                  <p className="text-tx2">{e.institution}</p>
                 </div>
               </div>
             ))}
+            <div className={rowClass}>
+              <h3 className={labelClass}>Languages</h3>
+              <ul className="flex flex-wrap gap-2">
+                <li>
+                  <Badge label="Italian (native)" size="md" />
+                </li>
+                <li>
+                  <Badge label="English C1" size="md" />
+                </li>
+              </ul>
+            </div>
           </div>
-        </ResumeSection>
-
-        <ResumeSection label="languages">
-          <div className="flex gap-1.5">
-            <Tag label="Italian (native)" />
-            <Tag label="English C1" />
-          </div>
-        </ResumeSection>
-
-        <Footer />
-      </main>
-    </div>
+        </Container>
+      </section>
+    </main>
   )
 }

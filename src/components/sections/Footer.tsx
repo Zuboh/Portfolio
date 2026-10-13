@@ -1,14 +1,12 @@
-interface FooterProps {
-  lastUpdated?: string | null
-}
+import { Container } from '@/components/ui/Container'
 
-export function Footer({ lastUpdated }: FooterProps) {
+export function Footer({ lastUpdated }: { lastUpdated?: string | null }) {
   return (
-    <footer className="mt-8 pt-3 border-t-[0.5px] border-bd">
-      <div className="flex justify-between text-[10px] text-tx3 tracking-[.06em]">
-        <span>zubo.dev &nbsp;·&nbsp; Brescia, Italy</span>
-        {lastUpdated && <span>updated {lastUpdated}</span>}
-      </div>
+    <footer className="mt-[136px] border-t border-bd pt-7 pb-14 text-[13px] text-tx3 max-md:mt-24">
+      <Container className="flex flex-wrap justify-between gap-2">
+        <span>Lorenzo Zubani · Brescia, Italy</span>
+        {lastUpdated && <span>Updated {lastUpdated}</span>}
+      </Container>
     </footer>
   )
 }

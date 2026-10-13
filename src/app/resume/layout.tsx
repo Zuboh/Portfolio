@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  description: 'Lorenzo Zubani — Frontend Engineer. Resume and CV.',
+  title: 'Résumé',
+  description:
+    'Résumé of Lorenzo Zubani, Frontend Engineer: experience, projects, skills and education.',
 }
 
 export default function ResumeLayout({ children }: { children: React.ReactNode }) {

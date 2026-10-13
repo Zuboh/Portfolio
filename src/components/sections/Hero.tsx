@@ -1,54 +1,65 @@
-"use client";
+import { Container } from '@/components/ui/Container'
+import { Icon } from '@/components/ui/Icon'
+import { EMAIL, GITHUB_URL, LINKEDIN_URL, RESUME_PDF } from '@/data/social'
 
-
-import { AnalogClock } from "@/components/AnalogClock";
-import { SOCIAL_LINKS } from "@/data/social";
-import { HERO_SUBTITLE } from "@/data/content";
-import { BlurFade } from "@/components/ui/blur-fade";
-import { KineticText } from "@/components/ui/kinetic-text";
-
-const NAV_LINKS = SOCIAL_LINKS.filter((s) => s.showInNav);
+const linkClass =
+  'inline-flex items-center gap-2 text-sm text-tx2 transition-colors hover:text-tx'
 
 export function Hero() {
-
   return (
-    <section id="s-hero" className="pt-10 pb-10">
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] items-center gap-x-8">
-        <div>
-          <BlurFade delay={0}>
-            <h1 className="text-[clamp(40px,6.5vw,58px)] tracking-[-0.04em] leading-none mb-4">
-              <span className="inline-flex items-baseline gap-[0.28em]">
-                <KineticText text="Lorenzo" as="span" />
-                <KineticText text="Zubani" as="span" className="text-acc" />
-              </span>
-            </h1>
-          </BlurFade>
+    <section aria-labelledby="hero-title" className="pt-[clamp(80px,12vw,152px)] pb-10">
+      <Container>
+        <p
+          className="rise inline-flex rounded-full border border-bd2 px-3 py-1.5 font-mono text-[13px] text-tx3"
+          style={{ '--d': '0ms' } as React.CSSProperties}
+        >
+          Frontend Engineer · Brescia, Italy
+        </p>
 
-          <BlurFade delay={0.1}>
-            <p className="text-sm text-tx2 mb-4">{HERO_SUBTITLE}</p>
-          </BlurFade>
+        <h1
+          id="hero-title"
+          className="rise mt-6 text-[clamp(52px,9vw,116px)] leading-[0.97] font-semibold tracking-[-0.058em]"
+          style={{ '--d': '80ms' } as React.CSSProperties}
+        >
+          Lorenzo <span className="text-acc">Zubani</span>
+        </h1>
 
-          <BlurFade delay={0.15}>
-            <nav className="flex gap-5 flex-wrap">
-              {NAV_LINKS.map(({ key, label, href }) => (
-                <a
-                  key={key}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="text-xs text-tx3 no-underline tracking-[.05em] border-b-[0.5px] border-bd pb-0.5 transition-colors duration-200 hover:text-acc hover:border-acc"
-                >
-                  {label}
-                </a>
-              ))}
-            </nav>
-          </BlurFade>
+        <p
+          className="rise mt-7 max-w-[52ch] text-[clamp(17px,1.7vw,20px)] text-tx2 [text-wrap:pretty]"
+          style={{ '--d': '160ms' } as React.CSSProperties}
+        >
+          Frontend engineer specializing in React and TypeScript, with strong attention to
+          architecture, UX, and implementation quality.
+        </p>
+
+        <div
+          className="rise mt-9 flex flex-wrap gap-2.5"
+          style={{ '--d': '240ms' } as React.CSSProperties}
+        >
+          <a href={`mailto:${EMAIL}`} className="btn btn-primary">
+            <Icon name="mail" className="text-base" />
+            Get in touch
+          </a>
+          <a href={RESUME_PDF} target="_blank" rel="noopener noreferrer" className="btn">
+            <Icon name="download" className="text-base" />
+            Résumé
+          </a>
         </div>
 
-        <BlurFade delay={0.05} className="hidden md:flex items-center justify-center">
-          <AnalogClock />
-        </BlurFade>
-      </div>
+        <div
+          className="rise mt-10 flex flex-wrap gap-x-6 gap-y-3"
+          style={{ '--d': '320ms' } as React.CSSProperties}
+        >
+          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className={linkClass}>
+            <Icon name="github" className="text-[17px]" />
+            GitHub
+          </a>
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className={linkClass}>
+            <Icon name="linkedin" className="text-[17px]" />
+            LinkedIn
+          </a>
+        </div>
+      </Container>
     </section>
-  );
+  )
 }

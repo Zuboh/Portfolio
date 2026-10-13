@@ -1,63 +1,24 @@
-import type { StackItem } from '@/types'
+export interface StackGroup {
+  title: string
+  items: string[]
+}
 
-export const ICONS: StackItem[] = [
+// Sourced from the résumé skills and the featured projects.
+export const STACK_GROUPS: StackGroup[] = [
   {
-    label: 'HTML',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
+    title: 'Frontend',
+    items: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'React Native', 'Angular', 'Vue'],
   },
   {
-    label: 'CSS',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
+    title: 'Backend and data',
+    items: ['Node.js', 'Python', 'FastAPI', 'Supabase', 'PostgreSQL', 'MongoDB'],
   },
   {
-    label: 'JavaScript',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+    title: 'AI and LLM',
+    items: ['Claude API', 'OpenAI', 'Prompt engineering', 'pgvector'],
   },
   {
-    label: 'TypeScript',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+    title: 'Tools',
+    items: ['Git', 'Figma', 'Vercel', 'VS Code'],
   },
-  {
-    label: 'React',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-  },
-  {
-    label: 'Next.js',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
-    isDark: true,
-  },
-  {
-    label: 'React Native',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactnative/reactnative-original-wordmark.svg',
-  },
-  {
-    label: 'Expo',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/expo/expo-original.svg',
-    isDark: true,
-  },
-  {
-    label: 'Python',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
-  },
-  {
-    label: 'Node.js',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain-wordmark.svg',
-  },
-  {
-    label: 'MongoDB',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg',
-  },
-  {
-    label: 'PostgreSQL',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-  },
-  {
-    label: 'Git',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-  },
-  {
-    label: 'Figma',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
-  },
-  { label: 'Claude', src: 'https://cdn.simpleicons.org/claude' },
 ]

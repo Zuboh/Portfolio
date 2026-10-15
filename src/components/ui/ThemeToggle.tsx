@@ -28,7 +28,7 @@ let transitionId = 0
 const getTheme = (): Theme =>
   document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
 
-export function ThemeToggle() {
+export function ThemeToggle({ label }: { label: string }) {
   const theme = useSyncExternalStore(subscribe, getTheme, () => 'dark' as Theme)
 
   const toggle = () => {
@@ -65,7 +65,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggle}
-      aria-label="Light mode"
+      aria-label={label}
       aria-pressed={theme === 'light'}
       className="grid size-11 cursor-pointer place-items-center rounded-lg text-tx2 transition-colors hover:text-tx"
     >

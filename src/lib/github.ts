@@ -1,5 +1,6 @@
 import type { ActivityEntry } from '@/types'
 import { GITHUB_USER } from '@/data/social'
+import type { Locale } from '@/i18n/config'
 
 const API = 'https://api.github.com'
 
@@ -80,7 +81,8 @@ export async function fetchRecentCommits(limit = 6): Promise<ActivityEntry[]> {
 }
 
 export async function fetchLastCommitDate(
-  repo: string
+  repo: string,
+  lang: Locale = 'en'
 ): Promise<string | null> {
   const commits = await getJson<CommitSummary[]>(
     `/repos/${GITHUB_USER}/${repo}/commits?per_page=1`
@@ -88,7 +90,7 @@ export async function fetchLastCommitDate(
   const iso =
     commits?.[0]?.commit.committer?.date ?? commits?.[0]?.commit.author?.date
   if (!iso) return null
-  return new Date(iso).toLocaleDateString('en-US', {
+  return new Date(iso).toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-US', {
     month: 'long',
     year: 'numeric',
     timeZone: 'UTC',

@@ -5,14 +5,27 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { Container } from '@/components/ui/Container'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
+import { stripLocale, type Locale } from '@/i18n/config'
 
 const LINKS = [
-  { href: '/#work', label: 'Work' },
-  { href: '/#stack', label: 'Stack' },
-  { href: '/#activity', label: 'Activity' },
-  { href: '/resume', label: 'Résumé' },
-  { href: '/#contact', label: 'Contact' },
-]
+  { href: '/#work', key: 'work' },
+  { href: '/#stack', key: 'stack' },
+  { href: '/#activity', key: 'activity' },
+  { href: '/resume', key: 'resume' },
+  { href: '/#contact', key: 'contact' },
+] as const
+
+type NavLabels = {
+  work: string
+  stack: string
+  activity: string
+  resume: string
+  contact: string
+  primary: string
+  openMenu: string
+  closeMenu: string
+  home: string
+}
 
 const linkClass =
   'block rounded-lg px-3.5 py-2.5 text-sm text-tx2 transition-colors hover:bg-bg2 hover:text-tx aria-[current=page]:text-tx'
@@ -23,8 +36,16 @@ const CONTENT_SELECTOR =
 const barClass =
   'absolute left-0 h-[1.5px] w-5 rounded-full bg-current transition-[translate,rotate,scale,opacity] duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)]'
 
-export function Nav() {
-  const pathname = usePathname()
+export function Nav({
+  lang,
+  labels,
+  themeLabel,
+}: {
+  lang: Locale
+  labels: NavLabels
+  themeLabel: string
+}) {
+  const pathname = stripLocale(usePathname())
   const [open, setOpen] = useState(false)
   const [underHeader, setUnderHeader] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
@@ -88,8 +109,8 @@ export function Nav() {
     >
       <Container className="flex h-[68px] items-center justify-between">
         <Link
-          href="/"
-          aria-label="Lorenzo Zubani, home"
+          href={`/${lang}`}
+          aria-label={labels.home}
           className="inline-flex items-center gap-[0.35em] py-2 text-lg leading-none font-semibold tracking-[-0.04em]"
         >
           <span>L</span>
@@ -97,28 +118,28 @@ export function Nav() {
         </Link>
 
         <div className="flex items-center gap-1">
-          <nav aria-label="Primary" className="hidden md:block">
+          <nav aria-label={labels.primary} className="hidden md:block">
             <ul className="flex gap-1">
               {LINKS.map((l) => (
                 <li key={l.href}>
                   <Link
-                    href={l.href}
+                    href={`/${lang}${l.href}`}
                     className={linkClass}
                     aria-current={l.href === pathname ? 'page' : undefined}
                   >
-                    {l.label}
+                    {labels[l.key]}
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          <ThemeToggle />
+          <ThemeToggle label={themeLabel} />
 
           <button
             type="button"
             className="group -mr-3 grid size-11 place-items-center rounded-lg text-tx2 transition-colors hover:text-tx md:hidden"
-            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-label={open ? labels.closeMenu : labels.openMenu}
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((o) => !o)}
@@ -140,7 +161,7 @@ export function Nav() {
 
       <nav
         id="mobile-nav"
-        aria-label="Primary"
+        aria-label={labels.primary}
         className={`grid transition-[grid-template-rows,opacity,visibility] duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] md:hidden ${
           open
             ? 'visible grid-rows-[1fr] opacity-100'
@@ -164,12 +185,12 @@ export function Nav() {
                     }}
                   >
                     <Link
-                      href={l.href}
+                      href={`/${lang}${l.href}`}
                       className={`${linkClass} py-3`}
                       aria-current={l.href === pathname ? 'page' : undefined}
                       onClick={() => setOpen(false)}
                     >
-                      {l.label}
+                      {labels[l.key]}
                     </Link>
                   </li>
                 ))}

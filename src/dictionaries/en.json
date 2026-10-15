@@ -1,0 +1,399 @@
+{
+  "meta": {
+    "description": "Lorenzo Zubani is a Frontend Engineer in Brescia, Italy, specializing in React and TypeScript, with close attention to architecture, UX, and code quality.",
+    "ogTitle": "Lorenzo Zubani, Frontend Engineer",
+    "jobTitle": "Frontend Engineer",
+    "ogSubtitle": "Frontend Engineer · React and TypeScript",
+    "resumeTitle": "Résumé",
+    "resumeDescription": "Résumé of Lorenzo Zubani, Frontend Engineer: experience, projects, skills and education."
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "backHome": "Back to home",
+    "backToTop": "Back to top",
+    "lightMode": "Light mode",
+    "timeIn": "in Brescia",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "resume": "Résumé",
+    "getInTouch": "Get in touch"
+  },
+  "nav": {
+    "work": "Work",
+    "stack": "Stack",
+    "activity": "Activity",
+    "resume": "Résumé",
+    "contact": "Contact",
+    "primary": "Primary",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "home": "Lorenzo Zubani, home"
+  },
+  "hero": {
+    "role": "Frontend Engineer · Brescia, Italy",
+    "intro": "Frontend engineer specializing in React and TypeScript, with strong attention to architecture, UX, and implementation quality."
+  },
+  "work": {
+    "title": "Works",
+    "projectsCount": "projects",
+    "readCaseStudy": "Read case study",
+    "stackSuffix": "stack",
+    "inProgress": "In progress",
+    "planned": "Planned"
+  },
+  "stack": {
+    "title": "Stack",
+    "aside": "What I build with",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend and data",
+      "ai": "AI and LLM",
+      "tools": "Tools"
+    }
+  },
+  "activity": {
+    "title": "Commits",
+    "live": "Live from GitHub",
+    "unavailable": "Recent activity is unavailable right now. See"
+  },
+  "contact": {
+    "title": "Contact",
+    "hi": "Hi reach out to me at…"
+  },
+  "footer": {
+    "location": "Lorenzo Zubani · Brescia, Italy",
+    "updated": "Updated"
+  },
+  "caseStudy": {
+    "allWork": "All work",
+    "source": "Source on GitHub",
+    "demo": "Live demo",
+    "next": "Next project",
+    "stack": "Stack"
+  },
+  "resume": {
+    "role": "Frontend Engineer",
+    "intro": "Frontend engineer focused on architecture and design systems. Growing into AI engineering, treating LLMs as the core of the product, not an add-on. Based in Brescia, Italy.",
+    "downloadPdf": "Download PDF",
+    "imageAlt": "Illustrated portrait of Lorenzo Zubani",
+    "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "education": "Education",
+    "languages": "Languages",
+    "languageItems": ["Italian (native)", "English C1"],
+    "experienceItems": [
+      {
+        "role": "Frontend Engineer",
+        "company": "Self-employed",
+        "period": "Mar 2024 – present",
+        "bullets": [
+          "Eira — digital nursing handover platform, Vue 3 + FastAPI (university thesis)",
+          "Primo — Italian contract analyzer (React Native + Supabase)"
+        ]
+      },
+      {
+        "role": "Frontend Developer",
+        "company": "Codiceplastico",
+        "period": "2022 – 2024",
+        "bullets": [
+          "Built React component libraries and design system primitives",
+          "Led migration from class components to hooks across legacy codebase",
+          "Implemented state management with Zustand and Recoil",
+          "Collaborated with design team to produce pixel accurate UIs"
+        ]
+      },
+      {
+        "role": "Frontend Developer",
+        "company": "Accenture",
+        "period": "2019 – 2022",
+        "bullets": [
+          "Developed Angular applications for enterprise clients",
+          "Integrated REST APIs and managed complex data flows with Redux",
+          "Contributed to internal design system and component documentation"
+        ]
+      }
+    ],
+    "educationItems": [
+      {
+        "degree": "Laurea triennale in Digital Business",
+        "institution": "Università Telematica Pegaso",
+        "period": "2024 – 2027 (in progress)"
+      },
+      {
+        "degree": "Diploma di Liceo Tecnico Informatico",
+        "institution": "IIS \"Carlo Beretta\", Gardone Val Trompia",
+        "period": "2014 – 2019"
+      }
+    ],
+    "skillGroups": [
+      {
+        "category": "Architecture",
+        "items": ["Component design", "Design systems", "State management"]
+      },
+      {
+        "category": "Frontend",
+        "items": [
+          "React",
+          "React Native",
+          "TypeScript",
+          "Next.js",
+          "Tailwind",
+          "Angular",
+          "Framer Motion"
+        ]
+      },
+      {
+        "category": "Backend",
+        "items": [
+          "Node.js",
+          "Python",
+          "Supabase",
+          "Drizzle ORM",
+          "Edge Functions"
+        ]
+      },
+      {
+        "category": "AI and LLM",
+        "items": ["Claude API", "OpenAI", "Prompt engineering", "pgvector"]
+      },
+      {
+        "category": "Tools",
+        "items": ["Figma", "Git", "Cursor", "Vercel"]
+      }
+    ]
+  },
+  "projects": {
+    "eira": {
+      "description": "Digital nursing handover platform — SBAR/ISBAR reports, patient charts, shift scheduling. Full-stack university thesis project.",
+      "longDescription": "Eira digitizes nursing shift handovers: SBAR/ISBAR reports, SOAPIE diary, patient vitals, Norton/Conley risk assessments, shift and staff management, with separate flows for nurses and ward heads. Built as the final project work of the degree in Informatica per le Aziende Digitali at Università Telematica Pegaso. Academic/demo project — fictional clinical context, not a medical device."
+    },
+    "primo": {
+      "description": "Upload a contract or payslip, AI reads it, flags issues, and breaks it down in plain language. Built for workers, not lawyers.",
+      "longDescription": "Italian labour law is dense. Primo takes a contract or payslip photo, extracts the text, and runs it through a prompt that knows Italian employment law. It flags missing clauses, illegal terms, and underpayment, then explains each finding in plain language. No legal jargon."
+    },
+    "zubo-os": {
+      "description": "Rebuilt Claude Code's core loop by hand in Python: hooks, permission gates, tool dispatch, context assembly. No framework, just the loop.",
+      "longDescription": "Zubo OS is a personal CLI agent on the Claude API that mirrors Claude Code's internals in about 300 lines of Python: a PreToolUse/PostToolUse hook system, a 3-mode permission gate (default/auto/plan), a tool dispatch dict, and a system prompt assembled at runtime from a base prompt, active skills, and a memory index. I built it to understand the deterministic infrastructure behind tool execution and context assembly, not the model."
+    }
+  },
+  "caseStudies": {
+    "eira": {
+      "sections": [
+        {
+          "id": "overview",
+          "title": "Overview",
+          "paragraphs": [
+            "Eira is a full-stack application for managing nursing handovers digitally. It brings SBAR handover, shift planning, clinical data and staff coordination into a single workspace, with separate flows for nurses and ward heads.",
+            "It was developed as the final project work of the degree in Informatica per le Aziende Digitali at Università Telematica Pegaso. The clinical context is fictional and there is no partnership with real healthcare facilities. Eira is an academic and demonstration project: it is not a medical device and must not be used for real clinical data or decisions."
+          ]
+        },
+        {
+          "id": "what-it-does",
+          "title": "What it does",
+          "bullets": [
+            {
+              "text": "Structured SBAR/ISBAR handover with priority and history."
+            },
+            {
+              "text": "Patient chart with vital signs, SOAPIE diary and Norton and Conley risk assessments."
+            },
+            {
+              "text": "Shift planning, assignments and detection of uncovered shifts."
+            },
+            {
+              "text": "Shift swaps with double confirmation: the colleague and the ward head."
+            },
+            {
+              "text": "Leave requests, hours bank and monitoring of medication stock."
+            },
+            {
+              "text": "Role-specific dashboards and a responsive interface for desktop and tablet."
+            }
+          ]
+        },
+        {
+          "id": "architecture",
+          "title": "Architecture",
+          "paragraphs": [
+            "The frontend talks to the backend through a typed client generated from the backend’s own OpenAPI schema, so the API contract is shared rather than duplicated."
+          ],
+          "flow": [
+            "Vue 3 + PrimeVue",
+            "openapi-fetch typed client",
+            "FastAPI",
+            "JWT and access policies",
+            "Domain services",
+            "SQLite + Alembic"
+          ],
+          "bullets": [
+            {
+              "label": "Frontend",
+              "text": "Vue 3, Vite, TypeScript, Pinia, PrimeVue and Vue Router."
+            },
+            {
+              "label": "Backend",
+              "text": "FastAPI, SQLAlchemy, Pydantic, JWT and Alembic."
+            },
+            {
+              "label": "Persistence",
+              "text": "SQLite with migrations and a non-destructive bootstrap."
+            }
+          ]
+        },
+        {
+          "id": "decisions",
+          "title": "Decisions",
+          "bullets": [
+            {
+              "label": "One API contract",
+              "text": "TypeScript types and the client are generated from the OpenAPI schema, and a contract check is part of the project scripts."
+            },
+            {
+              "label": "Authorization on the server",
+              "text": "Access is checked per role, ward, user and shift on the backend. Frontend checks only guide the experience."
+            },
+            {
+              "label": "No known credentials in production",
+              "text": "The demo seed exists only in development and end-to-end runs and is always disabled in production."
+            }
+          ]
+        },
+        {
+          "id": "quality-and-security",
+          "title": "Quality and security",
+          "bullets": [
+            {
+              "label": "Tests",
+              "text": "API and domain tests, component and composable tests, static checks, OpenAPI contract verification and browser end-to-end tests with axe-core accessibility checks."
+            },
+            {
+              "label": "Security",
+              "text": "bcrypt password hashing, expiring JWTs with the user reloaded from the database on every request, data isolation between wards with protection against IDOR, and server-side validation of avatars."
+            },
+            {
+              "label": "Documentation",
+              "text": "The repository documents the threat model and known limits in its SECURITY.md."
+            }
+          ]
+        }
+      ]
+    },
+    "primo": {
+      "sections": [
+        {
+          "id": "overview",
+          "title": "Overview",
+          "paragraphs": [
+            "Italian labour law is dense. Primo is a mobile app that takes a contract or payslip and explains it in plain language, built for workers rather than lawyers.",
+            "It is still in progress."
+          ]
+        },
+        {
+          "id": "how-it-works",
+          "title": "How it works",
+          "flow": [
+            "Photo of a contract or payslip",
+            "Text extraction",
+            "Prompt written for Italian employment law",
+            "Findings explained in plain language"
+          ],
+          "bullets": [
+            {
+              "text": "It flags missing clauses, illegal terms and underpayment."
+            },
+            {
+              "text": "Each finding is explained without legal jargon."
+            }
+          ]
+        },
+        {
+          "id": "stack",
+          "title": "Stack",
+          "bullets": [
+            {
+              "label": "App",
+              "text": "React Native with Expo and TypeScript."
+            },
+            {
+              "label": "Backend",
+              "text": "Supabase."
+            },
+            {
+              "label": "Analysis",
+              "text": "OpenAI GPT-4o mini."
+            }
+          ]
+        }
+      ]
+    },
+    "zubo-os": {
+      "sections": [
+        {
+          "id": "overview",
+          "title": "Overview",
+          "paragraphs": [
+            "Zubo OS is a personal CLI agent on the Claude API. I wanted to know how Claude Code actually works, so I rebuilt its core loop by hand: hooks, permission gates, tool dispatch and context assembly. That is the deterministic part of an agent, and it fits in about 300 lines of readable Python."
+          ]
+        },
+        {
+          "id": "the-loop",
+          "title": "The loop",
+          "paragraphs": [
+            "When the model stops with end_turn the response is printed. When it stops with tool_use the loop runs the tool call and goes around again."
+          ],
+          "flow": [
+            "User input",
+            "UserInput hook",
+            "Claude API",
+            "PreToolUse hook",
+            "Permission gate",
+            "Tool execution",
+            "PostToolUse hook",
+            "tool_result appended, loop"
+          ]
+        },
+        {
+          "id": "layers",
+          "title": "Layers",
+          "bullets": [
+            {
+              "label": "Context assembly",
+              "text": "The system prompt is built at runtime from a base prompt, the active skills and a memory index."
+            },
+            {
+              "label": "Hooks",
+              "text": "Four lifecycle events (PreToolUse, PostToolUse, UserInput and Stop) registered as callables on a HookRegistry."
+            },
+            {
+              "label": "Permissions",
+              "text": "Three modes: default asks before guarded tools, auto allows everything and plan blocks tool execution."
+            },
+            {
+              "label": "Tool dispatch",
+              "text": "Each tool module exports its schemas and functions. They are merged into one dispatch dict and called with the model’s input unpacked directly."
+            },
+            {
+              "label": "Memory",
+              "text": "Markdown files with frontmatter, indexed by a MEMORY.md that is injected into the system prompt."
+            }
+          ]
+        },
+        {
+          "id": "decisions",
+          "title": "Decisions",
+          "bullets": [
+            {
+              "label": "Hooks over edits to the loop",
+              "text": "Logging, validation and slash commands live in hooks, so cross-cutting concerns never require changing agent.py."
+            },
+            {
+              "label": "Same skeleton, smaller scope",
+              "text": "It keeps the conceptual skeleton of Claude Code and leaves out its production hardening: streaming, worktrees, MCP servers and concurrent tool calls."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

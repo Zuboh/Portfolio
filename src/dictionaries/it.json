@@ -1,0 +1,403 @@
+{
+  "meta": {
+    "description": "Lorenzo Zubani è un Frontend Engineer di Brescia, specializzato in React e TypeScript, con grande attenzione ad architettura, UX e qualità dell’implementazione.",
+    "ogTitle": "Lorenzo Zubani, Frontend Engineer",
+    "jobTitle": "Frontend Engineer",
+    "ogSubtitle": "Frontend Engineer · React e TypeScript",
+    "resumeTitle": "Curriculum",
+    "resumeDescription": "Curriculum di Lorenzo Zubani, Frontend Engineer: esperienza, progetti, competenze e formazione."
+  },
+  "common": {
+    "skipToContent": "Vai al contenuto",
+    "backHome": "Torna alla home",
+    "backToTop": "Torna su",
+    "lightMode": "Tema chiaro",
+    "timeIn": "a Brescia",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "resume": "Curriculum",
+    "getInTouch": "Contattami"
+  },
+  "nav": {
+    "work": "Lavori",
+    "stack": "Stack",
+    "activity": "Attività",
+    "resume": "Curriculum",
+    "contact": "Contatti",
+    "primary": "Principale",
+    "openMenu": "Apri il menu",
+    "closeMenu": "Chiudi il menu",
+    "home": "Lorenzo Zubani, home"
+  },
+  "hero": {
+    "role": "Frontend Engineer · Brescia, Italia",
+    "intro": "Frontend engineer specializzato in React e TypeScript, con grande attenzione ad architettura, UX e qualità dell’implementazione."
+  },
+  "work": {
+    "title": "Lavori",
+    "projectsCount": "progetti",
+    "readCaseStudy": "Leggi il case study",
+    "stackSuffix": "stack",
+    "inProgress": "In corso",
+    "planned": "Pianificato"
+  },
+  "stack": {
+    "title": "Stack",
+    "aside": "Con cosa costruisco",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend e dati",
+      "ai": "AI e LLM",
+      "tools": "Strumenti"
+    }
+  },
+  "activity": {
+    "title": "Commit",
+    "live": "In diretta da GitHub",
+    "unavailable": "L’attività recente non è disponibile al momento. Vedi"
+  },
+  "contact": {
+    "title": "Contatti",
+    "hi": "Scrivimi a…"
+  },
+  "footer": {
+    "location": "Lorenzo Zubani · Brescia, Italia",
+    "updated": "Aggiornato a"
+  },
+  "caseStudy": {
+    "allWork": "Tutti i lavori",
+    "source": "Codice su GitHub",
+    "demo": "Demo live",
+    "next": "Prossimo progetto",
+    "stack": "Stack"
+  },
+  "resume": {
+    "role": "Frontend Engineer",
+    "intro": "Frontend engineer focalizzato su architettura e design system. In crescita verso l’AI engineering, dove gli LLM sono il cuore del prodotto e non un’aggiunta. Vivo a Brescia.",
+    "downloadPdf": "Scarica il PDF",
+    "imageAlt": "Ritratto illustrato di Lorenzo Zubani",
+    "experience": "Esperienza",
+    "projects": "Progetti",
+    "skills": "Competenze",
+    "education": "Formazione",
+    "languages": "Lingue",
+    "languageItems": ["Italiano (madrelingua)", "Inglese C1"],
+    "experienceItems": [
+      {
+        "role": "Frontend Engineer",
+        "company": "Libero professionista",
+        "period": "Mar 2024 – oggi",
+        "bullets": [
+          "Eira — piattaforma digitale per le consegne infermieristiche, Vue 3 + FastAPI (tesi universitaria)",
+          "Primo — analizzatore di contratti di lavoro italiani (React Native + Supabase)"
+        ]
+      },
+      {
+        "role": "Frontend Developer",
+        "company": "Codiceplastico",
+        "period": "2022 – 2024",
+        "bullets": [
+          "Sviluppo di librerie di componenti React e primitive di design system",
+          "Guida della migrazione da class component a hook su una codebase legacy",
+          "Gestione dello stato con Zustand e Recoil",
+          "Collaborazione con il team di design per interfacce fedeli al pixel"
+        ]
+      },
+      {
+        "role": "Frontend Developer",
+        "company": "Accenture",
+        "period": "2019 – 2022",
+        "bullets": [
+          "Sviluppo di applicazioni Angular per clienti enterprise",
+          "Integrazione di API REST e gestione di flussi di dati complessi con Redux",
+          "Contributo al design system interno e alla documentazione dei componenti"
+        ]
+      }
+    ],
+    "educationItems": [
+      {
+        "degree": "Laurea triennale in Digital Business",
+        "institution": "Università Telematica Pegaso",
+        "period": "2024 – 2027 (in corso)"
+      },
+      {
+        "degree": "Diploma di Liceo Tecnico Informatico",
+        "institution": "IIS \"Carlo Beretta\", Gardone Val Trompia",
+        "period": "2014 – 2019"
+      }
+    ],
+    "skillGroups": [
+      {
+        "category": "Architettura",
+        "items": [
+          "Progettazione di componenti",
+          "Design system",
+          "Gestione dello stato"
+        ]
+      },
+      {
+        "category": "Frontend",
+        "items": [
+          "React",
+          "React Native",
+          "TypeScript",
+          "Next.js",
+          "Tailwind",
+          "Angular",
+          "Framer Motion"
+        ]
+      },
+      {
+        "category": "Backend",
+        "items": [
+          "Node.js",
+          "Python",
+          "Supabase",
+          "Drizzle ORM",
+          "Edge Functions"
+        ]
+      },
+      {
+        "category": "AI e LLM",
+        "items": ["Claude API", "OpenAI", "Prompt engineering", "pgvector"]
+      },
+      {
+        "category": "Strumenti",
+        "items": ["Figma", "Git", "Cursor", "Vercel"]
+      }
+    ]
+  },
+  "projects": {
+    "eira": {
+      "description": "Piattaforma digitale per le consegne infermieristiche — report SBAR/ISBAR, cartelle dei pazienti, turni. Progetto di tesi full-stack.",
+      "longDescription": "Eira digitalizza le consegne infermieristiche di turno: report SBAR/ISBAR, diario SOAPIE, parametri vitali, valutazioni del rischio Norton/Conley, gestione di turni e personale, con flussi separati per infermieri e coordinatori di reparto. Realizzato come project work finale del corso di laurea in Informatica per le Aziende Digitali all’Università Telematica Pegaso. Progetto accademico/dimostrativo — contesto clinico fittizio, non è un dispositivo medico."
+    },
+    "primo": {
+      "description": "Carichi un contratto o una busta paga, l’AI lo legge, segnala i problemi e lo spiega in modo semplice. Pensato per i lavoratori, non per gli avvocati.",
+      "longDescription": "Il diritto del lavoro italiano è denso. Primo prende la foto di un contratto o di una busta paga, ne estrae il testo e lo passa a un prompt che conosce la normativa italiana sul lavoro. Segnala clausole mancanti, condizioni illegittime e retribuzioni inferiori al dovuto, poi spiega ogni punto in modo chiaro. Niente gergo legale."
+    },
+    "zubo-os": {
+      "description": "Il ciclo centrale di Claude Code ricostruito a mano in Python: hook, permessi, dispatch degli strumenti, gestione del contesto. Nessun framework, solo il ciclo.",
+      "longDescription": "Zubo OS è un agente CLI personale basato sulla Claude API che rispecchia il funzionamento interno di Claude Code in circa 300 righe di Python: un sistema di hook PreToolUse/PostToolUse, un controllo dei permessi a 3 modalità (default/auto/plan), un dizionario per il dispatch degli strumenti e un system prompt assemblato a runtime da un prompt base, dalle skill attive e da un indice di memoria. L’ho costruito per capire l’infrastruttura deterministica dietro l’esecuzione degli strumenti e l’assemblaggio del contesto, non il modello."
+    }
+  },
+  "caseStudies": {
+    "eira": {
+      "sections": [
+        {
+          "id": "overview",
+          "title": "Panoramica",
+          "paragraphs": [
+            "Eira è un’applicazione full-stack per gestire in digitale le consegne infermieristiche. Riunisce in un unico spazio di lavoro la consegna SBAR, la pianificazione dei turni, i dati clinici e il coordinamento del personale, con flussi separati per infermieri e coordinatori di reparto.",
+            "È stata sviluppata come project work finale del corso di laurea in Informatica per le Aziende Digitali all’Università Telematica Pegaso. Il contesto clinico è fittizio e non esiste alcuna collaborazione con strutture sanitarie reali. Eira è un progetto accademico e dimostrativo: non è un dispositivo medico e non va usato per dati o decisioni cliniche reali."
+          ]
+        },
+        {
+          "id": "what-it-does",
+          "title": "Cosa fa",
+          "bullets": [
+            {
+              "text": "Consegna strutturata SBAR/ISBAR con priorità e storico."
+            },
+            {
+              "text": "Cartella del paziente con parametri vitali, diario SOAPIE e valutazioni del rischio Norton e Conley."
+            },
+            {
+              "text": "Pianificazione dei turni, assegnazioni e rilevamento dei turni scoperti."
+            },
+            {
+              "text": "Scambi di turno con doppia conferma: il collega e il coordinatore di reparto."
+            },
+            {
+              "text": "Richieste di permesso, banca ore e monitoraggio delle scorte di farmaci."
+            },
+            {
+              "text": "Dashboard specifiche per ruolo e interfaccia responsive per desktop e tablet."
+            }
+          ]
+        },
+        {
+          "id": "architecture",
+          "title": "Architettura",
+          "paragraphs": [
+            "Il frontend parla con il backend tramite un client tipizzato generato dallo schema OpenAPI del backend stesso, così il contratto dell’API è condiviso e non duplicato."
+          ],
+          "flow": [
+            "Vue 3 + PrimeVue",
+            "Client tipizzato openapi-fetch",
+            "FastAPI",
+            "JWT e policy di accesso",
+            "Servizi di dominio",
+            "SQLite + Alembic"
+          ],
+          "bullets": [
+            {
+              "label": "Frontend",
+              "text": "Vue 3, Vite, TypeScript, Pinia, PrimeVue e Vue Router."
+            },
+            {
+              "label": "Backend",
+              "text": "FastAPI, SQLAlchemy, Pydantic, JWT e Alembic."
+            },
+            {
+              "label": "Persistenza",
+              "text": "SQLite con migrazioni e un bootstrap non distruttivo."
+            }
+          ]
+        },
+        {
+          "id": "decisions",
+          "title": "Decisioni",
+          "bullets": [
+            {
+              "label": "Un solo contratto API",
+              "text": "I tipi TypeScript e il client sono generati dallo schema OpenAPI, e una verifica del contratto fa parte degli script del progetto."
+            },
+            {
+              "label": "Autorizzazione lato server",
+              "text": "L’accesso viene verificato per ruolo, reparto, utente e turno sul backend. I controlli del frontend servono solo a guidare l’esperienza."
+            },
+            {
+              "label": "Nessuna credenziale nota in produzione",
+              "text": "Il seed dimostrativo esiste solo in sviluppo e nelle esecuzioni end-to-end ed è sempre disattivato in produzione."
+            }
+          ]
+        },
+        {
+          "id": "quality-and-security",
+          "title": "Qualità e sicurezza",
+          "bullets": [
+            {
+              "label": "Test",
+              "text": "Test di API e dominio, test di componenti e composable, controlli statici, verifica del contratto OpenAPI e test end-to-end nel browser con controlli di accessibilità axe-core."
+            },
+            {
+              "label": "Sicurezza",
+              "text": "Hashing delle password con bcrypt, JWT con scadenza e utente ricaricato dal database a ogni richiesta, isolamento dei dati tra reparti con protezione da IDOR e validazione lato server degli avatar."
+            },
+            {
+              "label": "Documentazione",
+              "text": "Il repository documenta il threat model e i limiti noti nel suo SECURITY.md."
+            }
+          ]
+        }
+      ]
+    },
+    "primo": {
+      "sections": [
+        {
+          "id": "overview",
+          "title": "Panoramica",
+          "paragraphs": [
+            "Il diritto del lavoro italiano è denso. Primo è un’app mobile che prende un contratto o una busta paga e li spiega in modo semplice, pensata per i lavoratori e non per gli avvocati.",
+            "È ancora in corso di sviluppo."
+          ]
+        },
+        {
+          "id": "how-it-works",
+          "title": "Come funziona",
+          "flow": [
+            "Foto di un contratto o di una busta paga",
+            "Estrazione del testo",
+            "Prompt scritto per il diritto del lavoro italiano",
+            "Risultati spiegati in modo semplice"
+          ],
+          "bullets": [
+            {
+              "text": "Segnala clausole mancanti, condizioni illegittime e retribuzioni inferiori al dovuto."
+            },
+            {
+              "text": "Ogni punto viene spiegato senza gergo legale."
+            }
+          ]
+        },
+        {
+          "id": "stack",
+          "title": "Stack",
+          "bullets": [
+            {
+              "label": "App",
+              "text": "React Native con Expo e TypeScript."
+            },
+            {
+              "label": "Backend",
+              "text": "Supabase."
+            },
+            {
+              "label": "Analisi",
+              "text": "OpenAI GPT-4o mini."
+            }
+          ]
+        }
+      ]
+    },
+    "zubo-os": {
+      "sections": [
+        {
+          "id": "overview",
+          "title": "Panoramica",
+          "paragraphs": [
+            "Zubo OS è un agente CLI personale basato sulla Claude API. Volevo capire come funziona davvero Claude Code, quindi ho ricostruito a mano il suo ciclo centrale: hook, controlli dei permessi, dispatch degli strumenti e assemblaggio del contesto. È la parte deterministica di un agente e sta in circa 300 righe di Python leggibile."
+          ]
+        },
+        {
+          "id": "the-loop",
+          "title": "Il ciclo",
+          "paragraphs": [
+            "Quando il modello si ferma con end_turn la risposta viene stampata. Quando si ferma con tool_use il ciclo esegue la chiamata allo strumento e ricomincia."
+          ],
+          "flow": [
+            "Input dell’utente",
+            "Hook UserInput",
+            "Claude API",
+            "Hook PreToolUse",
+            "Controllo dei permessi",
+            "Esecuzione dello strumento",
+            "Hook PostToolUse",
+            "tool_result aggiunto, nuovo giro"
+          ]
+        },
+        {
+          "id": "layers",
+          "title": "Livelli",
+          "bullets": [
+            {
+              "label": "Assemblaggio del contesto",
+              "text": "Il system prompt viene costruito a runtime da un prompt base, dalle skill attive e da un indice di memoria."
+            },
+            {
+              "label": "Hook",
+              "text": "Quattro eventi del ciclo di vita (PreToolUse, PostToolUse, UserInput e Stop) registrati come callable su un HookRegistry."
+            },
+            {
+              "label": "Permessi",
+              "text": "Tre modalità: default chiede prima di usare gli strumenti protetti, auto permette tutto e plan blocca l’esecuzione degli strumenti."
+            },
+            {
+              "label": "Dispatch degli strumenti",
+              "text": "Ogni modulo di strumenti esporta i propri schemi e le proprie funzioni. Vengono uniti in un unico dizionario di dispatch e chiamati con l’input del modello spacchettato direttamente."
+            },
+            {
+              "label": "Memoria",
+              "text": "File Markdown con frontmatter, indicizzati da un MEMORY.md che viene iniettato nel system prompt."
+            }
+          ]
+        },
+        {
+          "id": "decisions",
+          "title": "Decisioni",
+          "bullets": [
+            {
+              "label": "Hook invece di modifiche al ciclo",
+              "text": "Logging, validazione e slash command vivono negli hook, così le funzionalità trasversali non richiedono mai di modificare agent.py."
+            },
+            {
+              "label": "Stesso scheletro, ambito più piccolo",
+              "text": "Mantiene lo scheletro concettuale di Claude Code e lascia fuori il suo rinforzo per la produzione: streaming, worktree, server MCP e chiamate concorrenti agli strumenti."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

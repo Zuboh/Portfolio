@@ -1,15 +1,20 @@
 export type ProjectStatus = 'in progress' | 'shipped' | 'planning'
 
-export interface Project {
+export interface ProjectBase {
   name: string
   slug: string
-  description: string
-  longDescription?: string
   stack: string[]
   year: number
   status: ProjectStatus
+  /** Last meaningful change to the case study (YYYY-MM-DD); feeds sitemap and JSON-LD. */
+  updated: string
   github?: string
   demo?: string
+}
+
+export interface Project extends ProjectBase {
+  description: string
+  longDescription?: string
 }
 
 export interface ActivityEntry {

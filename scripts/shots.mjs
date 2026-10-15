@@ -7,7 +7,7 @@ const label = process.argv[2] ?? 'current'
 const reduced = process.argv.includes('--reduced')
 const base = process.env.BASE_URL ?? 'http://localhost:3000'
 
-const routes = (process.env.ROUTES ?? '/,/resume').split(',')
+const routes = (process.env.ROUTES ?? '/en,/en/resume').split(',')
 const viewports = [
   { name: 'desktop', width: 1440, height: 900 },
   { name: 'tablet', width: 1024, height: 768 },
@@ -36,7 +36,7 @@ for (const vp of viewports) {
       window.scrollTo(0, 0)
     })
     await page.waitForTimeout(600)
-    const name = route === '/' ? 'home' : route.replace(/^\//, '').replace(/\//g, '-')
+    const name = route === '/en' ? 'home' : route.replace(/^\/en\/?/, '').replace(/\//g, '-')
     await page.screenshot({ path: `${outDir}/${name}-${vp.name}.png`, fullPage: true })
     const overflow = await page.evaluate(
       () => document.documentElement.scrollWidth > document.documentElement.clientWidth,

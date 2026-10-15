@@ -5,32 +5,51 @@ import { Container } from '@/components/ui/Container'
 import { Badge } from '@/components/ui/Badge'
 import { Icon } from '@/components/ui/Icon'
 import { Flow } from '@/components/ui/Flow'
-import { CASE_STUDIES } from '@/data/case-studies'
+import type { CaseStudySection } from '@/data/case-studies'
 import { getProject, projects, statusLabel } from '@/lib/projects'
+import { hasLocale, locales } from '@/i18n/config'
+import { caseStudy, jsonLd } from '@/lib/jsonld'
+import { SITE_NAME } from '@/lib/site'
+import { getDictionary } from '../../dictionaries'
 
-type Props = { params: Promise<{ slug: string }> }
+type Props = { params: Promise<{ lang: string; slug: string }> }
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }))
+  return locales.flatMap((lang) =>
+    projects.map((p) => ({ lang, slug: p.slug }))
+  )
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
-  const project = getProject(slug)
+  const { lang, slug } = await params
+  if (!hasLocale(lang)) return {}
+  const dict = await getDictionary(lang)
+  const project = getProject(slug, dict.projects)
   if (!project) return {}
   return {
-    title: project.name,
     description: project.description,
-    alternates: { canonical: `/work/${slug}` },
+    alternates: {
+      canonical: `/${lang}/work/${slug}`,
+      languages: {
+        en: `/en/work/${slug}`,
+        it: `/it/work/${slug}`,
+        'x-default': `/en/work/${slug}`,
+      },
+    },
   }
 }
 
 export default async function CaseStudyPage({ params }: Props) {
-  const { slug } = await params
-  const project = getProject(slug)
+  const { lang, slug } = await params
+  if (!hasLocale(lang)) notFound()
+
+  const dict = await getDictionary(lang)
+  const project = getProject(slug, dict.projects)
   if (!project) notFound()
 
-  const study = CASE_STUDIES[slug]
+  const study = (
+    dict.caseStudies as Record<string, { sections: CaseStudySection[] }>
+  )[slug]
   const index = projects.findIndex((p) => p.slug === slug)
   const next = projects[(index + 1) % projects.length]
 
@@ -42,14 +61,14 @@ export default async function CaseStudyPage({ params }: Props) {
       >
         <Container>
           <Link
-            href="/#work"
+            href={`/${lang}#work`}
             className="mb-12 inline-flex items-center gap-2 text-sm text-tx3 transition-colors hover:text-tx"
           >
-            <span aria-hidden="true">←</span> All work
+            <span aria-hidden="true">←</span> {dict.caseStudy.allWork}
           </Link>
 
           <p className="font-mono text-[13px] text-tx3">
-            {statusLabel(project)}
+            {statusLabel(project, dict.work)}
           </p>
           <h1
             id="case-title"
@@ -61,7 +80,10 @@ export default async function CaseStudyPage({ params }: Props) {
             {project.description}
           </p>
 
-          <ul className="mt-8 flex flex-wrap gap-2" aria-label="Stack">
+          <ul
+            className="mt-8 flex flex-wrap gap-2"
+            aria-label={dict.caseStudy.stack}
+          >
             {project.stack.map((s) => (
               <li key={s}>
                 <Badge label={s} size="md" />
@@ -79,7 +101,7 @@ export default async function CaseStudyPage({ params }: Props) {
                   className="btn"
                 >
                   <Icon name="github" className="text-base" />
-                  Source on GitHub
+                  {dict.caseStudy.source}
                 </a>
               )}
               {project.demo && (
@@ -90,7 +112,7 @@ export default async function CaseStudyPage({ params }: Props) {
                   className="btn"
                 >
                   <Icon name="arrow" className="text-base" />
-                  Live demo
+                  {dict.caseStudy.demo}
                 </a>
               )}
             </div>
@@ -99,12 +121,12 @@ export default async function CaseStudyPage({ params }: Props) {
           <div className="mt-20 border-t border-bd">
             {(study?.sections ?? []).map((section) => (
               <section
-                key={section.title}
-                aria-labelledby={`s-${section.title.replace(/\W+/g, '-').toLowerCase()}`}
+                key={section.id}
+                aria-labelledby={`s-${section.id}`}
                 className="grid gap-4 border-b border-bd py-12 md:grid-cols-[200px_1fr] md:gap-6"
               >
                 <h2
-                  id={`s-${section.title.replace(/\W+/g, '-').toLowerCase()}`}
+                  id={`s-${section.id}`}
                   className="pt-1 font-mono text-[13px] font-normal text-tx3"
                 >
                   {section.title}
@@ -144,10 +166,12 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
 
           <Link
-            href={`/work/${next.slug}`}
+            href={`/${lang}/work/${next.slug}`}
             className="group mt-16 flex items-baseline justify-between gap-4 border-b border-bd pb-6 transition-colors hover:border-acc"
           >
-            <span className="font-mono text-[13px] text-tx3">Next project</span>
+            <span className="font-mono text-[13px] text-tx3">
+              {dict.caseStudy.next}
+            </span>
             <span className="inline-flex items-center gap-2 text-xl font-semibold tracking-[-0.035em]">
               {next.name}
               <Icon
@@ -158,6 +182,12 @@ export default async function CaseStudyPage({ params }: Props) {
           </Link>
         </Container>
       </article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLd(caseStudy(lang, project, SITE_NAME)),
+        }}
+      />
     </main>
   )
 }

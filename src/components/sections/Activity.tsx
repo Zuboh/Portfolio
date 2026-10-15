@@ -2,9 +2,11 @@ import type { ActivityEntry } from '@/types'
 import { Container } from '@/components/ui/Container'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { GITHUB_URL } from '@/data/social'
+import { intlLocale, type Locale } from '@/i18n/config'
+import type { Dictionary } from '@/app/[lang]/dictionaries'
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString('en-GB', {
+function formatDate(iso: string, lang: Locale) {
+  return new Date(iso).toLocaleDateString(intlLocale[lang], {
     day: '2-digit',
     month: 'short',
     year: 'numeric',
@@ -12,13 +14,21 @@ function formatDate(iso: string) {
   })
 }
 
-export function Activity({ entries }: { entries: ActivityEntry[] }) {
+export function Activity({
+  entries,
+  lang,
+  dict,
+}: {
+  entries: ActivityEntry[]
+  lang: Locale
+  dict: Dictionary
+}) {
   return (
     <section id="activity" aria-labelledby="activity-title" className="section">
       <Container>
         <SectionHeader
           id="activity-title"
-          title="Commits"
+          title={dict.activity.title}
           aside={
             entries.length > 0 ? (
               <span className="inline-flex items-center gap-2">
@@ -26,7 +36,7 @@ export function Activity({ entries }: { entries: ActivityEntry[] }) {
                   aria-hidden="true"
                   className="size-[7px] rounded-full bg-acc shadow-[0_0_0_3px_var(--acc-dim)]"
                 />
-                Live from GitHub
+                {dict.activity.live}
               </span>
             ) : undefined
           }
@@ -46,7 +56,7 @@ export function Activity({ entries }: { entries: ActivityEntry[] }) {
                     dateTime={e.date}
                     className="font-mono text-[13px] text-tx3"
                   >
-                    {formatDate(e.date)}
+                    {formatDate(e.date, lang)}
                   </time>
                   <span className="font-mono text-sm font-medium transition-colors group-hover:text-acc">
                     {e.repo}
@@ -61,7 +71,7 @@ export function Activity({ entries }: { entries: ActivityEntry[] }) {
           </ul>
         ) : (
           <p className="border-t border-bd py-6 text-tx2">
-            Recent activity is unavailable right now. See{' '}
+            {dict.activity.unavailable}{' '}
             <a
               href={GITHUB_URL}
               target="_blank"

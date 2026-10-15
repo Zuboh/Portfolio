@@ -2,12 +2,13 @@ import { Container } from '@/components/ui/Container'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Icon } from '@/components/ui/Icon'
 import { EMAIL, GITHUB_URL, LINKEDIN_URL, RESUME_PDF } from '@/data/social'
+import type { Dictionary } from '@/app/[lang]/dictionaries'
 
-export function Contact() {
+export function Contact({ dict }: { dict: Dictionary }) {
   return (
     <section id="contact" aria-labelledby="contact-title" className="section">
       <Container>
-        <SectionHeader id="contact-title" title="Contact" />
+        <SectionHeader id="contact-title" title={dict.contact.title} />
 
         <p className="mb-6 flex items-center gap-3 text-[clamp(18px,2.2vw,26px)] leading-tight tracking-[-0.02em] text-tx2">
           <span
@@ -16,7 +17,7 @@ export function Contact() {
           >
             👋
           </span>
-          Hi reach out to me at&hellip;
+          {dict.contact.hi}
         </p>
 
         <a
@@ -52,7 +53,7 @@ export function Contact() {
             className="btn"
           >
             <Icon name="download" className="text-base" />
-            Résumé
+            {dict.common.resume}
           </a>
         </div>
       </Container>

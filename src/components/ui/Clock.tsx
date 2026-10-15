@@ -10,7 +10,13 @@ const formatter = new Intl.DateTimeFormat('en-GB', {
   hour12: false,
 })
 
-export function Clock({ className = '' }: { className?: string }) {
+export function Clock({
+  className = '',
+  label,
+}: {
+  className?: string
+  label: string
+}) {
   const [time, setTime] = useState<string | null>(null)
 
   useEffect(() => {
@@ -24,7 +30,7 @@ export function Clock({ className = '' }: { className?: string }) {
     <p className={className}>
       <time
         className="text-tx tabular-nums"
-        aria-label={time ? `${time} in Brescia` : undefined}
+        aria-label={time ? `${time} ${label}` : undefined}
       >
         {time ?? '--:--:--'}
       </time>

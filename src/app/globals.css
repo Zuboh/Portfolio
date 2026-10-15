@@ -26,8 +26,8 @@
   --tx3: #6b6b66; /* 5:1 on --bg */
   --bd: oklch(91% 0.008 235);
   --bd2: oklch(84% 0.012 235);
-  --acc: oklch(48% 0.13 150);
-  --acc-dim: oklch(48% 0.13 150 / 0.12);
+  --acc: #65f0aa;
+  --acc-dim: rgb(101 240 170 / 0.14);
   color-scheme: light;
 }
 
@@ -408,6 +408,12 @@
 .twinkle-slow {
   animation-duration: 8s;
   animation-delay: -3s;
+}
+
+/* Infinite sky/hero loops start once the page is idle (set by Nav), so they
+   don't compete with hydration and the first paint. */
+html:not(.anim-ready) :is(.twinkle, .drift, .float) {
+  animation-play-state: paused;
 }
 
 .float {

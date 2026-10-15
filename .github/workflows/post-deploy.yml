@@ -1,0 +1,32 @@
+name: Post-deploy indexing
+
+# Vercel reports each deployment to GitHub; act only on successful production ones.
+on:
+  deployment_status:
+
+jobs:
+  index:
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment.environment == 'Production'
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: https://lorenzozubani.dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Smoke-test production
+        run: npm run seo:check -- "$SITE_URL"
+
+      - name: IndexNow (Bing, Yandex, Seznam, Naver)
+        run: npm run seo:indexnow
+
+      - name: Google Search Console sitemap
+        run: npm run seo:gsc
+        env:
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}

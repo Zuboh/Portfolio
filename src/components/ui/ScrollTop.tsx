@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 
 const LAUNCH_MS = 900
 
-export function ScrollTop() {
+export function ScrollTop({ label }: { label: string }) {
   const [show, setShow] = useState(false)
   const [launching, setLaunching] = useState(false)
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined)
@@ -32,7 +32,7 @@ export function ScrollTop() {
   return (
     <button
       type="button"
-      aria-label="Back to top"
+      aria-label={label}
       tabIndex={show ? 0 : -1}
       onClick={launch}
       className={`group fixed cursor-pointer right-[max(12px,env(safe-area-inset-right))] bottom-[max(16px,env(safe-area-inset-bottom))] z-20 size-16 ${

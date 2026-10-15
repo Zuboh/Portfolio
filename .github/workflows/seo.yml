@@ -1,0 +1,32 @@
+name: SEO
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    env:
+      # Build as production so robots/meta allow indexing, matching what crawlers see.
+      VERCEL_ENV: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+
+      - name: On-page SEO contract
+        run: |
+          npm start -- -p 3000 &
+          npx wait-on -t 60000 http://localhost:3000/robots.txt
+          npm run seo:check -- http://localhost:3000
+          kill %1
+
+      - name: Lighthouse CI
+        run: npx lhci autorun

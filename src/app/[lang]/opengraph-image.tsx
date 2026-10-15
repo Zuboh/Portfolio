@@ -1,10 +1,21 @@
 import { ImageResponse } from 'next/og'
+import { SITE_HOST } from '@/lib/site'
 
 export const alt = 'Lorenzo Zubani, Frontend Engineer'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage({
+  params,
+}: {
+  params: Promise<{ lang: string }>
+}) {
+  const { lang } = await params
+  const subtitle =
+    lang === 'it'
+      ? 'Frontend Engineer · React e TypeScript'
+      : 'Frontend Engineer · React and TypeScript'
+
   return new ImageResponse(
     <div
       style={{
@@ -37,10 +48,10 @@ export default function OpenGraphImage() {
           <span style={{ color: '#6fd08c' }}>Zubani</span>
         </div>
         <div style={{ marginTop: 28, fontSize: 40, color: '#a3a3a3' }}>
-          Frontend Engineer · React and TypeScript
+          {subtitle}
         </div>
       </div>
-      <div style={{ fontSize: 28, color: '#8d8d8d' }}>zubo.dev</div>
+      <div style={{ fontSize: 28, color: '#8d8d8d' }}>{SITE_HOST}</div>
     </div>,
     size
   )

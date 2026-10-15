@@ -1,12 +1,13 @@
 export interface StackGroup {
-  title: string
+  // Key into the dictionary's `stack.groups`; the visible title is localized.
+  key: 'frontend' | 'backend' | 'ai' | 'tools'
   items: string[]
 }
 
 // Sourced from the résumé skills and the featured projects.
 export const STACK_GROUPS: StackGroup[] = [
   {
-    title: 'Frontend',
+    key: 'frontend',
     items: [
       'React',
       'TypeScript',
@@ -23,7 +24,7 @@ export const STACK_GROUPS: StackGroup[] = [
     ],
   },
   {
-    title: 'Backend and data',
+    key: 'backend',
     items: [
       'Node.js',
       'Python',
@@ -34,11 +35,11 @@ export const STACK_GROUPS: StackGroup[] = [
     ],
   },
   {
-    title: 'AI and LLM',
+    key: 'ai',
     items: ['Claude API', 'OpenAI', 'Prompt engineering', 'pgvector'],
   },
   {
-    title: 'Tools',
+    key: 'tools',
     items: ['Claude Code', 'Codex', 'Bash', 'Git', 'Figma', 'Vercel', 'Cursor'],
   },
 ]

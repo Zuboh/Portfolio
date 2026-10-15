@@ -4,11 +4,12 @@ import { Clock } from '@/components/ui/Clock'
 import { Icon } from '@/components/ui/Icon'
 import { Starfield } from '@/components/ui/Starfield'
 import { EMAIL, GITHUB_URL, LINKEDIN_URL, RESUME_PDF } from '@/data/social'
+import type { Dictionary } from '@/app/[lang]/dictionaries'
 
 const linkClass =
   'inline-flex items-center gap-2 text-sm text-tx2 transition-colors hover:text-tx'
 
-export function Hero() {
+export function Hero({ dict }: { dict: Dictionary }) {
   return (
     <section
       aria-labelledby="hero-title"
@@ -26,9 +27,12 @@ export function Hero() {
             style={{ '--d': '0ms' } as React.CSSProperties}
           >
             <p className="inline-flex py-1.5 font-mono text-[13px] text-tx3">
-              Frontend Engineer · Brescia, Italy
+              {dict.hero.role}
             </p>
-            <Clock className="font-mono text-[13px]" />
+            <Clock
+              className="font-mono text-[13px]"
+              label={dict.common.timeIn}
+            />
           </div>
 
           <h1
@@ -43,8 +47,7 @@ export function Hero() {
             className="rise mt-7 max-w-[52ch] text-[clamp(16px,1.4vw,18px)] text-tx2 [text-wrap:pretty]"
             style={{ '--d': '160ms' } as React.CSSProperties}
           >
-            Frontend engineer specializing in React and TypeScript, with strong
-            attention to architecture, UX, and implementation quality.
+            {dict.hero.intro}
           </p>
 
           <div
@@ -53,7 +56,7 @@ export function Hero() {
           >
             <a href={`mailto:${EMAIL}`} className="btn btn-primary">
               <Icon name="mail" className="text-base" />
-              Get in touch
+              {dict.common.getInTouch}
             </a>
             <a
               href={RESUME_PDF}
@@ -62,7 +65,7 @@ export function Hero() {
               className="btn"
             >
               <Icon name="download" className="text-base" />
-              Résumé
+              {dict.common.resume}
             </a>
           </div>
 
@@ -127,7 +130,8 @@ export function Hero() {
               width={720}
               height={748}
               sizes="(min-width: 768px) 340px, 210px"
-              priority
+              preload
+              fetchPriority="high"
               className="h-auto w-full"
             />
             <Image
@@ -138,6 +142,7 @@ export function Hero() {
               height={748}
               sizes="(min-width: 768px) 340px, 210px"
               loading="eager"
+              fetchPriority="high"
               className="absolute inset-0 h-auto w-full transition-opacity duration-[240ms] ease-out group-hover:opacity-0 group-hover:delay-[140ms] group-hover:duration-[160ms]"
             />
             <Image
@@ -147,6 +152,7 @@ export function Hero() {
               width={720}
               height={748}
               sizes="(min-width: 768px) 340px, 210px"
+              fetchPriority="low"
               className="absolute inset-0 h-auto w-full opacity-0 transition-opacity delay-[140ms] duration-[160ms] ease-out group-hover:opacity-100 group-hover:delay-0 group-hover:duration-[240ms]"
             />
           </div>

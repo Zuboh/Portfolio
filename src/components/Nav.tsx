@@ -81,9 +81,19 @@ export function Nav({
       for (const el of targets) io.observe(el)
     }
 
-    observe()
+    // Hydration and the hero's first paint come first: observing hundreds of
+    // nodes and starting the infinite sky animations wait for an idle moment.
+    const schedule = window.requestIdleCallback
+      ? (cb: () => void) => window.requestIdleCallback(cb, { timeout: 1500 })
+      : (cb: () => void) => window.setTimeout(cb, 200)
+    const cancel = window.cancelIdleCallback ?? window.clearTimeout
+    const handle = schedule(() => {
+      document.documentElement.classList.add('anim-ready')
+      observe()
+    })
     window.addEventListener('resize', observe)
     return () => {
+      cancel(handle)
       io?.disconnect()
       window.removeEventListener('resize', observe)
     }

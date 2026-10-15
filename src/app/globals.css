@@ -410,6 +410,12 @@
   animation-delay: -3s;
 }
 
+/* Infinite sky/hero loops start once the page is idle (set by Nav), so they
+   don't compete with hydration and the first paint. */
+html:not(.anim-ready) :is(.twinkle, .drift, .float) {
+  animation-play-state: paused;
+}
+
 .float {
   animation: float 7s cubic-bezier(0.45, 0, 0.55, 1) 0.8s infinite;
   will-change: transform;

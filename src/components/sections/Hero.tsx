@@ -130,7 +130,8 @@ export function Hero({ dict }: { dict: Dictionary }) {
               width={720}
               height={748}
               sizes="(min-width: 768px) 340px, 210px"
-              priority
+              preload
+              fetchPriority="high"
               className="h-auto w-full"
             />
             <Image
@@ -141,6 +142,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
               height={748}
               sizes="(min-width: 768px) 340px, 210px"
               loading="eager"
+              fetchPriority="high"
               className="absolute inset-0 h-auto w-full transition-opacity duration-[240ms] ease-out group-hover:opacity-0 group-hover:delay-[140ms] group-hover:duration-[160ms]"
             />
             <Image
@@ -150,6 +152,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
               width={720}
               height={748}
               sizes="(min-width: 768px) 340px, 210px"
+              fetchPriority="low"
               className="absolute inset-0 h-auto w-full opacity-0 transition-opacity delay-[140ms] duration-[160ms] ease-out group-hover:opacity-100 group-hover:delay-0 group-hover:duration-[240ms]"
             />
           </div>

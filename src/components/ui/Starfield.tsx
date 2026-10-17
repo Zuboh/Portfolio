@@ -32,8 +32,8 @@ function phases(list: Star[], groups: number, period: number) {
 }
 
 const DUST = stars(90, 7, 0.4, 0.8)
-const BRIGHT = phases(stars(30, 21, 0.8, 1.2), 5, 5)
-const ACCENT = phases(stars(7, 42, 1.2, 1.7), 3, 8)
+const BRIGHT = phases(stars(30, 21, 0.8, 1.2), 3, 5)
+const ACCENT = phases(stars(7, 42, 1.2, 1.7), 2, 8)
 
 const layerClass = 'absolute inset-0 h-full w-full'
 

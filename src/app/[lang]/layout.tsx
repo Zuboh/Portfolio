@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import '../globals.css'
 import { Nav } from '@/components/Nav'
@@ -16,15 +16,6 @@ const geistSans = Geist({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
   display: 'swap',
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  display: 'swap',
-  // Only small labels use mono; keep its download off the LCP critical path.
-  preload: false,
 })
 
 export function generateStaticParams() {
@@ -109,7 +100,7 @@ export default async function RootLayout({
   return (
     <html
       lang={lang}
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={geistSans.variable}
       suppressHydrationWarning
     >
       <head>

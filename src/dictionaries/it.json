@@ -84,12 +84,13 @@
     "languageItems": ["Italiano (madrelingua)", "Inglese C1"],
     "experienceItems": [
       {
-        "role": "Frontend Engineer",
-        "company": "Libero professionista",
+        "role": "Frontend Developer",
+        "company": "Progetti Indipendenti e Startup",
         "period": "Mar 2024 – oggi",
         "bullets": [
-          "Eira — piattaforma digitale per le consegne infermieristiche, Vue 3 + FastAPI (tesi universitaria)",
-          "Primo — analizzatore di contratti di lavoro italiani (React Native + Supabase)"
+          "Sviluppo del frontend React di una piattaforma per la gestione condominiale, dalla prototipazione in Figma alle interfacce applicative",
+          "Realizzazione di funzionalità per chat e agenda, con WebSocket, API REST e gestione dello stato con Recoil",
+          "Collaborazione su integrazioni backend in Python e introduzione di strumenti AI nel workflow del team"
         ]
       },
       {

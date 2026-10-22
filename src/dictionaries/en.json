@@ -84,12 +84,13 @@
     "languageItems": ["Italian (native)", "English C1"],
     "experienceItems": [
       {
-        "role": "Frontend Engineer",
-        "company": "Self-employed",
+        "role": "Frontend Developer",
+        "company": "Independent Projects and Startups",
         "period": "Mar 2024 – present",
         "bullets": [
-          "Eira — digital nursing handover platform, Vue 3 + FastAPI (university thesis)",
-          "Primo — Italian contract analyzer (React Native + Supabase)"
+          "Built the React frontend of a condominium management platform, from Figma prototyping to application interfaces",
+          "Delivered chat and agenda features with WebSocket, REST APIs and Recoil state management",
+          "Contributed to Python backend integrations and introduced AI tools into the team workflow"
         ]
       },
       {

@@ -1,11 +1,12 @@
 {
   "meta": {
-    "description": "Lorenzo Zubani è un Frontend Engineer di Brescia, specializzato in React e TypeScript, con grande attenzione ad architettura, UX e qualità dell’implementazione.",
+    "description": "Lorenzo Zubani, Frontend Engineer a Brescia. React, Next.js, TypeScript. Disponibile full-time da remoto e per progetti freelance in Italia.",
     "ogTitle": "Lorenzo Zubani, Frontend Engineer",
     "jobTitle": "Frontend Engineer",
     "ogSubtitle": "Frontend Engineer · React e TypeScript",
     "resumeTitle": "Curriculum",
-    "resumeDescription": "Curriculum di Lorenzo Zubani, Frontend Engineer: esperienza, progetti, competenze e formazione."
+    "resumeDescription": "Curriculum di Lorenzo Zubani, Frontend Engineer: esperienza, progetti, competenze e formazione.",
+    "seeks": "Ruoli full-time da remoto come frontend engineer, oppure progetti freelance frontend in Italia (preferibilmente zona Brescia)."
   },
   "common": {
     "skipToContent": "Vai al contenuto",
@@ -31,7 +32,8 @@
   },
   "hero": {
     "role": "Frontend Engineer · Brescia, Italia",
-    "intro": "Frontend engineer specializzato in React e TypeScript, con grande attenzione ad architettura, UX e qualità dell’implementazione."
+    "intro": "Frontend engineer specializzato in React e TypeScript, con grande attenzione ad architettura, UX e qualità dell’implementazione.",
+    "availability": "Disponibile full-time da remoto · freelance in Italia"
   },
   "work": {
     "title": "Lavori",
@@ -58,7 +60,30 @@
   },
   "contact": {
     "title": "Contatti",
-    "hi": "Scrivimi a…"
+    "hi": "Scrivimi a…",
+    "hireLink": "Cerchi un frontend engineer? Ecco cosa cerco"
+  },
+  "hire": {
+    "metaTitle": "Lavora con Lorenzo Zubani, Frontend Engineer",
+    "metaDescription": "Lorenzo Zubani, Frontend Engineer React, Next.js e TypeScript a Brescia. Disponibile full-time da remoto e per progetti freelance in Italia.",
+    "title": "Lavoriamo insieme",
+    "lead": "Lorenzo Zubani è un Frontend Engineer di Brescia. Dal 2019 sviluppa frontend in produzione e lavora soprattutto con React, Next.js e TypeScript.",
+    "lookingTitle": "Cosa cerco",
+    "looking": [
+      "Ruoli frontend full-time, completamente da remoto",
+      "Progetti freelance frontend in tutta Italia",
+      "In presenza nella zona di Brescia"
+    ],
+    "stackTitle": "Stack",
+    "resultsTitle": "Esperienza",
+    "results": [
+      "Frontend developer dal 2019: Accenture, Codiceplastico, startup",
+      "Librerie di componenti React e primitive di design system",
+      "Migrazione da class component a hooks su una codebase legacy",
+      "Questo portfolio portato a 95–100 di performance Lighthouse mobile"
+    ],
+    "contactTitle": "Contatti",
+    "contactLead": "L’email è il canale migliore: bastano due righe sul ruolo o sul progetto."
   },
   "footer": {
     "location": "Lorenzo Zubani · Brescia, Italia",

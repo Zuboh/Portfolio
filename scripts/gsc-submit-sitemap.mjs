@@ -4,7 +4,7 @@
 
 import { GoogleAuth } from 'google-auth-library'
 
-const SITE_URL = process.argv[2] ?? process.env.SITE_URL ?? 'https://lorenzozubani.dev'
+const SITE_URL = process.argv[2] ?? process.env.SITE_URL ?? 'https://zubodev.vercel.app'
 const raw = process.env.GSC_SERVICE_ACCOUNT
 
 if (!raw) {

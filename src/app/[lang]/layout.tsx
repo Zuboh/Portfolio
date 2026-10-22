@@ -93,16 +93,18 @@ export default async function RootLayout({
   ])
 
   const siteJsonLd = jsonLd([
-    person(dict.meta.jobTitle),
+    person({
+      jobTitle: dict.meta.jobTitle,
+      description: dict.meta.description,
+      skills: dict.resume.skillGroups.flatMap((g) => g.items),
+      seeks: dict.meta.seeks,
+      schools: dict.resume.educationItems.map((e) => e.institution),
+    }),
     website(lang, dict.meta.description),
   ])
 
   return (
-    <html
-      lang={lang}
-      className={geistSans.variable}
-      suppressHydrationWarning
-    >
+    <html lang={lang} className={geistSans.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
       </head>

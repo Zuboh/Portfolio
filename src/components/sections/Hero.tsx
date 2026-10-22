@@ -50,6 +50,17 @@ export function Hero({ dict }: { dict: Dictionary }) {
             {dict.hero.intro}
           </p>
 
+          <p
+            className="rise mt-5 inline-flex items-center gap-2.5 font-mono text-[13px] text-tx2"
+            style={{ '--d': '200ms' } as React.CSSProperties}
+          >
+            <span
+              aria-hidden="true"
+              className="size-1.5 shrink-0 rounded-full bg-acc"
+            />
+            {dict.hero.availability}
+          </p>
+
           <div
             className="rise mt-9 flex flex-wrap gap-2.5"
             style={{ '--d': '240ms' } as React.CSSProperties}

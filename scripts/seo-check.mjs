@@ -2,16 +2,48 @@
 // Usage: `node scripts/seo-check.mjs [baseUrl]` (default http://localhost:3000).
 // Sitemap <loc>s point at the production origin; they are rewritten to baseUrl.
 
+import { readFileSync } from 'node:fs'
+
 const BASE = (process.argv[2] ?? 'http://localhost:3000').replace(/\/$/, '')
-const PROD = 'https://lorenzozubani.dev'
+const PROD = process.env.SITE_URL ?? 'https://zubodev.vercel.app'
 const LOCALES = ['en', 'it']
+// Mirrors AI_AGENTS in src/lib/site.ts.
+const AI_AGENTS = [
+  'OAI-SearchBot',
+  'ChatGPT-User',
+  'GPTBot',
+  'PerplexityBot',
+  'Perplexity-User',
+  'ClaudeBot',
+  'Claude-SearchBot',
+  'Claude-User',
+  'Google-Extended',
+  'Applebot-Extended',
+]
+const dicts = Object.fromEntries(
+  LOCALES.map((l) => [
+    l,
+    JSON.parse(
+      readFileSync(new URL(`../src/dictionaries/${l}.json`, import.meta.url))
+    ),
+  ])
+)
 
 const errors = []
 const fail = (url, msg) => errors.push(`${url}: ${msg}`)
 const local = (u) => u.replace(PROD, BASE)
 
-const attr = (tag, name) =>
-  tag.match(new RegExp(`${name}="([^"]*)"`, 'i'))?.[1]
+const decode = (s) =>
+  s
+    .replace(/&#x27;|&#39;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+const attr = (tag, name) => {
+  const v = tag.match(new RegExp(`${name}="([^"]*)"`, 'i'))?.[1]
+  return v === undefined ? v : decode(v)
+}
 const tags = (html, re) => [...html.matchAll(re)].map((m) => m[0])
 
 async function get(url) {
@@ -23,6 +55,14 @@ async function get(url) {
 const robots = await get(`${BASE}/robots.txt`)
 if (robots.status !== 200) fail('/robots.txt', `status ${robots.status}`)
 if (!/User-Agent: \*/i.test(robots.text)) fail('/robots.txt', 'no User-Agent rule')
+if (!robots.text.includes(`Sitemap: ${PROD}/sitemap.xml`)) {
+  fail('/robots.txt', `sitemap not on ${PROD}`)
+}
+for (const a of AI_AGENTS) {
+  if (!new RegExp(`User-Agent: ${a}\\s`, 'i').test(robots.text)) {
+    fail('/robots.txt', `${a} not listed`)
+  }
+}
 
 const sitemap = await get(`${BASE}/sitemap.xml`)
 if (sitemap.status !== 200) fail('/sitemap.xml', `status ${sitemap.status}`)
@@ -79,12 +119,59 @@ for (const url of urls) {
     ...html.matchAll(/<script type="application\/ld\+json">([^<]*)<\/script>/g),
   ]
   if (blocks.length === 0) fail(url, 'no JSON-LD')
+  const nodes = []
   for (const [, body] of blocks) {
     try {
-      JSON.parse(body)
+      const json = JSON.parse(body)
+      nodes.push(...(json['@graph'] ?? [json]))
     } catch (e) {
       fail(url, `invalid JSON-LD: ${e.message}`)
     }
+  }
+
+  const path = new URL(url).pathname
+  const dict = dicts[lang]
+
+  // Home: recruiter-facing facts, visible and structured.
+  if (path === `/${lang}`) {
+    const person = nodes.find((n) => n['@type'] === 'Person')
+    if (!person) fail(url, 'no Person node')
+    else {
+      if (!(person.knowsAbout?.length >= 10)) fail(url, 'Person.knowsAbout < 10')
+      for (const k of ['seeks', 'hasOccupation', 'email', 'description']) {
+        if (!person[k]) fail(url, `Person.${k} missing`)
+      }
+      if (!(person.sameAs?.length >= 2)) fail(url, 'Person.sameAs < 2')
+    }
+    if (!html.includes(dict.hero.availability)) fail(url, 'availability not visible')
+    for (const k of ['React', 'TypeScript']) {
+      if (!attr(desc ?? '', 'content')?.includes(k)) fail(url, `description lacks ${k}`)
+    }
+    if (!html.includes(`href="/${lang}/hire"`)) fail(url, 'no link to hire page')
+  }
+
+  // Hire page: its own title, description and share URL, never the home's.
+  if (path === `/${lang}/hire`) {
+    const title = decode(titles[0]?.replace(/<\/?title>/g, '') ?? '')
+    if (title !== dict.hire.metaTitle) fail(url, `title "${title}"`)
+    if (attr(desc ?? '', 'content') !== dict.hire.metaDescription) {
+      fail(url, 'description is not hire.metaDescription')
+    }
+    const ogUrl = tags(html, /<meta property="og:url"[^>]*>/g)[0]
+    if (!ogUrl || attr(ogUrl, 'content') !== url) fail(url, 'og:url not self')
+  }
+}
+
+// llms.txt: plain-text summary for LLM tools, built from site data.
+const llms = await get(`${BASE}/llms.txt`)
+if (llms.status !== 200) fail('/llms.txt', `status ${llms.status}`)
+else {
+  if (!llms.text.startsWith('# Lorenzo Zubani')) fail('/llms.txt', 'missing H1')
+  if (!llms.text.includes(`${PROD}/en/hire`)) fail('/llms.txt', 'no hire link')
+  const items = llms.text.split('\n').filter((l) => l.startsWith('- ['))
+  if (items.length < 5) fail('/llms.txt', `${items.length} link items`)
+  for (const l of items.filter((l) => l.includes('/work/'))) {
+    if (!/\]\([^)]+\): \S/.test(l)) fail('/llms.txt', `no description: ${l}`)
   }
 }
 

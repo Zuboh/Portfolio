@@ -39,7 +39,7 @@ export default async function Home({ params }: Props) {
       <Work lang={lang} dict={dict} />
       <Stack dict={dict} />
       <Activity entries={entries} lang={lang} dict={dict} />
-      <Contact dict={dict} />
+      <Contact lang={lang} dict={dict} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd([profilePage(lang)]) }}

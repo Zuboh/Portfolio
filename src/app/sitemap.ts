@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...localized('', 'weekly', 1, now),
     ...localized('/resume', 'monthly', 0.7, now),
+    ...localized('/hire', 'monthly', 0.8, now),
     ...projects.flatMap((p) =>
       localized(`/work/${p.slug}`, 'monthly', 0.8, new Date(p.updated))
     ),

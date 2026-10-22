@@ -1,6 +1,7 @@
 import type { Locale } from '@/i18n/config'
 import { intlLocale } from '@/i18n/config'
 import type { Project } from '@/types'
+import { EMAIL, GITHUB_URL, LINKEDIN_URL } from '@/data/social'
 import { PERSON_ID, SITE_NAME, SITE_URL, WEBSITE_ID } from './site'
 
 type Thing = Record<string, unknown>
@@ -12,12 +13,30 @@ export function jsonLd(nodes: Thing[]): string {
   return JSON.stringify(graph).replace(/</g, '\\u003c')
 }
 
-export function person(jobTitle: string): Thing {
+type PersonFacts = {
+  jobTitle: string
+  description: string
+  /** Résumé skills; the same list a recruiter reads on /resume. */
+  skills: string[]
+  /** What kind of work is wanted, in plain words. */
+  seeks: string
+  schools: string[]
+}
+
+export function person({
+  jobTitle,
+  description,
+  skills,
+  seeks,
+  schools,
+}: PersonFacts): Thing {
   return {
     '@type': 'Person',
     '@id': PERSON_ID,
     name: SITE_NAME,
     jobTitle,
+    description,
+    email: `mailto:${EMAIL}`,
     url: SITE_URL,
     image: `${SITE_URL}/profile-image.jpeg`,
     address: {
@@ -25,11 +44,19 @@ export function person(jobTitle: string): Thing {
       addressLocality: 'Brescia',
       addressCountry: 'IT',
     },
-    knowsAbout: ['React', 'TypeScript', 'Frontend architecture'],
-    sameAs: [
-      'https://github.com/zuboh',
-      'https://www.linkedin.com/in/lorenzo-zubani/',
-    ],
+    knowsAbout: skills,
+    hasOccupation: {
+      '@type': 'Occupation',
+      name: jobTitle,
+      occupationLocation: { '@type': 'City', name: 'Brescia' },
+      skills: skills.join(', '),
+    },
+    seeks: { '@type': 'Demand', description: seeks },
+    alumniOf: schools.map((name) => ({
+      '@type': 'EducationalOrganization',
+      name,
+    })),
+    sameAs: [GITHUB_URL, LINKEDIN_URL],
   }
 }
 

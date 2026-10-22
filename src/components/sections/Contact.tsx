@@ -1,10 +1,18 @@
+import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Icon } from '@/components/ui/Icon'
 import { EMAIL, GITHUB_URL, LINKEDIN_URL, RESUME_PDF } from '@/data/social'
 import type { Dictionary } from '@/app/[lang]/dictionaries'
+import type { Locale } from '@/i18n/config'
 
-export function Contact({ dict }: { dict: Dictionary }) {
+export function Contact({
+  lang,
+  dict,
+}: {
+  lang: Locale
+  dict: Dictionary
+}) {
   return (
     <section id="contact" aria-labelledby="contact-title" className="section">
       <Container>
@@ -56,6 +64,13 @@ export function Contact({ dict }: { dict: Dictionary }) {
             {dict.common.resume}
           </a>
         </div>
+
+        <Link
+          href={`/${lang}/hire`}
+          className="mt-8 inline-flex items-center gap-2 text-sm text-tx2 transition-colors hover:text-tx"
+        >
+          {dict.contact.hireLink} <span aria-hidden="true">→</span>
+        </Link>
       </Container>
     </section>
   )

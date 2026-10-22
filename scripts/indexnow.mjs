@@ -2,7 +2,7 @@
 // Run after a production deploy: `node scripts/indexnow.mjs [siteUrl]`.
 // The key file lives at public/<KEY>.txt and must be served from the site root.
 
-const SITE_URL = process.argv[2] ?? process.env.SITE_URL ?? 'https://lorenzozubani.dev'
+const SITE_URL = process.argv[2] ?? process.env.SITE_URL ?? 'https://zubodev.vercel.app'
 const KEY = 'd0a162b066971081e09f0070367c1e72'
 
 const sitemap = await fetch(`${SITE_URL}/sitemap.xml`)

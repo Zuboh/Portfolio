@@ -1,0 +1,12 @@
+id,cohort,family,lang,prompt
+B1,core,identity,en,Who is Lorenzo Zubani?
+B2,core,identity,it,Chi è Lorenzo Zubani?
+B3,core,validation,en,What has Lorenzo Zubani built? Is he a good React developer?
+B4,core,availability,en,Is Lorenzo Zubani open to remote frontend roles? How do I contact him?
+B5,core,availability,it,Lorenzo Zubani lavora come freelance? Come lo contatto?
+D1,core,discovery,en,Find me a React and Next.js frontend engineer based in Italy who is open to full-time remote work.
+D2,core,discovery,it,Cerco uno sviluppatore frontend React freelance in zona Brescia. Chi mi consigli?
+D3,core,discovery,en,Who are some frontend engineers in Brescia or Lombardy that work with React and TypeScript?
+D4,core,discovery,it,Sviluppatore Next.js freelance in Italia per una startup: nomi e portfolio?
+P1,exploratory,project,en,Is there an app that reads Italian employment contracts and payslips with AI and explains them in plain language?
+P2,exploratory,project,en,Examples of hand-built agent loops that reimplement Claude Code's hooks and permission gates in Python

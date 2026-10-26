@@ -26,6 +26,11 @@ export async function GET() {
     link('Work with me', `${SITE_URL}/en/hire`, dict.hire.metaDescription),
     link('Résumé', `${SITE_URL}/en/resume`, dict.meta.resumeDescription),
     link('Résumé (PDF)', `${SITE_URL}${RESUME_PDF}`),
+    link(
+      'Full text',
+      `${SITE_URL}/llms-full.txt`,
+      'résumé, FAQ and every case study in one file'
+    ),
     '',
     '## Projects',
     '',

@@ -8,6 +8,7 @@ import { Contact } from '@/components/sections/Contact'
 import { fetchRecentCommits } from '@/lib/github'
 import { hasLocale } from '@/i18n/config'
 import { jsonLd, profilePage } from '@/lib/jsonld'
+import { pageMetadata } from '@/lib/metadata'
 import { getDictionary } from './dictionaries'
 
 export const revalidate = 60
@@ -16,12 +17,14 @@ type Props = { params: Promise<{ lang: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params
-  return {
-    alternates: {
-      canonical: `/${lang}`,
-      languages: { en: '/en', it: '/it', 'x-default': '/en' },
-    },
-  }
+  if (!hasLocale(lang)) return {}
+  const dict = await getDictionary(lang)
+  return pageMetadata({
+    lang,
+    path: '',
+    title: dict.meta.title,
+    description: dict.meta.description,
+  })
 }
 
 export default async function Home({ params }: Props) {

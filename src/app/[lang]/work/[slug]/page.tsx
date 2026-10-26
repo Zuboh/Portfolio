@@ -9,6 +9,7 @@ import type { CaseStudySection } from '@/data/case-studies'
 import { getProject, projects, statusLabel } from '@/lib/projects'
 import { hasLocale, locales } from '@/i18n/config'
 import { caseStudy, jsonLd } from '@/lib/jsonld'
+import { pageMetadata, withName } from '@/lib/metadata'
 import { SITE_NAME } from '@/lib/site'
 import { getDictionary } from '../../dictionaries'
 
@@ -26,17 +27,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const dict = await getDictionary(lang)
   const project = getProject(slug, dict.projects)
   if (!project) return {}
-  return {
+  return pageMetadata({
+    lang,
+    path: `/work/${slug}`,
+    title: withName(project.metaTitle),
     description: project.description,
-    alternates: {
-      canonical: `/${lang}/work/${slug}`,
-      languages: {
-        en: `/en/work/${slug}`,
-        it: `/it/work/${slug}`,
-        'x-default': `/en/work/${slug}`,
-      },
-    },
-  }
+  })
 }
 
 export default async function CaseStudyPage({ params }: Props) {

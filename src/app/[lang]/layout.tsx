@@ -34,7 +34,8 @@ export async function generateMetadata({
   return {
     applicationName: SITE_NAME,
     metadataBase: new URL(SITE_URL),
-    title: SITE_NAME,
+    // Fallback for routes without their own title (e.g. not-found); pages set theirs via pageMetadata.
+    title: dict.meta.title,
     description: dict.meta.description,
     authors: [{ name: SITE_NAME, url: SITE_URL }],
     creator: SITE_NAME,

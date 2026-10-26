@@ -7,7 +7,8 @@ import { Icon } from '@/components/ui/Icon'
 import { EMAIL, LINKEDIN_URL, RESUME_PDF } from '@/data/social'
 import { hasLocale } from '@/i18n/config'
 import { jsonLd } from '@/lib/jsonld'
-import { PERSON_ID, SITE_NAME, SITE_URL, WEBSITE_ID } from '@/lib/site'
+import { pageMetadata } from '@/lib/metadata'
+import { PERSON_ID, SITE_URL, WEBSITE_ID } from '@/lib/site'
 import { getDictionary } from '../dictionaries'
 
 const rowClass =
@@ -20,39 +21,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params
   if (!hasLocale(lang)) return {}
   const t = (await getDictionary(lang)).hire
-
-  // openGraph replaces the layout's object wholesale, so it is restated in full.
-  return {
+  return pageMetadata({
+    lang,
+    path: '/hire',
     title: t.metaTitle,
     description: t.metaDescription,
-    alternates: {
-      canonical: `/${lang}/hire`,
-      languages: { en: '/en/hire', it: '/it/hire', 'x-default': '/en/hire' },
-    },
-    openGraph: {
-      title: t.metaTitle,
-      description: t.metaDescription,
-      url: `${SITE_URL}/${lang}/hire`,
-      siteName: SITE_NAME,
-      type: 'website',
-      locale: lang === 'it' ? 'it_IT' : 'en_US',
-      alternateLocale: lang === 'it' ? 'en_US' : 'it_IT',
-      // The segment's opengraph-image.tsx is dropped once openGraph is overridden.
-      images: [
-        {
-          url: `/${lang}/opengraph-image`,
-          width: 1200,
-          height: 630,
-          alt: t.metaTitle,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t.metaTitle,
-      description: t.metaDescription,
-    },
-  }
+  })
 }
 
 export default async function HirePage({ params }: Props) {
@@ -63,7 +37,9 @@ export default async function HirePage({ params }: Props) {
   const t = dict.hire
   const skills = dict.resume.skillGroups.flatMap((g) => g.items)
   const url = `${SITE_URL}/${lang}/hire`
+  const faq = t.faq.map(({ q, a }) => ({ q, a: a.replace('{email}', EMAIL) }))
 
+  // The FAQPage mirrors the visible questions below, word for word.
   const pageJsonLd = jsonLd([
     {
       '@type': 'AboutPage',
@@ -73,6 +49,18 @@ export default async function HirePage({ params }: Props) {
       description: t.metaDescription,
       isPartOf: { '@id': WEBSITE_ID },
       mainEntity: { '@id': PERSON_ID },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      url,
+      isPartOf: { '@id': WEBSITE_ID },
+      about: { '@id': PERSON_ID },
+      mainEntity: faq.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
     },
   ])
 
@@ -171,6 +159,20 @@ export default async function HirePage({ params }: Props) {
                   </li>
                 ))}
               </ul>
+            </div>
+
+            <div className={rowClass}>
+              <h2 className={labelClass}>{t.faqTitle}</h2>
+              <div className="flex flex-col gap-6">
+                {faq.map(({ q, a }) => (
+                  <div key={q}>
+                    <h3 className="font-semibold tracking-[-0.01em]">{q}</h3>
+                    <p className="mt-1.5 max-w-[60ch] text-tx2 [text-wrap:pretty]">
+                      {a}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className={rowClass}>

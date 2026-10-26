@@ -1,11 +1,13 @@
 {
   "meta": {
     "description": "Lorenzo Zubani, Frontend Engineer a Brescia. React, Next.js, TypeScript. Disponibile full-time da remoto e per progetti freelance in Italia.",
+    "title": "Lorenzo Zubani · Frontend Engineer React e Next.js · Brescia",
     "ogTitle": "Lorenzo Zubani, Frontend Engineer",
     "jobTitle": "Frontend Engineer",
     "ogSubtitle": "Frontend Engineer · React e TypeScript",
     "resumeTitle": "Curriculum",
-    "resumeDescription": "Curriculum di Lorenzo Zubani, Frontend Engineer: esperienza, progetti, competenze e formazione.",
+    "resumeMetaTitle": "Curriculum, Frontend Engineer a Brescia",
+    "resumeDescription": "Curriculum di Lorenzo Zubani, Frontend Engineer a Brescia: React, Next.js, TypeScript, design system. Esperienza in Accenture, Codiceplastico e startup.",
     "seeks": "Ruoli full-time da remoto come frontend engineer, oppure progetti freelance frontend in Italia (preferibilmente zona Brescia)."
   },
   "common": {
@@ -81,6 +83,29 @@
       "Librerie di componenti React e primitive di design system",
       "Migrazione da class component a hooks su una codebase legacy",
       "Questo portfolio portato a 95–100 di performance Lighthouse mobile"
+    ],
+    "faqTitle": "Domande frequenti",
+    "faq": [
+      {
+        "q": "Lorenzo Zubani è disponibile per nuovi progetti?",
+        "a": "Sì. Cerca ruoli frontend full-time da remoto e progetti freelance frontend in tutta Italia; in presenza può lavorare nella zona di Brescia."
+      },
+      {
+        "q": "Dove si trova? Lavora da remoto?",
+        "a": "Vive a Brescia. I ruoli full-time sono completamente da remoto; i progetti freelance da remoto in tutta Italia, oppure in sede nella zona di Brescia."
+      },
+      {
+        "q": "Qual è il suo stack principale?",
+        "a": "React, Next.js e TypeScript. Lavora anche con React Native, Tailwind, design system, Node.js, Supabase, Python e le API di Claude e OpenAI."
+      },
+      {
+        "q": "Quanta esperienza ha?",
+        "a": "Sviluppa frontend in produzione dal 2019: Angular in Accenture (2019–2022), React e design system in Codiceplastico (2022–2024), poi progetti indipendenti e startup dal 2024."
+      },
+      {
+        "q": "Come lo contatto?",
+        "a": "Via email a {email}, oppure su LinkedIn. Il curriculum è disponibile anche in PDF."
+      }
     ],
     "contactTitle": "Contatti",
     "contactLead": "L’email è il canale migliore: bastano due righe sul ruolo o sul progetto."
@@ -195,14 +220,17 @@
   },
   "projects": {
     "eira": {
+      "metaTitle": "Eira: consegne infermieristiche digitali",
       "description": "Piattaforma digitale per le consegne infermieristiche — report SBAR/ISBAR, cartelle dei pazienti, turni. Progetto di tesi full-stack.",
       "longDescription": "Eira digitalizza le consegne infermieristiche di turno: report SBAR/ISBAR, diario SOAPIE, parametri vitali, valutazioni del rischio Norton/Conley, gestione di turni e personale, con flussi separati per infermieri e coordinatori di reparto. Realizzato come project work finale del corso di laurea in Informatica per le Aziende Digitali all’Università Telematica Pegaso. Progetto accademico/dimostrativo — contesto clinico fittizio, non è un dispositivo medico."
     },
     "primo": {
+      "metaTitle": "Primo: contratti e buste paga letti dall’AI",
       "description": "Carichi un contratto o una busta paga, l’AI lo legge, segnala i problemi e lo spiega in modo semplice. Pensato per i lavoratori, non per gli avvocati.",
       "longDescription": "Il diritto del lavoro italiano è denso. Primo prende la foto di un contratto o di una busta paga, ne estrae il testo e lo passa a un prompt che conosce la normativa italiana sul lavoro. Segnala clausole mancanti, condizioni illegittime e retribuzioni inferiori al dovuto, poi spiega ogni punto in modo chiaro. Niente gergo legale."
     },
     "zubo-os": {
+      "metaTitle": "Zubo OS: il loop di Claude Code in Python",
       "description": "Il ciclo centrale di Claude Code ricostruito a mano in Python: hook, permessi, dispatch degli strumenti, gestione del contesto. Nessun framework, solo il ciclo.",
       "longDescription": "Zubo OS è un agente CLI personale basato sulla Claude API che rispecchia il funzionamento interno di Claude Code in circa 300 righe di Python: un sistema di hook PreToolUse/PostToolUse, un controllo dei permessi a 3 modalità (default/auto/plan), un dizionario per il dispatch degli strumenti e un system prompt assemblato a runtime da un prompt base, dalle skill attive e da un indice di memoria. L’ho costruito per capire l’infrastruttura deterministica dietro l’esecuzione degli strumenti e l’assemblaggio del contesto, non il modello."
     }

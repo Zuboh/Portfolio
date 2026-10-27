@@ -35,7 +35,7 @@
   "hero": {
     "role": "Frontend Engineer · Brescia, Italy",
     "intro": "Frontend engineer specializing in React and TypeScript, with strong attention to architecture, UX, and implementation quality.",
-    "availability": "Open to full-time remote · freelance in Italy"
+    "availability": "Open to full-time remote"
   },
   "work": {
     "title": "Works",
@@ -69,6 +69,7 @@
     "metaTitle": "Hire Lorenzo Zubani, Frontend Engineer",
     "metaDescription": "Hire Lorenzo Zubani, Frontend Engineer with React, Next.js and TypeScript. Available for full-time remote roles and freelance projects in Italy.",
     "title": "Work with me",
+    "availability": "Open to full-time remote · freelance in Italy",
     "lead": "Lorenzo Zubani is a Frontend Engineer based in Brescia, Italy. He has built production frontends since 2019 and works mainly with React, Next.js and TypeScript.",
     "lookingTitle": "Looking for",
     "looking": [

@@ -35,7 +35,7 @@ export default async function ResumePage({
         <Container>
           <Link
             href={`/${lang}`}
-            className="mb-10 inline-flex items-center gap-2 text-sm text-tx3 transition-colors hover:text-tx"
+            className="tap mb-10 inline-flex items-center gap-2 text-sm text-tx3 transition-colors hover:text-tx"
           >
             <span aria-hidden="true">←</span> {dict.common.backHome}
           </Link>
@@ -63,7 +63,7 @@ export default async function ResumePage({
               <p className="mt-5 max-w-[56ch] text-tx2 [text-wrap:pretty]">
                 {t.intro}
               </p>
-              <div className="mt-7 flex flex-wrap gap-2.5">
+              <div className="btn-row mt-7">
                 <a href={`mailto:${EMAIL}`} className="btn btn-primary">
                   <Icon name="mail" className="text-base" />
                   {dict.common.getInTouch}
@@ -141,7 +141,7 @@ export default async function ResumePage({
                   <h3 className="text-base font-semibold tracking-[-0.02em]">
                     <Link
                       href={`/${lang}/work/${p.slug}`}
-                      className="transition-colors hover:text-acc"
+                      className="tap transition-colors hover:text-acc"
                     >
                       {p.name}
                     </Link>

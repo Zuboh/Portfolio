@@ -58,7 +58,7 @@ export default async function CaseStudyPage({ params }: Props) {
         <Container>
           <Link
             href={`/${lang}#work`}
-            className="mb-12 inline-flex items-center gap-2 text-sm text-tx3 transition-colors hover:text-tx"
+            className="tap mb-12 inline-flex items-center gap-2 text-sm text-tx3 transition-colors hover:text-tx"
           >
             <span aria-hidden="true">←</span> {dict.caseStudy.allWork}
           </Link>

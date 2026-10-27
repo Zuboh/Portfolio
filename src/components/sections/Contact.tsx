@@ -6,13 +6,7 @@ import { EMAIL, GITHUB_URL, LINKEDIN_URL, RESUME_PDF } from '@/data/social'
 import type { Dictionary } from '@/app/[lang]/dictionaries'
 import type { Locale } from '@/i18n/config'
 
-export function Contact({
-  lang,
-  dict,
-}: {
-  lang: Locale
-  dict: Dictionary
-}) {
+export function Contact({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   return (
     <section id="contact" aria-labelledby="contact-title" className="section">
       <Container>
@@ -30,12 +24,12 @@ export function Contact({
 
         <a
           href={`mailto:${EMAIL}`}
-          className="mb-9 block text-[clamp(17px,4.2vw,52px)] leading-none font-semibold tracking-[-0.05em] [overflow-wrap:anywhere] transition-colors hover:text-acc"
+          className="mb-7 block py-2 text-[clamp(20px,5.6vw,52px)] leading-none font-semibold tracking-[-0.05em] [overflow-wrap:anywhere] transition-colors hover:text-acc"
         >
           {EMAIL}
         </a>
 
-        <div className="flex flex-wrap gap-2.5">
+        <div className="btn-row">
           <a
             href={GITHUB_URL}
             target="_blank"
@@ -67,7 +61,7 @@ export function Contact({
 
         <Link
           href={`/${lang}/hire`}
-          className="mt-8 inline-flex items-center gap-2 text-sm text-tx2 transition-colors hover:text-tx"
+          className="tap mt-8 inline-flex items-center gap-2 text-sm text-tx2 transition-colors hover:text-tx"
         >
           {dict.contact.hireLink} <span aria-hidden="true">→</span>
         </Link>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { Availability } from '@/components/ui/Availability'
 import { Container } from '@/components/ui/Container'
 import { Badge } from '@/components/ui/Badge'
 import { Icon } from '@/components/ui/Icon'
@@ -82,7 +83,7 @@ export default async function HirePage({ params }: Props) {
         <Container>
           <Link
             href={`/${lang}`}
-            className="mb-10 inline-flex items-center gap-2 text-sm text-tx3 transition-colors hover:text-tx"
+            className="tap mb-8 inline-flex items-center gap-2 text-sm text-tx3 md:mb-10 transition-colors hover:text-tx"
           >
             <span aria-hidden="true">←</span> {dict.common.backHome}
           </Link>
@@ -97,14 +98,8 @@ export default async function HirePage({ params }: Props) {
           <p className="mt-5 max-w-[60ch] text-tx2 [text-wrap:pretty]">
             {t.lead}
           </p>
-          <p className="mt-5 inline-flex items-center gap-2.5 font-mono text-[13px] text-tx2">
-            <span
-              aria-hidden="true"
-              className="size-1.5 shrink-0 rounded-full bg-acc"
-            />
-            {dict.hero.availability}
-          </p>
-          <div className="mt-7 flex flex-wrap gap-2.5">
+          <Availability text={t.availability} className="mt-5" />
+          <div className="btn-row mt-7">
             <a href={`mailto:${EMAIL}`} className="btn btn-primary">
               <Icon name="mail" className="text-base" />
               {dict.common.getInTouch}
@@ -131,7 +126,7 @@ export default async function HirePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="pt-24" aria-label={t.title}>
+      <section className="pt-16 md:pt-24" aria-label={t.title}>
         <Container>
           <div className="border-t border-bd">
             {lists.map((l) => (
@@ -181,7 +176,7 @@ export default async function HirePage({ params }: Props) {
                 <p className="text-tx2">{t.contactLead}</p>
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="mt-3 inline-block text-lg font-semibold tracking-[-0.02em] [overflow-wrap:anywhere] transition-colors hover:text-acc"
+                  className="tap mt-3 inline-block text-lg font-semibold tracking-[-0.02em] [overflow-wrap:anywhere] transition-colors hover:text-acc"
                 >
                   {EMAIL}
                 </a>

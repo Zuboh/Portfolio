@@ -34,7 +34,7 @@ export const projects: ProjectBase[] = [
 
 export type ProjectCopy = Record<
   string,
-  { description: string; longDescription?: string }
+  { metaTitle: string; description: string; longDescription?: string }
 >
 
 export function getProject(

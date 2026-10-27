@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Availability } from '@/components/ui/Availability'
 import { Container } from '@/components/ui/Container'
 import { Clock } from '@/components/ui/Clock'
 import { Icon } from '@/components/ui/Icon'
@@ -7,7 +8,7 @@ import { EMAIL, GITHUB_URL, LINKEDIN_URL, RESUME_PDF } from '@/data/social'
 import type { Dictionary } from '@/app/[lang]/dictionaries'
 
 const linkClass =
-  'inline-flex items-center gap-2 text-sm text-tx2 transition-colors hover:text-tx'
+  'tap inline-flex items-center gap-2 text-sm text-tx2 transition-colors hover:text-tx'
 
 export function Hero({ dict }: { dict: Dictionary }) {
   return (
@@ -50,19 +51,14 @@ export function Hero({ dict }: { dict: Dictionary }) {
             {dict.hero.intro}
           </p>
 
-          <p
-            className="rise mt-5 inline-flex items-center gap-2.5 font-mono text-[13px] text-tx2"
+          <Availability
+            text={dict.hero.availability}
+            className="rise mt-5"
             style={{ '--d': '200ms' } as React.CSSProperties}
-          >
-            <span
-              aria-hidden="true"
-              className="size-1.5 shrink-0 rounded-full bg-acc"
-            />
-            {dict.hero.availability}
-          </p>
+          />
 
           <div
-            className="rise mt-9 flex flex-wrap gap-2.5"
+            className="rise btn-row mt-9"
             style={{ '--d': '240ms' } as React.CSSProperties}
           >
             <a href={`mailto:${EMAIL}`} className="btn btn-primary">

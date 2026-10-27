@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { hasLocale } from '@/i18n/config'
+import { pageMetadata, withName } from '@/lib/metadata'
 import { getDictionary } from '../dictionaries'
 
 export async function generateMetadata({
@@ -11,17 +12,12 @@ export async function generateMetadata({
   if (!hasLocale(lang)) return {}
   const dict = await getDictionary(lang)
 
-  return {
+  return pageMetadata({
+    lang,
+    path: '/resume',
+    title: withName(dict.meta.resumeMetaTitle),
     description: dict.meta.resumeDescription,
-    alternates: {
-      canonical: `/${lang}/resume`,
-      languages: {
-        en: '/en/resume',
-        it: '/it/resume',
-        'x-default': '/en/resume',
-      },
-    },
-  }
+  })
 }
 
 export default function ResumeLayout({

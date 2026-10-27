@@ -62,8 +62,42 @@
 
   html {
     scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: var(--bd2) var(--bg);
+  }
+
+  /* Themed scrollbar: slim pill, accent on hover. Standard props are
+     fallback only, since they disable ::-webkit-scrollbar in Chromium. */
+  @supports not selector(::-webkit-scrollbar) {
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--bd2) var(--bg);
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--bd2);
+    border: 3px solid var(--bg);
+    border-radius: 999px;
+    transition: background 0.2s;
+  }
+
+  ::-webkit-scrollbar-thumb:hover,
+  ::-webkit-scrollbar-thumb:active {
+    background: var(--acc);
+  }
+
+  :root[data-theme='light'] ::-webkit-scrollbar-thumb,
+  :root[data-theme='light'] ::-webkit-scrollbar-thumb:hover,
+  :root[data-theme='light'] ::-webkit-scrollbar-thumb:active {
+    background: #151515;
   }
 
   body {
@@ -102,11 +136,21 @@
 
 @layer components {
   .btn {
-    @apply inline-flex h-11 items-center gap-2 rounded-[9px] border border-bd2 px-5 text-sm font-medium text-tx transition-[background-color,border-color,transform] duration-150 hover:border-tx3 hover:bg-bg2 active:translate-y-px;
+    @apply inline-flex h-11 items-center justify-center gap-2 rounded-[9px] border border-bd2 px-5 text-sm font-medium text-tx transition-[background-color,border-color,transform] duration-150 hover:border-tx3 hover:bg-bg2 active:translate-y-px;
   }
 
   .btn-primary {
     @apply border-tx bg-tx text-bg hover:border-tx hover:bg-tx hover:opacity-90;
+  }
+
+  /* On phones the buttons share each row, so a wrapped one never sits alone. */
+  .btn-row {
+    @apply flex flex-wrap gap-2.5 max-sm:[&>.btn]:flex-auto;
+  }
+
+  /* 44px touch target for small text links, without moving the layout. */
+  .tap {
+    @apply relative after:absolute after:-inset-x-1 after:-inset-y-3 after:content-[''];
   }
 
   .section {

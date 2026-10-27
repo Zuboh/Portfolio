@@ -13,6 +13,8 @@ export interface ProjectBase {
 }
 
 export interface Project extends ProjectBase {
+  /** "<Name>: <what it is>", the case study's search title. */
+  metaTitle: string
   description: string
   longDescription?: string
 }

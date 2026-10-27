@@ -1,11 +1,13 @@
 {
   "meta": {
     "description": "Lorenzo Zubani, Frontend Engineer in Brescia, Italy. React, Next.js, TypeScript. Open to full-time remote roles and freelance projects in Italy.",
+    "title": "Lorenzo Zubani · Frontend Engineer, React & Next.js · Brescia",
     "ogTitle": "Lorenzo Zubani, Frontend Engineer",
     "jobTitle": "Frontend Engineer",
     "ogSubtitle": "Frontend Engineer · React and TypeScript",
     "resumeTitle": "Résumé",
-    "resumeDescription": "Résumé of Lorenzo Zubani, Frontend Engineer: experience, projects, skills and education.",
+    "resumeMetaTitle": "Résumé, Frontend Engineer in Brescia",
+    "resumeDescription": "Résumé of Lorenzo Zubani, Frontend Engineer in Brescia: React, Next.js, TypeScript, design systems. Experience at Accenture, Codiceplastico and startups.",
     "seeks": "Full-time remote frontend engineering roles, or freelance frontend projects in Italy (Brescia area preferred)."
   },
   "common": {
@@ -33,7 +35,7 @@
   "hero": {
     "role": "Frontend Engineer · Brescia, Italy",
     "intro": "Frontend engineer specializing in React and TypeScript, with strong attention to architecture, UX, and implementation quality.",
-    "availability": "Open to full-time remote · freelance in Italy"
+    "availability": "Open to full-time remote"
   },
   "work": {
     "title": "Works",
@@ -67,6 +69,7 @@
     "metaTitle": "Hire Lorenzo Zubani, Frontend Engineer",
     "metaDescription": "Hire Lorenzo Zubani, Frontend Engineer with React, Next.js and TypeScript. Available for full-time remote roles and freelance projects in Italy.",
     "title": "Work with me",
+    "availability": "Open to full-time remote · freelance in Italy",
     "lead": "Lorenzo Zubani is a Frontend Engineer based in Brescia, Italy. He has built production frontends since 2019 and works mainly with React, Next.js and TypeScript.",
     "lookingTitle": "Looking for",
     "looking": [
@@ -81,6 +84,29 @@
       "Built React component libraries and design system primitives",
       "Led a migration from class components to hooks across a legacy codebase",
       "Took this portfolio to 95–100 Lighthouse mobile performance"
+    ],
+    "faqTitle": "Questions",
+    "faq": [
+      {
+        "q": "Is Lorenzo Zubani available for new work?",
+        "a": "Yes. He is open to full-time remote frontend roles and to freelance frontend projects anywhere in Italy, and can work in person in the Brescia area."
+      },
+      {
+        "q": "Where is he based, and does he work remotely?",
+        "a": "He is based in Brescia, Italy. Full-time roles: fully remote. Freelance projects: remote across Italy, or on site in the Brescia area."
+      },
+      {
+        "q": "What is his main stack?",
+        "a": "React, Next.js and TypeScript. He also works with React Native, Tailwind, design systems, Node.js, Supabase, Python and the Claude and OpenAI APIs."
+      },
+      {
+        "q": "How much experience does he have?",
+        "a": "He has built production frontends since 2019: Angular at Accenture (2019–2022), React and design systems at Codiceplastico (2022–2024), then independent projects and startups since 2024."
+      },
+      {
+        "q": "How do I contact him?",
+        "a": "By email at {email}, or on LinkedIn. His résumé is also available as a PDF."
+      }
     ],
     "contactTitle": "Contact",
     "contactLead": "Email works best. A couple of lines on the role or project is enough."
@@ -191,14 +217,17 @@
   },
   "projects": {
     "eira": {
+      "metaTitle": "Eira: digital nursing handover platform",
       "description": "Digital nursing handover platform — SBAR/ISBAR reports, patient charts, shift scheduling. Full-stack university thesis project.",
       "longDescription": "Eira digitizes nursing shift handovers: SBAR/ISBAR reports, SOAPIE diary, patient vitals, Norton/Conley risk assessments, shift and staff management, with separate flows for nurses and ward heads. Built as the final project work of the degree in Informatica per le Aziende Digitali at Università Telematica Pegaso. Academic/demo project — fictional clinical context, not a medical device."
     },
     "primo": {
+      "metaTitle": "Primo: AI contract and payslip reader",
       "description": "Upload a contract or payslip, AI reads it, flags issues, and breaks it down in plain language. Built for workers, not lawyers.",
       "longDescription": "Italian labour law is dense. Primo takes a contract or payslip photo, extracts the text, and runs it through a prompt that knows Italian employment law. It flags missing clauses, illegal terms, and underpayment, then explains each finding in plain language. No legal jargon."
     },
     "zubo-os": {
+      "metaTitle": "Zubo OS: Claude Code's loop rebuilt in Python",
       "description": "Rebuilt Claude Code's core loop by hand in Python: hooks, permission gates, tool dispatch, context assembly. No framework, just the loop.",
       "longDescription": "Zubo OS is a personal CLI agent on the Claude API that mirrors Claude Code's internals in about 300 lines of Python: a PreToolUse/PostToolUse hook system, a 3-mode permission gate (default/auto/plan), a tool dispatch dict, and a system prompt assembled at runtime from a base prompt, active skills, and a memory index. I built it to understand the deterministic infrastructure behind tool execution and context assembly, not the model."
     }
